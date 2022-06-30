@@ -17,8 +17,8 @@ const buttons = [
 
 const NavMainButtons = () => {
   const { t } = useTranslation()
-
   const location = useLocation()
+  
   return <>
     {buttons.map(button =>
       <Box key={button.to} sx={{ display: 'inline', marginRight: 1}}>

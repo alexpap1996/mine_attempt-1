@@ -3,5 +3,12 @@
   "shops":"shops",
   "profile":"Profile",
   "myOrders":"My Orders",
-  "logout":"Logout"
+  "logout":"Logout",
+  "emailAddress":"Email Address",
+  "password":"Password",
+  "rememberMe":"Remember me",
+  "signIn":"Sign In",
+  "forgotPassword":"Forgot Your Password?",
+  "dontHaveAnAccount":"Don't have an account?",
+  "signUp":"Sign Up"
 }

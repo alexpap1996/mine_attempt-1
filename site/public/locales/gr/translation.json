@@ -3,5 +3,12 @@
   "shops":"μαγαζια",
   "profile":"Προφίλ",
   "myOrders":"Παραγγελίες",
-  "logout":"Αποσύνδεση"
+  "logout":"Αποσύνδεση",
+  "emailAddress":"Διεύθυνση e-mail",
+  "password":"Κωδικός",
+  "rememberMe":"Να με θυμάσαι",
+  "signIn":"Είσοδος",
+  "forgotPassword":"Ξεχάσατε τον κωδικό σας;",
+  "dontHaveAnAccount":"Δεν εχετε λογαριασμο;",
+  "signUp":"Δημιουργία"
 }

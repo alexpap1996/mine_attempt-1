@@ -3,6 +3,8 @@ import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
 
+import { getUser, createUser } from './controllers/userController.js'
+
 connect()
 const app = express()
 const router = express.Router()
@@ -10,17 +12,20 @@ const router = express.Router()
 app.use(express.json())
 app.use(cors())
 
-router.route('/api/users').get((req, res) => {
-  console.log('inside api users')
-  return res.json('this may have had user data!')
+app.get('/api/user/:name', async (req, res) => {
+  const name = req.params.name
+  const user = await getUser(name)
+  console.log(`req.params.name: ${name}`)
+  console.log(user)
+  res.json(user)
 })
 
-router.route('/').get((req, res) => {
-  console.log('inside route dir')
-  return res.json('ok!')
+app.post('/api/user/', async (req, res) => {
+  await createUser(req, res)
 })
 
-const PORT = 5000
+
+const PORT = 9000
 
 app.listen(
   PORT,

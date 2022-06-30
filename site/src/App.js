@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import WelcomeScreen from './mainscreens/WelcomeScreen'
+import LoginScreen from './mainscreens/LoginScreen'
 import HomeScreen from './mainscreens/HomeScreen'
 import CartScreen from './mainscreens/CartScreen'
 import ShopsScreen from './mainscreens/ShopsScreen'
@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path='/account/profile' element={<ProfileScreen />} />
         <Route path='/account/orders' element={<OrdersScreen />} />
-        <Route path='/login' element={<WelcomeScreen />} />
+        <Route path='/login' element={<LoginScreen />} />
         <Route path='/shop' element={<ShopsScreen />} />
         <Route path='/cart' element={<CartScreen />} />
         <Route path='/' element={<HomeScreen />} />
