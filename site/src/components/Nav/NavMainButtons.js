@@ -33,7 +33,6 @@ const NavMainButtons = () => {
           {t(button.label)}
         </Button>
       </Box>
-      
     )}
   </>
 }

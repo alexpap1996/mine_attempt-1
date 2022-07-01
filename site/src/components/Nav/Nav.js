@@ -33,7 +33,7 @@ const Nav = () => {
           </Box>
 
           <Box>
-            {!navIsLimited && <NavUserIcon  />}
+            {!navIsLimited && <NavUserIcon />}
           </Box>
           <LanguageSelector sx={{ alignSelf: 'flex-end' }}/>
         </Toolbar>

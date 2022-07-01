@@ -6,16 +6,27 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import { useTranslation } from 'react-i18next'
 
-const LoginForm = ({ handleSubmit, t }) => {
+const GridItem = ({text, xs = undefined}) => {
+  return (
+    <Grid item xs={xs}>
+      <Link href="#" variant="body2">
+        {text}
+      </Link>
+    </Grid>
+  )
+}
+
+
+const LoginForm = ({ handleLogin }) => {
+  const { t } = useTranslation()
   return (
     <Box
       component="form"
       noValidate
-      onSubmit={handleSubmit}
-      sx={{
-        mt: 1,
-      }}
+      onSubmit={handleLogin}
+      sx={{ mt: 1 }}
     >
       <TextField
         margin="normal"
@@ -53,16 +64,8 @@ const LoginForm = ({ handleSubmit, t }) => {
         {t("signIn")}
       </Button>
       <Grid container>
-        <Grid item xs>
-          <Link href="#" variant="body2">
-            {t("forgotPassword")}
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="#" variant="body2">
-            {`${t("dontHaveAnAccount")} ${t("signUp")}`}
-          </Link>
-        </Grid>
+        <GridItem text={t("forgotPassword")} xs={true}/>
+        <GridItem text={`${t("dontHaveAnAccount")} ${t("signUp")}`} />
       </Grid>
     </Box>
   );

@@ -1,31 +1,17 @@
 import React from 'react'
 import { useTranslation } from "react-i18next";
 import LoginForm from '../components/Login/LoginForm'
+import LoginFormHeader from '../components/Login/LoginFormHeader'
 import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-
-const Copyright = (props) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const LoginScreen = () => {
 	const { t } = useTranslation()
-	const handleSubmit = (event) => {
+
+	const handleLogin = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -33,6 +19,8 @@ const LoginScreen = () => {
       password: data.get('password'),
     })
 	}
+
+  const headerText = t("signIn") //t("signUp")
 
 	return <>
 		<Grid container component="main" sx={{ height: '100vh' }}>
@@ -60,14 +48,8 @@ const LoginScreen = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              {t("signIn")}
-            </Typography>
-            <LoginForm handleSubmit={handleSubmit} t={t}  />
-						<Copyright sx={{ mt: 5 }} />
+            <LoginFormHeader headerText={headerText}/>
+            <LoginForm handleLogin={handleLogin} />
           </Box>
         </Grid>
     </Grid>
