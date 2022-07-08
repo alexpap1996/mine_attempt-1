@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useCallback } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import IconButton from '@mui/material/IconButton';
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 const NavUserIcon = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = (event) => {
@@ -17,6 +18,9 @@ const NavUserIcon = () => {
   const handleClose = () => {
     setAnchorEl(null);
   }
+
+  // TODO: logout session etc
+  const handleLogout = useCallback(() => navigate('/login', {replace: true}), [navigate]);
 
   return <>
     <IconButton
@@ -38,7 +42,7 @@ const NavUserIcon = () => {
     >
       <MenuItem component={Link} to="/account/profile" onClick={handleClose}>{t('profile')}</MenuItem>
       <MenuItem component={Link} to="/account/orders" onClick={handleClose}>{t('myOrders')}</MenuItem>
-      <MenuItem onClick={handleClose}>{t('logout')}</MenuItem>
+      <MenuItem onClick={handleLogout}>{t('logout')}</MenuItem>
     </Menu>
   </>
 }

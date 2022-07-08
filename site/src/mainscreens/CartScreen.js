@@ -1,5 +1,9 @@
+import { Box, Grid, TableContainer } from '@mui/material';
+import { Container } from '@mui/system';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import CartSummary from '../components/Cart/CartSummary';
+import CartProductsList from '../components/Cart/CartProductsList';
 
 const HomeScreen = () => {
 	const cartItems = []
@@ -14,11 +18,27 @@ const HomeScreen = () => {
   }, [])
 
 	return <>
-		<div>This is the cart component</div>
-		<div>You have {cartItems.length} items in your cart</div>
-		<div>
-			<Link to="/">Home</Link>
-		</div>
+    <Container > 
+      <Grid container component="section" spacing={2}>
+        <Grid 
+          xs={12}
+				  sm={6}
+				  md={8} 
+          item 
+          sx={{ border: 1 }}
+        >
+          <CartProductsList />
+        </Grid>
+        <Grid 
+          xs={12}
+          sm={6}
+          md={4}
+          item sx={{ border: 1 }}
+        >
+          <CartSummary />
+        </Grid>
+      </Grid>
+    </Container >
 	</>
 }
 

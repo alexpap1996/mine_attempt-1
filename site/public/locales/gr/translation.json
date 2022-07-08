@@ -10,5 +10,12 @@
   "signIn":"Είσοδος",
   "forgotPassword":"Ξεχάσατε τον κωδικό σας;",
   "dontHaveAnAccount":"Δεν εχετε λογαριασμο;",
-  "signUp":"Δημιουργία"
+  "signUp":"Δημιουργία",
+  "alreadyHaveAnAccount":"Έχετε ήδη λογαριασμό;",
+  "firstname":"Όνομα",
+  "lastname":"Επίθετο",
+  "itemTotal":"Ποσό Προιόντων",
+  "grandTotal":"Συνολικό Ποσό",
+  "tip":"Φιλοδώρημα",
+  "confirmOrder":"Επιβεβαίωση Παραγγελίας"
 }

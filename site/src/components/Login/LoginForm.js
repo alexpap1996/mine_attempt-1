@@ -1,23 +1,13 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
+import React from "react"
+import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
-
-const GridItem = ({text, xs = undefined}) => {
-  return (
-    <Grid item xs={xs}>
-      <Link href="#" variant="body2">
-        {text}
-      </Link>
-    </Grid>
-  )
-}
-
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField"
+import FormControlLabel from "@mui/material/FormControlLabel"
+import Checkbox from "@mui/material/Checkbox"
+import Link from "@mui/material/Link"
+import Grid from "@mui/material/Grid"
 
 const LoginForm = ({ handleLogin }) => {
   const { t } = useTranslation()
@@ -64,11 +54,11 @@ const LoginForm = ({ handleLogin }) => {
         {t("signIn")}
       </Button>
       <Grid container>
-        <GridItem text={t("forgotPassword")} xs={true}/>
-        <GridItem text={`${t("dontHaveAnAccount")} ${t("signUp")}`} />
+        <LoginFormLink text={t("forgotPassword")} xs={true} />
+        <LoginFormLink text={`${t("dontHaveAnAccount")} ${t("signUp")}`} to='/login/signup'/>
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

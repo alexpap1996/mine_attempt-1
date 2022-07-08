@@ -9,13 +9,13 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
 const limitInPaths = [
-  '/login'
+  'login'
 ]
-
 
 const Nav = () => {
   const location = useLocation()
-  const navIsLimited = limitInPaths.includes(location.pathname)
+  const baseDir = location.pathname.split('/')[1]
+  const navIsLimited = limitInPaths.includes(baseDir)
 
   const appBarSx =  {borderBottom: ( navIsLimited ? 0 : 1 ), borderColor: '#eeeeee'}
   const appBarPos = navIsLimited ? "fixed" :"static"

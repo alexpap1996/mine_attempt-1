@@ -8,12 +8,13 @@ import './utils/i18n';
 const themeOptions = {
   palette: {
     primary: {
-      main: '#19d219',
+      main: '#5FD068',
       contrastText: "#fff"
     },
     secondary: {
-      main: '#aaaaaa'
+      main: '#F5DF99'
     },
+    //#F6FBF4 for background color
   }
 }
 

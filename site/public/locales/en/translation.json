@@ -10,5 +10,12 @@
   "signIn":"Sign In",
   "forgotPassword":"Forgot Your Password?",
   "dontHaveAnAccount":"Don't have an account?",
-  "signUp":"Sign Up"  
+  "signUp":"Sign Up",
+  "alreadyHaveAnAccount":"Already have an account?",
+  "firstname":"First Name",
+  "lastname":"Last Name",
+  "itemTotal":"Item Total",
+  "grandTotal":"Grand Total",
+  "tip":"Tip",
+  "confirmOrder":"Confirm Order"
 }
