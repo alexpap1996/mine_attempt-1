@@ -2,10 +2,11 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
+import { shops } from './staticData_server.js'
 
 import { getUser, createUser } from './controllers/userController.js'
 
-connect()
+// connect()
 const app = express()
 const router = express.Router()
 
@@ -22,6 +23,12 @@ app.get('/api/user/:name', async (req, res) => {
 
 app.post('/api/user/', async (req, res) => {
   await createUser(req, res)
+})
+
+app.get('/api/shops/:category', (req, res) => {
+  // const category = req.params.category
+  console.log('connected to shop category: ')
+  res.json(shops)
 })
 
 

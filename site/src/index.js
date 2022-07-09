@@ -14,7 +14,7 @@ const themeOptions = {
     secondary: {
       main: '#F5DF99'
     },
-    //#F6FBF4 for background color
+    background: '#F6FBF4'
   }
 }
 

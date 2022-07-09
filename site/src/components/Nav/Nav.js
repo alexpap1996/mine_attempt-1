@@ -28,7 +28,7 @@ const Nav = () => {
             Shops
           </Typography>
 
-          <Box sx={{ flexGrow: 1}}>
+          <Box display="flex" justifyContent="center" sx={{ flexGrow: 1}}>
             {!navIsLimited && <NavMainButtons />}
           </Box>
 

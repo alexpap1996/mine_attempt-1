@@ -1,32 +1,16 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import CategoryCard from '../components/Product/CategoryCard';
-
-const categories = [
-  'food',
-  'groceries',
-  'pharmacies'
-]
+import { useLocation } from 'react-router-dom'
+import CategoryList from '../components/ShopCategories/CategoryList';
+import ShopList from '../components/Shops/ShopList';
 
 const ShopsScreen = () => {
-  const [data, setData] = useState('')
-
-  const buttonClickHandler = async (event) => {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-    const data = await response.json()
-    console.log(data)
-    setData(data)
-  }
+  const location = useLocation()
+  const subDir = location.pathname.split('/')[2]
+  const isShopDir = subDir !== undefined && subDir !== null
 
 	return <>
-		{categories.map(cat => 
-      <Box key={cat} sx={{ margin: 1, display: 'inline' }}>
-        <Button onClick={buttonClickHandler} name={cat}>{cat}</Button>
-      </Box>
-    )}
-    {data && <p>{data.name}</p>}
-    <CategoryCard />
+    { !isShopDir && <CategoryList />}
+    { isShopDir && <ShopList category={subDir} />}
 	</>
 }
 

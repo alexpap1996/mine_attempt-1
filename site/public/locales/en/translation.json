@@ -17,5 +17,8 @@
   "itemTotal":"Item Total",
   "grandTotal":"Grand Total",
   "tip":"Tip",
-  "confirmOrder":"Confirm Order"
+  "confirmOrder":"Confirm Order",
+  "pickACategory":"Pick a Shop Category",
+  "categories":"Categories",
+  "pharmacies":"Pharmacies"
 }
