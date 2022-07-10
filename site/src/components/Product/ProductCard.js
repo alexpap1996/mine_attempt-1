@@ -1,10 +1,9 @@
 import { Box, Card, CardMedia, CardContent, Typography } from '@mui/material'
 import React from 'react'
 
-const photoPrefix = './../../../public/images/products/'
+const prefix = "http://localhost:3000/images/products/"
 
 const ProductCard = ({photoDir}) => {
-  console.log(photoPrefix+photoDir)
   return (<>
     <Card 
       sx={{ 
@@ -13,12 +12,9 @@ const ProductCard = ({photoDir}) => {
       }} 
       elevation={2}
     >
-      <img src="./../../../public/images/pharmacy_1.jpg" alt="ok"></img>
       <CardMedia
         component="img"
-        image="./../../../public/images/pharmacy_1.jpg"
-        height='140'
-        width='140'
+        image={prefix + photoDir}
         alt="pharmacies"
         style={{height: '100px'}}
       />

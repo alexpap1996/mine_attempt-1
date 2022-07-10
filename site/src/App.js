@@ -15,20 +15,25 @@ const App = () => {
   const theme = useTheme()
   console.log(theme.palette)
   return (
-    <BrowserRouter>
-      <Nav/>
-      <Box sx={{ backgroundColor: theme.palette.background}}>
-        <Routes>
-          <Route path='/account/profile' element={<ProfileScreen />} />
-          <Route path='/account/orders' element={<OrdersScreen />} />
-          <Route path='/login/*' element={<LoginScreen />} />
-          <Route path='/shops/*' element={<ShopsScreen />} />
-          <Route path='/shop/*' element={<ProductListScreen />} />
-          <Route path='/cart' element={<CartScreen />} />
-          <Route path='/' element={<HomeScreen />} />
-        </Routes>
-      </Box>
-    </BrowserRouter>
+    //this needs some work for the body to be full screen
+    <Box height="100vh" 
+      // style={{display: 'flex', flexDirection:'column'}}
+    >
+      <BrowserRouter>
+        <Nav/>
+        <Box sx={{ backgroundColor: theme.palette.background}}>
+          <Routes>
+            <Route path='/account/profile' element={<ProfileScreen />} />
+            <Route path='/account/orders' element={<OrdersScreen />} />
+            <Route path='/login/*' element={<LoginScreen />} />
+            <Route path='/shops/*' element={<ShopsScreen />} />
+            <Route path='/shop/*' element={<ProductListScreen />} />
+            <Route path='/cart' element={<CartScreen />} />
+            <Route path='/' element={<HomeScreen />} />
+          </Routes>
+        </Box>
+      </BrowserRouter>
+    </Box>
   )
 }
 

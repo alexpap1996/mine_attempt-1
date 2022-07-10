@@ -10,9 +10,8 @@ const GridProductItem = ({photoDir}) => {
 
 const ProductListScreen = () => {
   return (<>
-    <Container maxWidth='xl'>
-      dddd
-      <Grid container spacing={4}>
+    <Container maxWidth='xl' >
+      <Grid container spacing={4} style={{ marginTop: 'unset' }}>
         <GridProductItem photoDir='kiwi.jpg'/>
         <GridProductItem photoDir='orange.jpg'/>
         <GridProductItem photoDir='kiwi.jpg'/>

@@ -19,7 +19,7 @@ const HomeScreen = () => {
 
 	return <>
     <Container > 
-      <Grid container component="section" spacing={2}>
+      <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
         <Grid 
           xs={12}
 				  sm={6}
