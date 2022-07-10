@@ -3,7 +3,8 @@ import { Box, Card, Typography, CardMedia, CardContent, Link, CssBaseline, Paper
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 
-const CategoryCard = ({ id = '', image, alt, title, goToDir = '', cardColor, textColor, Icon }) => {
+const CategoryCard = ({ id = '', image, alt, title, goToDir = '', cardColor, textColor, icon }) => {
+  const IconComp = icon
   const { t } = useTranslation()
   const [elevation, setElevation] = useState(2) //maybe remove setElevation
   const [brightness, setBrightness] = useState('100%')
@@ -22,7 +23,7 @@ const CategoryCard = ({ id = '', image, alt, title, goToDir = '', cardColor, tex
   }
 
   return (<>
-    <RouterLink to={`/shop/${goToDir}`} style={{ textDecoration: 'none' }}>
+    <RouterLink to={`/shops/${goToDir}`} style={{ textDecoration: 'none' }}>
       <Card
         sx={{ 
           backgroundColor: cardColor,
@@ -33,17 +34,17 @@ const CategoryCard = ({ id = '', image, alt, title, goToDir = '', cardColor, tex
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {!Icon && <CardMedia
+        {!IconComp && <CardMedia
           component="img"
           height="140"
           width="140"
-          image="../../../images/pharmacy_1.jpg"
+          image="./../../images/pharmacy_1.jpg"
           alt="pharmacies"
         /> }
         <CardContent sx={{paddingBottom: '16px !important'}}>
-          {Icon && 
+          {IconComp && 
             <Box sx={{ display:'flex', justifyContent:'center', margin: '1rem 0', fontSize: '48px' }}>
-              <Icon fontSize="inherit"/>
+              <IconComp fontSize="inherit"/>
             </Box>
           }
           <Typography align="center" component="h6" variant="h6">

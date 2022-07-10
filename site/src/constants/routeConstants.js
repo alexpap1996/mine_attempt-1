@@ -1,7 +1,7 @@
 const ROUTES = {
   CART: '/cart',
   LOGIN: '/login',
-  SHOP: '/shop',
+  SHOP: '/shops',
   ACCOUNT: {
     PROFILE: '/account/profile',
     ORDERS: '/account/orders', 

@@ -29,7 +29,7 @@ const categories = [
 const GridCategoryCard = ({id, title, goToDir, cardColor, textColor, icon}) => {
   return ( 
     <Grid item xs={6} sm={4}>
-      <ClickableCard id={id} title={title} goToDir={goToDir} cardColor={cardColor} textColor={textColor} Icon={icon}/>
+      <ClickableCard id={id} title={title} goToDir={goToDir} cardColor={cardColor} textColor={textColor} icon={icon}/>
     </Grid>
   )
 }

@@ -9,6 +9,7 @@ import ProfileScreen from './mainscreens/ProfileScreen'
 import OrdersScreen from './mainscreens/OrdersScreen'
 import Nav from './components/Nav/Nav'
 import LoginScreen from './mainscreens/LoginScreen'
+import ProductListScreen from './mainscreens/ProductListScreen'
 
 const App = () => {
   const theme = useTheme()
@@ -21,7 +22,8 @@ const App = () => {
           <Route path='/account/profile' element={<ProfileScreen />} />
           <Route path='/account/orders' element={<OrdersScreen />} />
           <Route path='/login/*' element={<LoginScreen />} />
-          <Route path='/shop/*' element={<ShopsScreen />} />
+          <Route path='/shops/*' element={<ShopsScreen />} />
+          <Route path='/shop/*' element={<ProductListScreen />} />
           <Route path='/cart' element={<CartScreen />} />
           <Route path='/' element={<HomeScreen />} />
         </Routes>

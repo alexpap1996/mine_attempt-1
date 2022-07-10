@@ -26,9 +26,8 @@ app.post('/api/user/', async (req, res) => {
 })
 
 app.get('/api/shops/:category', (req, res) => {
-  // const category = req.params.category
-  console.log('connected to shop category: ')
-  res.json(shops)
+  const category = req.params.category
+  res.json(shops[category])
 })
 
 
