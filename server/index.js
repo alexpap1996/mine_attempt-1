@@ -2,7 +2,7 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
-import { shops } from './staticData_server.js'
+import { shops, products } from './staticData_server.js'
 
 import { getUser, createUser } from './controllers/userController.js'
 
@@ -21,13 +21,29 @@ app.get('/api/user/:name', async (req, res) => {
   res.json(user)
 })
 
+// not used, for dev purposes only
 app.post('/api/user/', async (req, res) => {
   await createUser(req, res)
 })
 
+// TODO: if the structure is changed in the db,
+// adjust this accordingly
 app.get('/api/shops/:category', (req, res) => {
   const category = req.params.category
   res.json(shops[category])
+})
+
+// TODO:query products with the correct shopId and return them in an array
+app.get('/api/shop/:shopId', (req, res) => {
+  const shopId = req.params.shopId
+  
+})
+
+// TODO: create order logic
+// add currentDate, product (maybe Ids?), userId
+// optional: tip, price paid
+app.post('', (req, res) => {
+
 })
 
 

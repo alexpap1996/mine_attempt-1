@@ -16,12 +16,10 @@ const App = () => {
   console.log(theme.palette)
   return (
     //this needs some work for the body to be full screen
-    <Box height="100vh" 
-      // style={{display: 'flex', flexDirection:'column'}}
-    >
+    <Box height="100vh" style={{display: 'flex', flexDirection:'column'}}>
       <BrowserRouter>
-        <Nav/>
-        <Box sx={{ backgroundColor: theme.palette.background}}>
+        <Nav sx={{ flexGrow: 0 }}/>
+        <Box sx={{ flexGrow: 1, backgroundColor: theme.palette.background}}>
           <Routes>
             <Route path='/account/profile' element={<ProfileScreen />} />
             <Route path='/account/orders' element={<OrdersScreen />} />
