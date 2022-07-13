@@ -6,7 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider, Card } from '@mui/material';
+import ProductCartItem from '../Product/ProductCartItem';
 const Row = ({num, name, price}) => {
   return (
     <TableRow>
@@ -17,8 +18,8 @@ const Row = ({num, name, price}) => {
   )
 }
 
-const populateArr = (text) => {
-  return {text, price:(Math.random() * 7).toFixed(2)}
+const populateArr = (text, quantity = 0) => {
+  return {text, price:(Math.random() * 7).toFixed(2), description: 'This is the description text', quantity}
 }
 
 const arr = [
@@ -28,9 +29,26 @@ const arr = [
   populateArr('Soy sauce'),
 ]
 
+const ProductWithDivider = ({product, isLastItem = false}) => {
+  return (
+    <>
+      <ProductCartItem product={product} />
+      {!isLastItem && <Divider />}
+    </>
+  )
+}
+
 const CartTotals = () => {
   return <>
-    <TableContainer component={Paper}>
+    <Card sx={{bgcolor: 'white'}}>
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        {
+          arr.map((product, index, arr) => <ProductWithDivider product={product} isLastItem={index+1=== arr.length}/> )
+        }
+      </List>
+    </Card>
+    
+    {/* <TableContainer component={Paper}>
       <Table sx={{ }} size="small" aria-label="a dense table">
         {
           arr.map((prod, i) => {
@@ -38,7 +56,7 @@ const CartTotals = () => {
           })
         }
       </Table>
-    </TableContainer>
+    </TableContainer> */}
   </>
 }
 

@@ -25,7 +25,7 @@ const HomeScreen = () => {
 				  sm={6}
 				  md={8} 
           item 
-          sx={{ border: 1 }}
+          
         >
           <CartProductsList />
         </Grid>
@@ -33,7 +33,7 @@ const HomeScreen = () => {
           xs={12}
           sm={6}
           md={4}
-          item sx={{ border: 1 }}
+          item 
         >
           <CartSummary />
         </Grid>

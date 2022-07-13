@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+// TODO:
+// for now this connects to online db,
+// make it work with local mongo db
 const connect = async () => {
   try {
     const uri = `mongodb+srv://alexpap:paok_gasp1234@cluster0.61xvxwf.mongodb.net/?retryWrites=true&w=majority`
