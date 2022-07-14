@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Box, IconButton, Typography } from "@mui/material"
 
-const QuantitySelector = ({quantity = 0 }) => {
+const QuantitySelector = ({quantity = 0, size }) => {
+  const fontSize = size === 'medium' ? '1.3rem' : '1rem'
   const [currQuantity, setCurrQuantity] = useState(quantity)
   const incrementHandler = () => {
     setCurrQuantity(currQuantity + 1)
@@ -11,12 +12,12 @@ const QuantitySelector = ({quantity = 0 }) => {
   }
   return (
     <Box sx={{ display: 'flex', alignItems:'center'}}>
-      <IconButton color='secondary' sx={{backgroundColor: 'darkgrey', height: '1rem', width: '1rem' }} onClick={decrementHandler}>
-        <p styles={{fontSize:'1rem'}}>-</p>
+      <IconButton color='secondary' sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={decrementHandler}>
+        <p style={{fontSize}}>-</p>
       </IconButton>
-        <Typography sx={{ padding: '0 0.3rem'}}>{currQuantity}</Typography>
-      <IconButton color='secondary' sx={{backgroundColor: 'darkgrey', height: '1rem', width: '1rem' }} onClick={incrementHandler}>
-        <p styles={{fontSize:'1rem'}}>+</p>
+        <Typography variant='body1' sx={{ padding: '0 0.3rem', fontSize}}>{currQuantity}</Typography>
+      <IconButton color='secondary' sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={incrementHandler}>
+        <p style={{fontSize}}>+</p>
       </IconButton>
     </Box>
   )

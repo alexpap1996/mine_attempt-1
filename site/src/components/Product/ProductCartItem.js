@@ -1,9 +1,16 @@
-import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider, Card } from '@mui/material';
+import { List,Box, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider, Card, IconButton } from '@mui/material';
 import QuantitySelector from './QuantitySelector';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const ProductCartItem = ({product}) => {
   const { text, description, quantity, price } = product
   const prefix = "http://localhost:3000/images/"
+
+  const handleDelete = () => {
+    //somehow remove self from cart
+  }
+
   return (
     <ListItem alignItems="flex-start">
       <ListItemAvatar sx={{py:1, pr:1}}>
@@ -21,11 +28,18 @@ const ProductCartItem = ({product}) => {
             >
               {description}
             </Typography>
-            {" — I'll be in your neighborhood doing errands this…"}
+            {quantity}
           </>
         }
       />
-      <QuantitySelector />
+      <Box sx={{alignSelf: 'center', paddingX: '0.5rem'}}>
+        <QuantitySelector quantity={quantity}/>
+      </Box>
+      <Box sx={{alignSelf: 'center'}}>
+        <IconButton aria-label="delete" size="small">
+          <DeleteIcon onClick={handleDelete}/>
+        </IconButton>
+      </Box>
     </ListItem>
   )
 }

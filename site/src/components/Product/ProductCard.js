@@ -1,9 +1,13 @@
-import { Box, Card, CardMedia, CardContent, Typography } from '@mui/material'
+import { Box, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'
+import { Container } from '@mui/system'
 import React from 'react'
+import QuantitySelector from './QuantitySelector'
+import { useTranslation } from 'react-i18next'
 
-const prefix = "http://localhost:3000/images/products/"
+const prefix = "http://localhost:3000/images/"
 
-const ProductCard = ({photoDir}) => {
+const ProductCard = ({photoDir, productName, productPrice}) => {
+  const { t } = useTranslation()
   return (<>
     <Card 
       sx={{ 
@@ -19,13 +23,21 @@ const ProductCard = ({photoDir}) => {
         style={{height: '100px'}}
       />
       <CardContent>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography component="div" variant="h5">
-            Live From Space
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            Mac Miller
-          </Typography>
+        <Grid container sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Grid item xs={6}>
+            <Typography component="div" variant="h5">
+              {productName}
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant="h6" color="text.secondary" component="div" sx={{ textAlign:'right'}}>
+              {productPrice}€
+            </Typography>
+          </Grid>
+        </Grid>
+        <Box sx={{ pt:3, display: 'flex', justifyContent: 'left', gap:'1rem'}}>
+          <QuantitySelector size='medium'/>
+          <Button variant='contained'>{t('addToCart')}</Button>
         </Box>
       </CardContent>
     </Card>
