@@ -33,10 +33,12 @@ app.get('/api/shops/:category', (req, res) => {
   res.json(shops[category])
 })
 
-// TODO:query products with the correct shopId and return them in an array
+//TODO: products refer to static products, make them refer to mongoose
 app.get('/api/shop/:shopId', (req, res) => {
   const shopId = req.params.shopId
-  
+  const filteredProds = products.filter(prod => prod.shopId === shopId)
+  console.log(shopId)
+  res.json(filteredProds)
 })
 
 // TODO: create order logic

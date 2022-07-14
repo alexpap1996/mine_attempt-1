@@ -3,52 +3,84 @@
 // save them in a normal array and just query with mongoose?
 const shops = {
   groceries: [
-    'grocery shop 1',
-    'grocery shop 2',
-    'grocery shop 3'
+    {
+      name: 'grocery shop 2',
+      id: '11'
+    },
+    {
+      name: 'grocery shop 2',
+      id: '12'
+    },
+    {
+      name: 'grocery shop 2',
+      id: '13'
+    },
   ],
   food: [
-    'food shop 1',
-    'food shop 2',
-    'food shop 3'
+    {
+      name: 'food shop 1',
+      id: '21'
+    },
+    {
+      name: 'food shop 2',
+      id: '22'
+    },
+    {
+      name: 'food shop 3',
+      id: '23'
+    },
   ],
   pharmacies: [
-    'pharmacy shop 1',
-    'pharmacy shop 2',
-    'pharmacy shop 3'
+    {
+      name: 'pharmacy 1',
+      id: '31'
+    },
+    {
+      name: 'pharmacy 2',
+      id: '32'
+    },
+    {
+      name: 'pharmacy 2',
+      id: '33'
+    },
   ],
 }
 
 const products = [
   {
     id: '1',
-    name: 'name1',
-    shopId: '1',
-    price: 12
+    name: 'Orange',
+    shopId: '11',
+    price: 2.55,
+    photoDir: 'orange.jpg'
   },
   {
     id: '2',
-    name: 'name2',
-    shopId: '1',
-    price: 12
+    name: 'Big Orange',
+    shopId: '11',
+    price: 10.00,
+    photoDir: 'orange.jpg'
   },
   {
     id: '3',
-    name: 'name3',
-    shopId: '2',
-    price: 3
+    name: 'Kiwi',
+    shopId: '11',
+    price: 0.75,
+    photoDir: 'orange.jpg'
   },
   {
     id: '4',
-    name: 'name4',
-    shopId: '2',
-    price: 10
+    name: 'Hawai Kiwi',
+    shopId: '21',
+    price: 1.23,
+    photoDir: 'kiwi.jpg'
   },
   {
     id: '5',
-    name: 'name5',
-    shopId: '3',
-    price: 1
+    name: 'Apple',
+    shopId: '31',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
   },
 ]
 
