@@ -7,9 +7,10 @@ import ClickableCard from '../ClickableCard';
 
 /* icons */
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore'; //πιο κοντα σε cart ειναι αυτο
 import StoreIcon from '@mui/icons-material/Store';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import KebabDiningIcon from '@mui/icons-material/KebabDining';
+import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 
 const categories = [
   {
@@ -23,6 +24,14 @@ const categories = [
   {
     name: 'pharmacies',
     icon: LocalPharmacyIcon
+  },
+  {
+    name: 'bakeries',
+    icon: BakeryDiningIcon
+  },
+  {
+    name: 'butcher',
+    icon: KebabDiningIcon
   },
 ]
 
@@ -44,7 +53,7 @@ const CategoryList = () => {
       {t('pickACategory')}
     </Typography>
     <Container maxWidth='md'>
-      <Grid container direction="row" spacing={4}>
+      <Grid container direction="row" spacing={4} sx={{ justifyContent:'center' }}>
         {
           categories.map((category) => (
             <GridCategoryCard 
@@ -54,6 +63,7 @@ const CategoryList = () => {
               cardColor={main}
               textColor={contrastText}
               icon={category.icon}
+              key={category.name}
             />
           ))
         }

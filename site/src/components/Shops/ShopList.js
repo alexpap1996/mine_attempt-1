@@ -7,10 +7,9 @@ import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 
 const GridShopCard = ({id, title, goToDir, cardColor}) => {
-  console.log(`${goToDir} ok`)
   return (
     <Grid item xs={6} sm={4}>
-      <ClickableCard id={id} title={title} goToDir='../shop/f' cardColor={cardColor}/>
+      <ClickableCard id={id} title={title} goToDir={'../shop/'+id} cardColor={cardColor}/>
     </Grid>
   )
 }
@@ -23,6 +22,7 @@ const ShopList = ({category}) => {
   const getCategoryShops = async () => {
     try {
       const { data } = await axios('http://localhost:9000/api/shops/'+category)
+      console.log(data)
       setShopsList(data)
     } catch (e) {
       console.log(e.message)
@@ -46,8 +46,8 @@ const ShopList = ({category}) => {
     <Container maxWidth='md'>
       <Grid container direction="row" spacing={4}>
         {
-          shopsList && shopsList.map((categoryName) => (
-            <GridShopCard id='1' title={t(categoryName)} goToDir={categoryName} cardColor={main}/>
+          shopsList && shopsList.map((shop) => (
+            <GridShopCard id={shop.id} title={shop.name} goToDir={shop.id} cardColor={main}/>
           ))
         }
       </Grid>
