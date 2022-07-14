@@ -17,7 +17,7 @@ const Row = ({text, amount = 0, sx = undefined}) => {
         <Typography sx={{ fontWeight:'500'}}>{text}</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography align='right'>{amount}</Typography>
+        <Typography align='right'>{amount}€</Typography>
       </Grid>
     </>
   )
@@ -30,7 +30,6 @@ const CartTotals = ({itemTotal = 0 , tip = 0}) => {
     <Grid container spacing={2} columns={12} sx={{px:3}}>
       <Row text={t('itemTotal')} amount={itemTotal}/>
       <Row text={t('tip')} amount={tip}/>
-      <Divider />
       <Row text={t('grandTotal')} amount={grandTotal}/>
     </Grid>
   </>

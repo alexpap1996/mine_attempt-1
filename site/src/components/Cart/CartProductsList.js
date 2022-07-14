@@ -40,8 +40,8 @@ const ProductWithDivider = ({product, isLastItem = false}) => {
 
 const CartTotals = () => {
   return <>
-    <Card sx={{bgcolor: 'white'}}>
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Card sx={{bgcolor: 'white' }}>
+      <List sx={{ width: '100%', bgcolor: 'background.paper', padding: '0' }}>
         {
           arr.map((product, index, arr) => <ProductWithDivider product={product} isLastItem={index+1=== arr.length}/> )
         }
