@@ -1,5 +1,6 @@
 {
   "cart":"καλαθι",
+  "addToCart":"Προσθήκη",
   "shops":"μαγαζια",
   "profile":"Προφίλ",
   "myOrders":"Παραγγελίες",
@@ -20,5 +21,9 @@
   "confirmOrder":"Επιβεβαίωση Παραγγελίας",
   "pickACategory":"Διαλέξτε Κατηγορία Μαγαζιών",
   "categories":"Κατηγοριες",
-  "pharmacies":"Φαρμακεία"
+  "pharmacies":"Φαρμακεία",
+  "groceries":"Παντωπολεία", 
+  "food":"Φαγητό", 
+  "bakeries":"Φούρνοι", 
+  "butcher":"Χασάπης"
 }

@@ -1,5 +1,6 @@
 {
   "cart":"cart",
+  "addToCart":"Add to Cart",
   "shops":"shops",
   "profile":"Profile",
   "myOrders":"My Orders",
@@ -20,5 +21,9 @@
   "confirmOrder":"Confirm Order",
   "pickACategory":"Pick a Shop Category",
   "categories":"Categories",
-  "pharmacies":"Pharmacies"
+  "pharmacies":"Pharmacies",
+  "groceries":"Groceries", 
+  "food":"Food", 
+  "bakeries":"Bakeries", 
+  "butcher":"Butcher"
 }
