@@ -26,5 +26,6 @@
   "groceries":"Groceries", 
   "food":"Food", 
   "bakeries":"Bakeries", 
-  "butcher":"Butcher"
+  "butcher":"Butcher",
+  "welcomeTo":"Welcome To"
 }
