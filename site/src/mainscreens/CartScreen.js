@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import CartSummary from '../components/Cart/CartSummary';
 import CartProductsList from '../components/Cart/CartProductsList';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {
