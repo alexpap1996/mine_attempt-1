@@ -37,8 +37,16 @@ app.get('/api/shops/:category', (req, res) => {
 app.get('/api/shop/:shopId', (req, res) => {
   const shopId = req.params.shopId
   const filteredProds = products.filter(prod => prod.shopId === shopId)
-  console.log(shopId)
-  res.json(filteredProds)
+  const shopArray = Object.keys(shops).reduce((acc, cur) => {
+    acc = [ ...acc, ...shops[cur]]
+    return acc
+  }, [])
+  const shop = shopArray.find(shop => shop.id === shopId)
+  const shopAndProducts = {
+    shop, products: filteredProds
+  }
+  // console.log(req.params)
+  res.json(shopAndProducts)
 })
 
 // TODO: create order logic

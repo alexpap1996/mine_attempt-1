@@ -82,6 +82,69 @@ const products = [
     price: 1.00,
     photoDir: 'kiwi.jpg'
   },
+  {
+    id: '6',
+    name: 'Apple',
+    shopId: '13',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '7',
+    name: 'Apple',
+    shopId: '13',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '8',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '9',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '10',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '11',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '12',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '13',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
+  {
+    id: '14',
+    name: 'Apple',
+    shopId: '12',
+    price: 1.00,
+    photoDir: 'kiwi.jpg'
+  },
 ]
 
 export { shops, products }
