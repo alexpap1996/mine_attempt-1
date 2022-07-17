@@ -22,7 +22,7 @@ const App = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Nav/>
           </Box>
-          <Box sx={{ flexGrow: 1, backgroundColor: theme.palette.background}}>
+          <Box sx={{ flexGrow: 1, backgroundColor: theme.palette.backgroundColor}}>
             <Routes>
               <Route path='/account/profile' element={<ProfileScreen />} />
               <Route path='/account/orders' element={<OrdersScreen />} />
