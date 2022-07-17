@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Input, InputLabel, InputAdornment } from '@mui/material';
+import { Box, Card, CardContent, Grid, Input, InputLabel, InputAdornment, TextField, Select, MenuItem, FormControl, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
@@ -27,22 +27,33 @@ const HomeScreen = () => {
 	return <>
     <Container > 
       <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
-        <Grid xs={12} sm={8} md={6} item>
+        <Grid xs={12} sm={8} md={8} item>
           <CartProductsList />
         </Grid>
-        <Grid xs={12} sm={8} md={6} item>
+        <Grid xs={12} sm={4} md={4} item>
           <CartSummary />
         </Grid>
         <Grid xs={12} sm={2} md={2} item>
           <Card sx={{ backgroundColor: 'white'}}>
             <CardContent>
-              <InputLabel htmlFor="standard-adornment-amount">{t('tip')}</InputLabel>
-              <Input
-                id="standard-adornment-amount"
-                value={tipAmount}
-                onChange={handleTipChange}
-                startAdornment={<InputAdornment position="start">€</InputAdornment>}
-              />
+              <Typography>
+                {t('chooseTip')}
+              </Typography>
+              <FormControl fullWidth>
+                
+              </FormControl>
+                <TextField 
+                  value={tipAmount}
+                  onChange={handleTipChange}
+                  sx={{ backgroundColor:'white'}}
+                  select 
+                  SelectProps={{ MenuProps: { disableScrollLock: true } }}
+                >
+                  <MenuItem value={0}>----</MenuItem>
+                  <MenuItem value={0.5}>0.5€</MenuItem>
+                  <MenuItem value={1}>1€</MenuItem>
+                  <MenuItem value={2}>2€</MenuItem>
+                </TextField>
             </CardContent>
           </Card>
         </Grid>

@@ -47,16 +47,6 @@ const CartTotals = () => {
         }
       </List>
     </Card>
-    
-    {/* <TableContainer component={Paper}>
-      <Table sx={{ }} size="small" aria-label="a dense table">
-        {
-          arr.map((prod, i) => {
-            return <Row num={i+1} name={prod.text} price={prod.price}/>
-          })
-        }
-      </Table>
-    </TableContainer> */}
   </>
 }
 
