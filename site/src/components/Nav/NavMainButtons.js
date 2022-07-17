@@ -32,7 +32,7 @@ const NavMainButtons = () => {
           to={button.to}
           size="medium"
           color="primary"
-          variant={button.to === location.pathname ? "contained" : "text"}
+          variant={location.pathname.startsWith(button.to) ? "contained" : "text"}
           sx={{padding: '7px 10px'}}
           endIcon={<button.icon />}
         >
