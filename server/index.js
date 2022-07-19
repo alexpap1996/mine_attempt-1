@@ -2,7 +2,7 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
-import { shops, products } from './staticData_server.js'
+import { shops, products, users } from './staticData_server.js'
 
 import { getUser, createUser } from './controllers/userController.js'
 
@@ -13,13 +13,20 @@ const router = express.Router()
 app.use(express.json())
 app.use(cors())
 
+// returning the first user we find no matter what we get as params
+// this needs to be implemented
 app.get('/api/user/:name', async (req, res) => {
-  const name = req.params.name
-  const user = await getUser(name)
-  console.log(`req.params.name: ${name}`)
-  console.log(user)
-  res.json(user)
+  // const name = req.params.name
+  //const user = await getUser(name)
+  
+  res.json(users[0])
 })
+
+app.get('/api/orders/:userId'), async (req, res) => {
+  const userId = req.params.userId
+  const orders = users.find(user => user.id === userId).orders
+  res.json(orders)
+}
 
 // not used, for dev purposes only
 app.post('/api/user/', async (req, res) => {
