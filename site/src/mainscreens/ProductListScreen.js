@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Grid, Typography } from '@mui/material'
+import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import ProductCard from '../components/Product/ProductCard'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 
-const GridProductItem = ({photoDir, productName, productPrice}) => {
+const GridProductItem = ({product}) => {
   return (
     <Grid item xs={12} sm={6} md={4} lg={4}>
-      <ProductCard photoDir={photoDir} productName={productName} productPrice={productPrice}></ProductCard>
+      <ProductCard 
+        product={product}
+      ></ProductCard>
     </Grid>
   )
 }
@@ -32,15 +34,20 @@ const ProductListScreen = () => {
   }
   useEffect(() => {
     getProducts()
-  }
-    
-  , [])
+  }, [])
   return (<>
     <Container maxWidth='md' >
-      <Typography component="h5" variant="h5" sx={{pt:2}}>{t('welcomeTo')} {shop.name}</Typography>
+      <Card sx={{my:3}}>
+        <CardContent>
+          <Typography component="h5" variant="h3" sx={{ fontWeight: 300}}>{shop.name}</Typography>
+          <Typography component="div" variant="h6" >{shop.category}</Typography>
+        </CardContent>
+       
+      </Card>
+      
       <Grid container spacing={2} style={{ marginTop: 'unset' }}>
         {
-          products.map(prod => <GridProductItem key={prod.id} photoDir={prod.photoDir} productName={prod.name} productPrice={prod.price} />)
+          products.map(prod => <GridProductItem key={prod.id} product={prod} />)
         }
       </Grid>
     </Container>

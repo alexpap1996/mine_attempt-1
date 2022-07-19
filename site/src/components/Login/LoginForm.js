@@ -1,15 +1,9 @@
 import React from "react"
 import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
-import Link from "@mui/material/Link"
-import Grid from "@mui/material/Grid"
+import { Grid, Link, Checkbox, Typography, FormControlLabel, TextField, Button, Box } from "@mui/material";
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = ({ handleLogin, loginError }) => {
   const { t } = useTranslation()
   return (
     <Box
@@ -42,15 +36,10 @@ const LoginForm = ({ handleLogin }) => {
         control={<Checkbox value="remember" color="primary" />}
         label={t("rememberMe")}
       />
-      <Button
-        type="submit"
-        fullWidth
-        variant="contained"
-        sx={{
-          mt: 3,
-          mb: 2,
-        }}
-      >
+      
+      <Typography component="div" variant="body1" sx={{color: 'red', mt:1}}>{loginError}</Typography>
+
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 2, mb: 2 }} >
         {t("signIn")}
       </Button>
       <Grid container>

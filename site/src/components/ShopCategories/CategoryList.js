@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Grid, Typography, CardMedia, CardContent, Link, useTheme } from '@mui/material'
+import { Grid, Typography, useTheme } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom';
 import { Container } from '@mui/system'
 import { useTranslation } from 'react-i18next'
@@ -49,11 +49,11 @@ const CategoryList = () => {
   const { main, contrastText } = theme.palette.primary
 
   return (<>
-    <Typography align="center" component="h4" variant="h4" py={3}>
+    <Typography align="center" component="h4" variant="h4" py={4}>
       {t('pickACategory')}
     </Typography>
     <Container maxWidth='md'>
-      <Grid container direction="row" spacing={4} sx={{ justifyContent:'center' }}>
+      <Grid container direction="row" spacing={4} sx={{ justifyContent:'center', pt:2 }}>
         {
           categories.map((category) => (
             <GridCategoryCard 

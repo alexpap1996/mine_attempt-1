@@ -5,9 +5,11 @@ import Menu from '@mui/material/Menu'
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useTranslation } from 'react-i18next'
+import { GlobalState } from '../../contexts/Context';
 
 const NavUserIcon = () => {
   const { t } = useTranslation()
+  const { dispatch } = GlobalState()
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -19,8 +21,13 @@ const NavUserIcon = () => {
     setAnchorEl(null);
   }
 
-  // TODO: logout session etc
-  const handleLogout = useCallback(() => navigate('/login', {replace: true}), [navigate]);
+  const handleLogout = () => {
+    console.log('handle logout')
+    dispatch({
+      type: 'logout'
+    })
+    navigate('/login', {replace: true})
+  }
 
   return <>
     <IconButton

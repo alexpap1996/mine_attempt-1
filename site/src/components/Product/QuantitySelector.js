@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import { Box, IconButton, Typography } from "@mui/material"
 import { Add, Remove } from '@mui/icons-material';
 
-const QuantitySelector = ({quantity = 0, size }) => {
+const QuantitySelector = ({quantity = 0, size, quantityChange }) => {
   const fontSize = size === 'medium' ? '1.5rem' : '1.3rem'
 
   const [currQuantity, setCurrQuantity] = useState(quantity)
   const incrementHandler = () => {
+    quantityChange(currQuantity + 1)
     setCurrQuantity(currQuantity + 1)
   }
   const decrementHandler = () => {
-    if (currQuantity > 1) setCurrQuantity(currQuantity - 1)
+    if (currQuantity > 1) {
+      quantityChange(currQuantity - 1)
+      setCurrQuantity(currQuantity - 1)
+    }
   }
 
   return (

@@ -1,14 +1,7 @@
 import React from 'react'
 import { useTranslation } from "react-i18next";
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Grid, Typography, Card, Divider } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { GlobalState } from '../../contexts/Context'
 
 const Row = ({text, amount = 0, sx = undefined}) => {
   return (
@@ -17,14 +10,18 @@ const Row = ({text, amount = 0, sx = undefined}) => {
         <Typography sx={{ fontWeight:'500'}}>{text}</Typography>
       </Grid>
       <Grid item xs={2}>
-        <Typography align='right'>{amount}€</Typography>
+        <Typography align='right'>{amount.toFixed(2)}€</Typography>
       </Grid>
     </>
   )
 }
 
-const CartTotals = ({itemTotal = 0 , tip = 0}) => {
+const CartTotals = () => {
+  console.log('CartTotals render')
   const { t } = useTranslation()
+  const { state } = GlobalState()
+  const itemTotal = state.cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
+  const tip = state.tip
   const grandTotal = itemTotal + tip
   return <>
     <Grid container spacing={2} columns={12} sx={{px:3}}>

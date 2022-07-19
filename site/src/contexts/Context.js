@@ -1,39 +1,21 @@
 import { createContext, useContext, useReducer } from 'react'
-import { cartReducer } from './Reducers'
+import { reducer } from './Reducers'
 
-const Cart = createContext()
+const State = createContext()
 
 const Context = ({ children }) => {
-  const staticProds = [
-    {
-      id: '1',
-      name: 'orange',
-      text: 'Chow mein Noodles',
-      price: 1.0,
-      description: 'Descriptioooon',
-      quantity: 1
-    },
-    {
-      id: '2',
-      name: 'orange',
-      text: 'Maki rolls',
-      price: 1.0,
-      description: 'Descriptioooon',
-      quantity: 1
-    },
-  ]
-
-  const [state, dispatch] = useReducer(cartReducer, {
+  const [state, dispatch] = useReducer(reducer, {
     products: [],
-    cart: staticProds,
+    cart: [],
     tip: 0,
+    user: undefined
   })
-  return <Cart.Provider value={{ state, dispatch }}>
+  return <State.Provider value={{ state, dispatch }}>
     {children}
-  </Cart.Provider>
+  </State.Provider>
 }
 
 export default Context
-export const CartState = () => {
-  return useContext(Cart)
+export const GlobalState = () => {
+  return useContext(State)
 }

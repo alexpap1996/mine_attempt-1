@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import ClickableCard from '../ClickableCard';
-import { Container, Card, Box, Grid, Typography, CardMedia, CardContent, Link, useTheme, Button } from '@mui/material'
+import { Container, Box, Grid, Typography, useTheme, Button } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslation } from 'react-i18next'
 import axios from 'axios'
@@ -39,11 +39,10 @@ const ShopList = ({category}) => {
         {t('categories')}
       </Button>
     </Box>
-    <Typography align="center" component="h4" variant="h4" py={3}>
+    <Typography align="center" component="h4" variant="h4" py={4}>
       {t(category)}
     </Typography>
-    {/* <Button onClick={getCategoryShops}>test</Button> */}
-    <Container maxWidth='md'>
+    <Container maxWidth='md' sx={{pt:2}}>
       <Grid container direction="row" spacing={4}>
         {
           shopsList && shopsList.map((shop) => (

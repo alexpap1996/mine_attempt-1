@@ -1,48 +1,42 @@
-import { Box, Card, CardContent, Grid, Input, InputLabel, InputAdornment, TextField, Select, MenuItem, FormControl, Typography } from '@mui/material';
+import { Card, CardContent, Grid, TextField, MenuItem, FormControl, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import CartSummary from '../components/Cart/CartSummary';
 import CartProductsList from '../components/Cart/CartProductsList';
 import { useTranslation } from 'react-i18next';
+import { GlobalState } from '../contexts/Context'
 
-const HomeScreen = () => {
-	const cartItems = []
+const CartScreen = () => {
+  const { dispatch, state: { cart, tip } } = GlobalState()
+
+	const cartItems = cart
   const { t } = useTranslation()
-  const [tipAmount, setTipAmount] = useState(0)
   const handleTipChange = (event) => {
-    setTipAmount(event.target.value)
+    dispatch({
+      type: 'tip',
+      payload: event.target.value
+    })
   }
-  useEffect(() => {
-    const fetchData = async () => {
-      // get the data from the api
-      const data = await fetch('https://yourapi.com');
-      // convert data to json
-      const json = await data.json();
-      return json;
-    }
-  }, [])
 
 	return <>
     <Container > 
       <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
         <Grid xs={12} sm={8} md={8} item>
-          <CartProductsList />
+          <CartProductsList cartItems={cartItems}/>
         </Grid>
         <Grid xs={12} sm={4} md={4} item>
           <CartSummary />
         </Grid>
-        <Grid xs={12} sm={2} md={2} item>
+        <Grid xs={12} sm={3} md={3} item>
           <Card sx={{ backgroundColor: 'white'}}>
             <CardContent>
-              <Typography>
+              <Typography component="div" variant="body1" sx={{pb: 1}}>
                 {t('chooseTip')}
               </Typography>
               <FormControl fullWidth>
-                
-              </FormControl>
                 <TextField 
-                  value={tipAmount}
+                  value={tip}
                   onChange={handleTipChange}
                   sx={{ backgroundColor:'white'}}
                   select 
@@ -53,6 +47,7 @@ const HomeScreen = () => {
                   <MenuItem value={1}>1€</MenuItem>
                   <MenuItem value={2}>2€</MenuItem>
                 </TextField>
+              </FormControl>
             </CardContent>
           </Card>
         </Grid>
@@ -61,4 +56,4 @@ const HomeScreen = () => {
 	</>
 }
 
-export default HomeScreen
+export default CartScreen

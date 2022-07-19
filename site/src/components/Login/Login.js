@@ -1,39 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import LoginForm from "./LoginForm";
 import LoginFormHeader from "./LoginFormHeader";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import { Box, Paper, Grid, Typography } from "@mui/material";
+import axios from 'axios'
+import { GlobalState } from '../../contexts/Context'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { t } = useTranslation();
+  const { dispatch } = GlobalState()
+  const navigate = useNavigate();
+  const headerText = t("signIn");
+  const [loginError, setLoginError] = useState('')
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const res = await axios.post('http://localhost:9000/api/user/login', {
+      username: data.get("email"),
+      password: data.get("password")
     })
+    console.log(res)
+    if (res.status === 200) {
+      dispatch({
+        type: 'login',
+        payload: res.data
+      })
+      
+      navigate('/')
+    } else {
+      setLoginError(t('wrongEmail'))
+    }
   }
-
-  const headerText = t("signIn");
 
   return (
     <>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Box
-          sx={{
-            my: 8,
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Box sx={{ my: 8, mx: 4, display: "flex", flexDirection: "column", alignItems: "center", }} >
           <LoginFormHeader headerText={headerText} />
-          <LoginForm handleLogin={handleLogin} />
+          <LoginForm handleLogin={handleLogin} loginError={loginError} />
         </Box>
       </Grid>
     </>

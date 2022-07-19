@@ -1,15 +1,40 @@
-const cartReducer = (state, action) => {
+const reducer = (state, action) => {
   const payload = action.payload
   switch (action.type){
     case "add":
-      return { ...state, cart: [...state.cart, payload]}
+      return addProduct(state, payload)
     case "remove":
-      return { ...state, cart: state.cart.filter(prod => prod.id !== payload.id)}
+      return removeProduct(state, payload)
     case "tip":
       return { ...state, tip: payload }
+    case "login":
+      return { ...state, user: payload}
+    case "logout":
+      return { ...state, user: undefined}
     default: break;
   }
 }
+
+const addProduct = (state, product) => {
+  const cart = [ ...state.cart]
+  const index = cart.findIndex(prod => prod.id === product.id)
+  if (index === -1) {
+    cart.push(product)
+  } else {
+    cart[index] = product
+  }
+
+  return { ...state, cart}
+}
+
+const removeProduct = (state, product) => {
+  const cart = [ ...state.cart]
+  const index = cart.findIndex(prod => prod.id === product.id)
+  cart.splice(index, 1)
+  return { ...state, cart}
+}
+
+
 export {
-  cartReducer
+  reducer
 }

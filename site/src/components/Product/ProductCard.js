@@ -1,13 +1,27 @@
-import { Box, Grid, Card, CardMedia, CardContent, Typography, Button } from '@mui/material'
-import { Container } from '@mui/system'
-import React from 'react'
+import React, { useState } from 'react'
+import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Rating } from '@mui/material'
 import QuantitySelector from './QuantitySelector'
 import { useTranslation } from 'react-i18next'
+import { GlobalState } from '../../contexts/Context'
 
-const prefix = "http://localhost:3000/images/"
-
-const ProductCard = ({photoDir, productName, productPrice}) => {
+const ProductCard = ({product}) => {
+  const { name, price, ratings = [] } = product
   const { t } = useTranslation()
+  const [quantity, setQuantity] = useState(0)
+
+  const { dispatch } = GlobalState()
+  const addToCartHandler = (event) => {
+    dispatch({
+      type: 'add',
+      payload: { ...product, quantity}
+    })
+  }
+
+  const quantityChangeHandler = (val) => {
+    setQuantity(val)
+  }
+
+  const rating = ratings.reduce((acc, rating) => acc + rating.value, 0) / ratings.length
   return (<>
     <Card 
       sx={{ 
@@ -18,7 +32,7 @@ const ProductCard = ({photoDir, productName, productPrice}) => {
     >
       <CardMedia
         component="img"
-        image={prefix + photoDir}
+        image={product.image.url}
         alt="pharmacies"
         style={{height: '100px'}}
       />
@@ -26,18 +40,19 @@ const ProductCard = ({photoDir, productName, productPrice}) => {
         <Grid container sx={{ display: 'flex', flexDirection: 'row' }}>
           <Grid item xs={6}>
             <Typography component="div" variant="h5">
-              {productName}
+              {name}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" color="text.secondary" component="div" sx={{ textAlign:'right'}}>
-              {productPrice}€
+              {price}€
             </Typography>
           </Grid>
         </Grid>
-        <Box sx={{ pt:3, display: 'flex', justifyContent: 'left', gap:'1rem'}}>
-          <QuantitySelector size='medium'/>
-          <Button variant='contained'>{t('addToCart')}</Button>
+        <Rating name="read-only" value={rating} readOnly precision={0.5} />
+        <Box sx={{ pt:3, display: 'flex', justifyContent: 'left', gap: '1rem'}}>
+          <QuantitySelector size='medium' quantityChange={quantityChangeHandler}/>
+          <Button variant='contained' onClick={addToCartHandler}>{t('addToCart')}</Button>
         </Box>
       </CardContent>
     </Card>

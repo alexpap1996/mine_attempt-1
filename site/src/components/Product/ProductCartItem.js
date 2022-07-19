@@ -1,20 +1,32 @@
-import { List,Box, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider, Card, IconButton } from '@mui/material';
+import { Box, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, IconButton } from '@mui/material';
 import QuantitySelector from './QuantitySelector';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { GlobalState } from '../../contexts/Context';
 
 
 const ProductCartItem = ({product}) => {
-  const { text, description, quantity, price } = product
-  const prefix = "http://localhost:3000/images/"
+  console.log('ProductCartItem render')
+  const { name: text , description, quantity, price, image: {url: imageUrl} } = product
+  const { dispatch } = GlobalState()
 
   const handleDelete = () => {
-    //somehow remove self from cart
+    dispatch({
+      type: 'remove',
+      payload: product
+    })
+  }
+
+  const quantityChangeHandler = (val) => {
+    dispatch({
+      type: 'add',
+      payload: {...product, quantity: val}
+    })
   }
 
   return (
     <ListItem alignItems="flex-start">
       <ListItemAvatar sx={{py:1, pr:1}}>
-        <Avatar alt="Remy Sharp" src={`${prefix}/noodles.jpg`} sx={{ width: 56, height: 56 }}/>
+        <Avatar alt={`${text} avatar`} src={imageUrl} sx={{ width: 56, height: 56 }}/>
       </ListItemAvatar>
       <ListItemText
         primary={text}
@@ -28,16 +40,16 @@ const ProductCartItem = ({product}) => {
             >
               {description}
             </Typography>
-            {quantity}
+            
           </>
         }
       />
       <Box sx={{alignSelf: 'center', paddingX: '0.5rem'}}>
-        <QuantitySelector quantity={quantity}/>
+        <QuantitySelector quantity={quantity} quantityChange={quantityChangeHandler}/>
       </Box>
       <Box sx={{alignSelf: 'center'}}>
-        <IconButton aria-label="delete" size="small">
-          <DeleteIcon onClick={handleDelete}/>
+        <IconButton aria-label="delete" size="small" onClick={handleDelete}>
+          <DeleteIcon />
         </IconButton>
       </Box>
     </ListItem>
