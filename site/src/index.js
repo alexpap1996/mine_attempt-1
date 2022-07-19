@@ -4,6 +4,7 @@ import App from './App';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Loading from './utils/Loading'
 import './utils/i18n';
+import Context from './contexts/Context'
 
 const themeOptions = {
   palette: {
@@ -23,10 +24,12 @@ const theme = createTheme(themeOptions);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <React.Suspense fallback={<Loading/>}>
-        <App />
-      </React.Suspense>
-    </ThemeProvider>
+    <Context>
+      <ThemeProvider theme={theme}>
+        <React.Suspense fallback={<Loading/>}>
+          <App />
+        </React.Suspense>
+      </ThemeProvider>
+    </Context>
   </React.StrictMode>
 );
