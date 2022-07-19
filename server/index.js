@@ -15,7 +15,7 @@ app.use(cors())
 
 // returning the first user we find no matter what we get as params
 // this needs to be implemented
-app.get('/api/user/:name', async (req, res) => {
+app.post('/api/user/login/', async (req, res) => {
   // const name = req.params.name
   //const user = await getUser(name)
   

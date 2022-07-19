@@ -5,43 +5,52 @@ const shops = {
   groceries: [
     {
       name: 'grocery shop 2',
-      id: '11'
+      id: '11',
+      category: 'Groceries'
     },
     {
       name: 'grocery shop 2',
-      id: '12'
+      id: '12',
+      category: 'Groceries'
     },
     {
       name: 'grocery shop 2',
-      id: '13'
+      id: '13',
+      category: 'Groceries',
     },
   ],
   food: [
     {
       name: 'food shop 1',
-      id: '21'
+      id: '21',
+      category: 'Food'
     },
     {
       name: 'food shop 2',
-      id: '22'
+      id: '22',
+      category: 'Food'
     },
     {
       name: 'food shop 3',
-      id: '23'
+      id: '23',
+      category: 'Food'
     },
   ],
   pharmacies: [
     {
       name: 'pharmacy 1',
-      id: '31'
+      id: '31',
+      category: 'Pharmacy'
     },
     {
       name: 'pharmacy 2',
-      id: '32'
+      id: '32',
+      category: 'Pharmacy'
     },
     {
       name: 'pharmacy 2',
-      id: '33'
+      id: '33',
+      category: 'Pharmacy',
     },
   ],
 }
