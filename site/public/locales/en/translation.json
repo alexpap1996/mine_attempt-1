@@ -27,5 +27,6 @@
   "food":"Food", 
   "bakeries":"Bakeries", 
   "butcher":"Butcher",
-  "welcomeTo":"Welcome To"
+  "welcomeTo":"Welcome To",
+  "wrongEmail":"*Wrong Email Or Password"
 }

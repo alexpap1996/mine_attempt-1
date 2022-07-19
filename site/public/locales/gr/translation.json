@@ -27,5 +27,6 @@
   "food":"Φαγητό", 
   "bakeries":"Φούρνοι", 
   "butcher":"Χασάπης",
-  "welcomeTo":"Καλωσήρθατε στο"
+  "welcomeTo":"Καλωσήρθατε στο",
+  "wrongEmail":"*Λάθος E-mail ή Κωδικός"
 }
