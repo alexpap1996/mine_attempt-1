@@ -18,7 +18,14 @@ app.use(cors())
 app.post('/api/user/login/', async (req, res) => {
   // const name = req.params.name
   //const user = await getUser(name)
-  
+  console.log('hit /api/user/login')
+  res.json(users[0])
+})
+
+app.get('/api/user/test', async (req, res) => {
+  // const name = req.params.name
+  //const user = await getUser(name)
+  console.log('hit /api/user/test')
   res.json(users[0])
 })
 
