@@ -28,5 +28,6 @@
   "bakeries":"Φούρνοι", 
   "butcher":"Χασάπης",
   "welcomeTo":"Καλωσήρθατε στο",
-  "wrongEmail":"*Λάθος E-mail ή Κωδικός"
+  "wrongEmail":"*Λάθος E-mail ή Κωδικός",
+  "noCartItems":"ΤΟ ΚΑΛΑΘΙ ΣΑΣ ΕΙΝΑΙ ΑΔΕΙΟ!"
 }

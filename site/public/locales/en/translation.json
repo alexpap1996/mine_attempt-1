@@ -28,5 +28,6 @@
   "bakeries":"Bakeries", 
   "butcher":"Butcher",
   "welcomeTo":"Welcome To",
-  "wrongEmail":"*Wrong Email Or Password"
+  "wrongEmail":"*Wrong Email Or Password",
+  "noCartItems":"YOUR CART IS EMPTY!"
 }
