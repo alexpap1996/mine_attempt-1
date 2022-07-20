@@ -34,7 +34,7 @@ const ProductListScreen = () => {
       }
     }
     getProducts()
-  }, [])
+  }, [shopId])
   return (<>
     <Container maxWidth='md' >
       <Card sx={{my:3}}>
