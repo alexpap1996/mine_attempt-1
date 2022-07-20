@@ -8,9 +8,9 @@ const reducer = (state, action) => {
     case "tip":
       return { ...state, tip: payload }
     case "login":
-      return { ...state, user: payload}
+      return loginUser(state, payload)
     case "logout":
-      return { ...state, user: undefined}
+      return logoutUser(state, payload)
     default: break;
   }
 }
@@ -32,6 +32,18 @@ const removeProduct = (state, product) => {
   const index = cart.findIndex(prod => prod.id === product.id)
   cart.splice(index, 1)
   return { ...state, cart}
+}
+
+const loginUser = (state, payload) => {
+  const { persist, user } = payload
+  //TODO: logic for persist, maybe session instead of localStorage
+  localStorage.setItem("user", JSON.stringify(payload.user))
+  return { ...state, user}
+}
+
+const logoutUser = (state, user) => {
+  localStorage.removeItem("user")
+  return { ...state, user: undefined}
 }
 
 

@@ -1,10 +1,10 @@
 import { useLocation } from "react-router";
-import { Navigate, Link, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { GlobalState } from '../contexts/Context'
 
 const isUserLoggedIn = () => {
   const { state: { user } } = GlobalState();
-  return user
+  return user || localStorage.getItem('user')
 };
 
 const ProtectedRoutes = () => {
