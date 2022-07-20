@@ -21,7 +21,7 @@ const ShopList = ({category}) => {
   const [shopsList, setShopsList] = useState([])
   const getCategoryShops = async () => {
     try {
-      const { data } = await axios('http://localhost:9000/api/shops/'+category)
+      const { data } = await axios('/api/shops/'+category)
       console.log(data)
       setShopsList(data)
     } catch (e) {

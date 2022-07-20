@@ -35,6 +35,7 @@ const LoginForm = ({ handleLogin, loginError }) => {
       <FormControlLabel
         control={<Checkbox value="remember" color="primary" />}
         label={t("rememberMe")}
+        name="rememberMe"
       />
       
       <Typography component="div" variant="body1" sx={{color: 'red', mt:1}}>{loginError}</Typography>

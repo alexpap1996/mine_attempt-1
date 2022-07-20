@@ -25,7 +25,7 @@ const ProductListScreen = () => {
   const [shop, setShop] = useState({})
   const getProducts = async () => {
     try {
-      const { data } = await axios('http://localhost:9000/api/shop/'+shopId)
+      const { data } = await axios('/api/shop/'+shopId)
       setProducts(data.products)
       setShop(data.shop)
     } catch (e) {
