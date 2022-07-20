@@ -44,6 +44,7 @@ const loginUser = (state, payload) => {
 
 const logoutUser = (state, user) => {
   localStorage.removeItem("user")
+  sessionStorage.removeItem("user")
   return { ...state, user: undefined}
 }
 
