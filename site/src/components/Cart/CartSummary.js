@@ -5,11 +5,11 @@ import CartTotals from './CartTotals'
 import Button from "@mui/material/Button"
 import { Box, Card, Divider } from '@mui/material';
 
-const CartSummary = ({totalPrice, tip}) => {
+const CartSummary = ({hasCartItems = false}) => {
   const { t } = useTranslation()
   return <>
     <Card sx={{ backgroundColor: 'white', py:2}}>
-      <CartTotals />
+      <CartTotals hasCartItems={hasCartItems}/>
       <Divider sx={{ mt: 1}}/>
       <Box sx={{ pt: 1, display: 'flex', justifyContent:'center'}}>
         <Button
@@ -18,6 +18,7 @@ const CartSummary = ({totalPrice, tip}) => {
           size="medium"
           color="primary"
           variant="contained"
+          disabled={!hasCartItems}
         >
           {t("confirmOrder")}
         </Button>

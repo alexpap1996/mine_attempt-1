@@ -16,15 +16,15 @@ const Row = ({text, amount = 0, sx = undefined}) => {
   )
 }
 
-const CartTotals = () => {
-  console.log('CartTotals render')
+const CartTotals = ({hasCartItems = false}) => {
+  const opacity = hasCartItems ? 1 : 0.15
   const { t } = useTranslation()
   const { state } = GlobalState()
   const itemTotal = state.cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
   const tip = state.tip
   const grandTotal = itemTotal + tip
   return <>
-    <Grid container spacing={2} columns={12} sx={{px:3}}>
+    <Grid container spacing={2} columns={12} sx={{px:3, opacity}}>
       <Row text={t('itemTotal')} amount={itemTotal}/>
       <Row text={t('tip')} amount={tip}/>
       <Row text={t('grandTotal')} amount={grandTotal}/>
