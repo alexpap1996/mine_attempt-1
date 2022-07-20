@@ -6,6 +6,7 @@ import CartSummary from '../components/Cart/CartSummary';
 import CartProductsList from '../components/Cart/CartProductsList';
 import { useTranslation } from 'react-i18next';
 import { GlobalState } from '../contexts/Context'
+import CartTipSelector from '../components/Cart/CartTipSelector';
 
 const CartScreen = () => {
   const { dispatch, state: { cart, tip } } = GlobalState()
@@ -22,34 +23,14 @@ const CartScreen = () => {
 	return <>
     <Container > 
       <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
-        <Grid xs={12} sm={8} md={8} item>
+        <Grid xs={12} sm={12} md={8} item>
           <CartProductsList cartItems={cartItems}/>
         </Grid>
-        <Grid xs={12} sm={4} md={4} item>
-          <CartSummary />
+        <Grid xs={12} sm={12} md={4} item>
+          <CartSummary hasCartItems={cartItems.length}/>
         </Grid>
-        <Grid xs={12} sm={3} md={3} item>
-          <Card sx={{ backgroundColor: 'white'}}>
-            <CardContent>
-              <Typography component="div" variant="body1" sx={{pb: 1}}>
-                {t('chooseTip')}
-              </Typography>
-              <FormControl fullWidth>
-                <TextField 
-                  value={tip}
-                  onChange={handleTipChange}
-                  sx={{ backgroundColor:'white'}}
-                  select 
-                  SelectProps={{ MenuProps: { disableScrollLock: true } }}
-                >
-                  <MenuItem value={0}>----</MenuItem>
-                  <MenuItem value={0.5}>0.5€</MenuItem>
-                  <MenuItem value={1}>1€</MenuItem>
-                  <MenuItem value={2}>2€</MenuItem>
-                </TextField>
-              </FormControl>
-            </CardContent>
-          </Card>
+        <Grid xs={12} sm={12} md={3} item>
+          <CartTipSelector tip={tip} handleTipChange={handleTipChange} hasCartItems={cartItems.length} />
         </Grid>
       </Grid>
     </Container >
