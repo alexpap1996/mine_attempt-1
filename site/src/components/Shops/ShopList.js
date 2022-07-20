@@ -16,14 +16,14 @@ const GridShopCard = ({title, goToDir, cardColor, image}) => {
 }
 
 const ShopList = ({category}) => {
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
+  const currLang = i18n.language
   const theme = useTheme()
   const { main } = theme.palette.secondary
   const [shopsList, setShopsList] = useState([])
   const getCategoryShops = async () => {
     try {
       const { data } = await axios(ENDPOINT + '/api/shops/' +category)
-      console.log(data)
       setShopsList(data)
     } catch (e) {
       console.log(e.message)
@@ -47,7 +47,7 @@ const ShopList = ({category}) => {
       <Grid container direction="row" spacing={4}>
         {
           shopsList && shopsList.map((shop) => (
-            <GridShopCard title={shop.name} goToDir={'../shop/'+shop.id} cardColor={main} image={shop.image?.url}/>
+            <GridShopCard title={shop.name[currLang]} goToDir={'../shop/'+shop.id} cardColor={main} image={shop.image?.url}/>
           ))
         }
       </Grid>

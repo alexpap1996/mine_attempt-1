@@ -4,25 +4,36 @@
 const shops = {
   groceries: [
     {
-      name: 'grocery shop 2',
+      name: {
+        en: 'Grand Market',
+        gr: 'Γκραντ Μάρκετ'
+      },
       id: '11',
       category: 'Groceries'
     },
     {
-      name: 'grocery shop 2',
+      name: { 
+        en: 'Convenience Store',
+        gr: 'Παντοπωλείο'
+      },
       id: '12',
       category: 'Groceries'
     },
     {
-      name: 'grocery shop 2',
+      name: {
+        en: 'Super Market',
+        gr: 'Σούπερ Μάρκετ'
+      },
       id: '13',
       category: 'Groceries',
     },
   ],
   food: [
     {
-      name: 'Gyro Place',
-      nameGr: 'Γυράδικο',
+      name: {
+        en: 'Gyro Place',
+        gr: 'Γυράδικο'
+      },
       id: '21',
       category: 'Food',
       image: {
@@ -30,8 +41,10 @@ const shops = {
       }
     },
     {
-      name: 'Crepe Place',
-      nameGr: 'Κρεπάδικο',
+      name: {
+        en: 'Crepe Place',
+        gr: 'Κρεπάδικο',
+      },
       id: '22',
       category: 'Food',
       image: {
@@ -39,15 +52,20 @@ const shops = {
       }
     },
     {
-      name: 'food shop 3',
+      name: {
+        en: 'food shop 3',
+        gr: 'μαγαζι φαγητου 3'
+      },
       id: '23',
       category: 'Food'
     },
   ],
   pharmacies: [
     {
-      name: 'Pharmacy Main',
-      nameGr: 'Κύριο Φαρμακείο',
+      name: {
+        en: 'Pharmacy Main',
+        gr: 'Κύριο Φαρμακείο',
+      },
       id: '31',
       category: 'Pharmacy',
       image: {
@@ -55,8 +73,10 @@ const shops = {
       }
     },
     {
-      name: 'Pharmacy B',
-      nameGr: 'Φαρμακειο Β',
+      name: {
+        en: 'Pharmacy B',
+        gr: 'Φαρμακειο Β'
+      },
       id: '32',
       category: 'Pharmacy',
       image: {
@@ -64,8 +84,10 @@ const shops = {
       }
     },
     {
-      name: 'Pharmacy C',
-      nameGr: 'Φαρμακειο Γ',
+      name: {
+        en: 'Pharmacy C',
+        gr: 'Φαρμακειο Γ',
+      },
       id: '33',
       category: 'Pharmacy',
       image: {
