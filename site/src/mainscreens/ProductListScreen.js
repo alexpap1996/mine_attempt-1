@@ -25,7 +25,6 @@ const ProductListScreen = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        console.log('running get products')
         const { data } = await axios(ENDPOINT + '/api/shop/'+shopId)
         setProducts(data.products)
         setShop(data.shop)
