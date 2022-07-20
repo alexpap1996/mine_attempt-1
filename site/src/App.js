@@ -14,9 +14,8 @@ import ProtectedRoutes from './utils/ProtectedRoutes'
 
 const App = () => {
   const theme = useTheme()
-  console.log(theme.palette)
+
   return (
-    //this needs some work for the body to be full screen
     <Box>
       <BrowserRouter>
         <Box sx={{display: 'flex', flexDirection:'column'}} height="100vh">
