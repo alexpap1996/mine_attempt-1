@@ -21,18 +21,19 @@ const ShopList = ({category}) => {
   const theme = useTheme()
   const { main } = theme.palette.secondary
   const [shopsList, setShopsList] = useState([])
-  const getCategoryShops = async () => {
-    try {
-      const { data } = await axios(ENDPOINT + '/api/shops/' +category)
-      setShopsList(data)
-    } catch (e) {
-      console.log(e.message)
-    }
-  }
+  
 
   useEffect(() => {
+    const getCategoryShops = async () => {
+      try {
+        const { data } = await axios(ENDPOINT + '/api/shops/' +category)
+        setShopsList(data)
+      } catch (e) {
+        console.log(e.message)
+      }
+    }
     getCategoryShops()
-  }, [])
+  }, [category])
 
   return (<>
     <Box sx={{ margin: '16px', position: 'absolute' }}>
