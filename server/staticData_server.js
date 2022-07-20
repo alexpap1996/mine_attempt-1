@@ -38,19 +38,31 @@ const shops = {
   ],
   pharmacies: [
     {
-      name: 'pharmacy 1',
+      name: 'Pharmacy Main',
+      nameGr: 'Κύριο Φαρμακείο',
       id: '31',
-      category: 'Pharmacy'
+      category: 'Pharmacy',
+      image: {
+        url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658335845/pharmacy_1_ofngw0.jpg'
+      }
     },
     {
-      name: 'pharmacy 2',
+      name: 'Pharmacy B',
+      nameGr: 'Φαρμακειο Β',
       id: '32',
-      category: 'Pharmacy'
+      category: 'Pharmacy',
+      image: {
+        url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658336075/phamarcy_2_xpq2ke.jpg'
+      }
     },
     {
-      name: 'pharmacy 2',
+      name: 'Pharmacy C',
+      nameGr: 'Φαρμακειο Γ',
       id: '33',
       category: 'Pharmacy',
+      image: {
+        url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658336115/pharmacy_3_zzijlp.jpg'
+      }
     },
   ],
 }
