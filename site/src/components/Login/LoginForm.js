@@ -1,7 +1,7 @@
 import React from "react"
 import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
-import { Grid, Link, Checkbox, Typography, FormControlLabel, TextField, Button, Box } from "@mui/material";
+import { Grid, Checkbox, Typography, FormControlLabel, TextField, Button, Box } from "@mui/material";
 
 const LoginForm = ({ handleLogin, loginError }) => {
   const { t } = useTranslation()

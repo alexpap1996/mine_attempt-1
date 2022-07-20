@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import LoginForm from "./LoginForm";
 import LoginFormHeader from "./LoginFormHeader";
-import { Box, Paper, Grid, Typography } from "@mui/material";
+import { Box, Paper, Grid } from "@mui/material";
 import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 import { GlobalState } from '../../contexts/Context'

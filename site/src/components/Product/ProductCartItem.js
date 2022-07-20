@@ -6,7 +6,7 @@ import { GlobalState } from '../../contexts/Context';
 
 const ProductCartItem = ({product}) => {
   console.log('ProductCartItem render')
-  const { name: text , description, quantity, price, image: {url: imageUrl} } = product
+  const { name: text , description, quantity, image: {url: imageUrl} } = product
   const { dispatch } = GlobalState()
 
   const handleDelete = () => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Typography, useTheme } from '@mui/material'
-import { Link as RouterLink } from 'react-router-dom';
 import { Container } from '@mui/system'
 import { useTranslation } from 'react-i18next'
 import ClickableCard from '../ClickableCard';

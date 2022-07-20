@@ -1,10 +1,8 @@
-import { Card, CardContent, Grid, TextField, MenuItem, FormControl, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Container } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 import CartSummary from '../components/Cart/CartSummary';
 import CartProductsList from '../components/Cart/CartProductsList';
-import { useTranslation } from 'react-i18next';
 import { GlobalState } from '../contexts/Context'
 import CartTipSelector from '../components/Cart/CartTipSelector';
 
@@ -12,7 +10,6 @@ const CartScreen = () => {
   const { dispatch, state: { cart, tip } } = GlobalState()
 
 	const cartItems = cart
-  const { t } = useTranslation()
   const handleTipChange = (event) => {
     dispatch({
       type: 'tip',

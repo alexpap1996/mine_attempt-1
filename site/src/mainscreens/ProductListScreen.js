@@ -3,7 +3,6 @@ import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import ProductCard from '../components/Product/ProductCard'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
 import { ENDPOINT } from '../constants/routeConstants'
 
 const GridProductItem = ({product}) => {
@@ -20,20 +19,20 @@ const ProductListScreen = () => {
   const location = useLocation()
   const shopId = location.pathname.split('/')[2]
 
-  const { t } = useTranslation()
-
   const [products, setProducts] = useState([])
   const [shop, setShop] = useState({})
-  const getProducts = async () => {
-    try {
-      const { data } = await axios(ENDPOINT + '/api/shop/'+shopId)
-      setProducts(data.products)
-      setShop(data.shop)
-    } catch (e) {
-      console.log(e.message)
-    }
-  }
+  
   useEffect(() => {
+    const getProducts = async () => {
+      try {
+        console.log('running get products')
+        const { data } = await axios(ENDPOINT + '/api/shop/'+shopId)
+        setProducts(data.products)
+        setShop(data.shop)
+      } catch (e) {
+        console.log(e.message)
+      }
+    }
     getProducts()
   }, [])
   return (<>
