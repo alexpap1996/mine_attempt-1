@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import LoginFormHeader from "./LoginFormHeader";
 import { Box, Paper, Grid, Typography } from "@mui/material";
 import axios from 'axios'
+import { ENDPOINT } from '../../constants/routeConstants'
 import { GlobalState } from '../../contexts/Context'
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +18,7 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const res = await axios.post('/api/user/login', {
+    const res = await axios.post(ENDPOINT + '/api/user/login', {
       username: data.get("email"),
       password: data.get("password")
     })

@@ -5,6 +5,7 @@ import { Container, Box, Grid, Typography, useTheme, Button } from '@mui/materia
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslation } from 'react-i18next'
 import axios from 'axios'
+import { ENDPOINT } from '../../constants/routeConstants'
 
 const GridShopCard = ({id, title, goToDir, cardColor}) => {
   return (
@@ -21,7 +22,7 @@ const ShopList = ({category}) => {
   const [shopsList, setShopsList] = useState([])
   const getCategoryShops = async () => {
     try {
-      const { data } = await axios('/api/shops/'+category)
+      const { data } = await axios(ENDPOINT + '/api/shops/' +category)
       console.log(data)
       setShopsList(data)
     } catch (e) {

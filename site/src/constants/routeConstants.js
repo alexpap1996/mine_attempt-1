@@ -8,9 +8,9 @@ const ROUTES = {
   }
 }
 
-const LOCALHOST = 'http://localhost:'
+const ENDPOINT = 'https://node-alex-pap-1.herokuapp.com'
 
 export {
   ROUTES,
-  LOCALHOST
+  ENDPOINT
 }

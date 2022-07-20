@@ -4,6 +4,7 @@ import ProductCard from '../components/Product/ProductCard'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
+import { ENDPOINT } from '../constants/routeConstants'
 
 const GridProductItem = ({product}) => {
   return (
@@ -25,7 +26,7 @@ const ProductListScreen = () => {
   const [shop, setShop] = useState({})
   const getProducts = async () => {
     try {
-      const { data } = await axios('/api/shop/'+shopId)
+      const { data } = await axios(ENDPOINT + '/api/shop/'+shopId)
       setProducts(data.products)
       setShop(data.shop)
     } catch (e) {
