@@ -37,7 +37,8 @@ const removeProduct = (state, product) => {
 const loginUser = (state, payload) => {
   const { persist, user } = payload
   //TODO: logic for persist, maybe session instead of localStorage
-  localStorage.setItem("user", JSON.stringify(payload.user))
+  if (persist) localStorage.setItem("user", JSON.stringify(payload.user))
+  else sessionStorage.setItem("user", JSON.stringify(payload.user))
   return { ...state, user}
 }
 

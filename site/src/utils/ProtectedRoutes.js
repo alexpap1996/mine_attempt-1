@@ -4,7 +4,7 @@ import { GlobalState } from '../contexts/Context'
 
 const isUserLoggedIn = () => {
   const { state: { user } } = GlobalState();
-  return user || localStorage.getItem('user')
+  return user || localStorage.getItem('user') || sessionStorage.getItem('user')
 };
 
 const ProtectedRoutes = () => {
