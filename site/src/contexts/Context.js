@@ -6,11 +6,13 @@ const State = createContext()
 const Context = ({ children }) => {
   
   const user = localStorage.getItem('user') || sessionStorage.getItem('user') || undefined
+  const currentLanguage = localStorage.getItem('language') || 'en'
   const [state, dispatch] = useReducer(reducer, {
     products: [],
     cart: [],
     tip: 0,
-    user
+    user,
+    currentLanguage
   })
   return <State.Provider value={{ state, dispatch }}>
     {children}

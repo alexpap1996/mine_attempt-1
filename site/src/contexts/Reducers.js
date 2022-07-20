@@ -11,7 +11,10 @@ const reducer = (state, action) => {
       return loginUser(state, payload)
     case "logout":
       return logoutUser(state, payload)
-    default: break;
+    case "change_language":
+      return changeLanguage(state, payload)
+    default: 
+      return state
   }
 }
 
@@ -48,6 +51,10 @@ const logoutUser = (state, user) => {
   return { ...state, user: undefined}
 }
 
+const changeLanguage = (state, payload) => {
+  localStorage.setItem('language', payload.language)
+  return { ...state, currentLanguage: payload.language}
+}
 
 export {
   reducer
