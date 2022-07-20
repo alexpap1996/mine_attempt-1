@@ -21,14 +21,22 @@ const shops = {
   ],
   food: [
     {
-      name: 'food shop 1',
+      name: 'Gyro Place',
+      nameGr: 'Γυράδικο',
       id: '21',
-      category: 'Food'
+      category: 'Food',
+      image: {
+        url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658337282/gyro_1_afzo80.jpg'
+      }
     },
     {
-      name: 'food shop 2',
+      name: 'Crepe Place',
+      nameGr: 'Κρεπάδικο',
       id: '22',
-      category: 'Food'
+      category: 'Food',
+      image: {
+        url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658337382/crepe_1_mhz7om.jpg'
+      }
     },
     {
       name: 'food shop 3',
