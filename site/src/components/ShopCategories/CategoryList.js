@@ -35,10 +35,10 @@ const categories = [
   },
 ]
 
-const GridCategoryCard = ({id, title, goToDir, cardColor, textColor, icon}) => {
+const GridCategoryCard = ({title, goToDir, cardColor, textColor, icon}) => {
   return ( 
     <Grid item xs={6} sm={4}>
-      <ClickableCard id={id} title={title} goToDir={goToDir} cardColor={cardColor} textColor={textColor} icon={icon}/>
+      <ClickableCard title={title} goToDir={goToDir} cardColor={cardColor} textColor={textColor} icon={icon}/>
     </Grid>
   )
 }
@@ -57,7 +57,6 @@ const CategoryList = () => {
         {
           categories.map((category) => (
             <GridCategoryCard 
-              id='1'
               title={t(category.name)}
               goToDir={category.name}
               cardColor={main}

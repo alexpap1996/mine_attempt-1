@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 
-const GridShopCard = ({id, title, goToDir, cardColor}) => {
+const GridShopCard = ({title, goToDir, cardColor, image}) => {
   return (
     <Grid item xs={6} sm={4}>
-      <ClickableCard id={id} title={title} goToDir={'../shop/'+id} cardColor={cardColor}/>
+      <ClickableCard title={title} goToDir={goToDir} cardColor={cardColor} image={image}/>
     </Grid>
   )
 }
@@ -47,7 +47,7 @@ const ShopList = ({category}) => {
       <Grid container direction="row" spacing={4}>
         {
           shopsList && shopsList.map((shop) => (
-            <GridShopCard id={shop.id} title={shop.name} goToDir={shop.id} cardColor={main}/>
+            <GridShopCard title={shop.name} goToDir={'../shop/'+shop.id} cardColor={main} image={shop.image?.url}/>
           ))
         }
       </Grid>
