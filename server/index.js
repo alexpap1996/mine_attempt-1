@@ -66,8 +66,8 @@ app.get('/api/shop/:shopId', (req, res) => {
 // TODO: create order logic
 // add currentDate, product (maybe Ids?), userId
 // optional: tip, price paid
-app.post('', (req, res) => {
-
+app.get('/', (req, res) => {
+  res.send('home page')
 })
 
 
