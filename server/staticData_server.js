@@ -100,7 +100,10 @@ const shops = {
 const products = [
   {
     id: '1',
-    name: 'Orange!',
+    name: {
+      en: 'Orange',
+      gr: 'Πορτοκάλι',
+    },
     shopId: '11',
     price: 2.55,
     image: {
@@ -120,7 +123,10 @@ const products = [
   },
   {
     id: '2',
-    name: 'Big Orange',
+    name: {
+      en: 'Orange',
+      gr: 'Μεγαλο Πορτοκάλι',
+    },
     shopId: '11',
     price: 10.00,
     image: {
@@ -136,7 +142,10 @@ const products = [
   },
   {
     id: '3',
-    name: 'Kiwi',
+    name: {
+      en: 'Kiwi',
+      gr: 'Κίουι'
+    },
     shopId: '11',
     price: 0.75,
     image: {
@@ -152,7 +161,10 @@ const products = [
   },
   {
     id: '4',
-    name: 'Hawai Kiwi',
+    name: {
+      en: 'Hawai Kiwi',
+      gr: 'Κίουι'
+    },
     shopId: '21',
     price: 1.23,
     image: {
@@ -169,7 +181,10 @@ const products = [
   },
   {
     id: '5',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '31',
     price: 1.00,
     image: {
@@ -185,7 +200,10 @@ const products = [
   },
   {
     id: '6',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '13',
     price: 1.00,
     image: {
@@ -195,7 +213,10 @@ const products = [
   },
   {
     id: '7',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '13',
     price: 1.00,
     image: {
@@ -205,7 +226,10 @@ const products = [
   },
   {
     id: '8',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -215,7 +239,10 @@ const products = [
   },
   {
     id: '9',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -225,7 +252,10 @@ const products = [
   },
   {
     id: '10',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -235,7 +265,10 @@ const products = [
   },
   {
     id: '11',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -245,7 +278,10 @@ const products = [
   },
   {
     id: '12',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -255,7 +291,10 @@ const products = [
   },
   {
     id: '13',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {
@@ -265,7 +304,10 @@ const products = [
   },
   {
     id: '14',
-    name: 'Apple',
+    name: {
+      en: 'Apple',
+      gr: 'Μήλο'
+    },
     shopId: '12',
     price: 1.00,
     image: {

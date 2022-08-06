@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Rating } from '@mui/material'
+import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Rating, Snackbar, Alert } from '@mui/material'
 import QuantitySelector from './QuantitySelector'
 import { useTranslation } from 'react-i18next'
 import { GlobalState } from '../../contexts/Context'
@@ -15,10 +15,17 @@ const ProductCard = ({product}) => {
       type: 'add',
       payload: { ...product, quantity}
     })
+    setOpen(true)
   }
 
   const quantityChangeHandler = (val) => {
     setQuantity(val)
+  }
+
+  const [open, setOpen] = useState(false);
+
+  const closeHandler = () => {
+    setOpen(false)
   }
 
   const rating = ratings.reduce((acc, rating) => acc + rating.value, 0) / ratings.length
@@ -56,6 +63,12 @@ const ProductCard = ({product}) => {
         </Box>
       </CardContent>
     </Card>
+
+    <Snackbar open={open} autoHideDuration={6000} onClose={closeHandler} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <Alert onClose={closeHandler} severity="success" sx={{ width: '100%' }}>
+        {t('productAdded')}
+      </Alert>
+  </Snackbar>
   </>)
 }
 

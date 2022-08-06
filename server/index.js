@@ -37,7 +37,7 @@ app.get('/api/orders/:userId'), async (req, res) => {
 
 // not used, for dev purposes only
 app.post('/api/user/', async (req, res) => {
-  await createUser(req, res)
+  await createUser(req, res) 
 })
 
 // TODO: if the structure is changed in the db,

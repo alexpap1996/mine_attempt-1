@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import ProductCard from '../components/Product/ProductCard'
+import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import { ENDPOINT } from '../constants/routeConstants'
+import Loading from '../utils/Loading'
 
 const GridProductItem = ({product}) => {
   return (
@@ -16,6 +18,9 @@ const GridProductItem = ({product}) => {
 }
 
 const ProductListScreen = () => {
+  const { i18n } = useTranslation()
+  const currLang = i18n.language
+
   const location = useLocation()
   const shopId = location.pathname.split('/')[2]
 
@@ -35,21 +40,26 @@ const ProductListScreen = () => {
     getProducts()
   }, [shopId])
   return (<>
-    <Container maxWidth='md' >
-      <Card sx={{my:3}}>
-        <CardContent>
-          <Typography component="h5" variant="h3" sx={{ fontWeight: 300}}>{shop.name}</Typography>
-          <Typography component="div" variant="h6" >{shop.category}</Typography>
-        </CardContent>
-       
-      </Card>
-      
-      <Grid container spacing={2} style={{ marginTop: 'unset' }}>
-        {
-          products.map(prod => <GridProductItem key={prod.id} product={prod} />)
-        }
-      </Grid>
-    </Container>
+    {
+      Object.keys(shop).length
+
+      ? <Container maxWidth='md' >
+        <Card sx={{my:3}}>
+          <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Typography component="h5" variant="h3" sx={{ fontWeight: 300}} >{shop.name[currLang]}</Typography>
+            <Typography component="div" variant="h6" >{shop.category}</Typography>
+          </CardContent>
+        </Card>
+        
+        <Grid container spacing={2} style={{ marginTop: 'unset' }}>
+          {
+            products.map(prod => <GridProductItem key={prod.id} product={prod} />)
+          }
+        </Grid>
+      </Container>
+
+      : <Loading />
+    }
   </>)
 }
 

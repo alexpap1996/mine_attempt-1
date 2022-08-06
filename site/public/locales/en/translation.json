@@ -29,5 +29,6 @@
   "butcher":"Butcher",
   "welcomeTo":"Welcome To",
   "wrongEmail":"*Wrong Email Or Password",
-  "noCartItems":"YOUR CART IS EMPTY!"
+  "noCartItems":"YOUR CART IS EMPTY!",
+  "productAdded":"Product added to cart!"
 }
