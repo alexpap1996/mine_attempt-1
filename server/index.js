@@ -44,8 +44,14 @@ app.get('/api/orders/:userId', async (req, res) => {
   )
   const filteredProds = products.filter(prod => productIds.has(prod.id))
   
-  console.log(filteredProds)
   res.json({orders, products: filteredProds})
+})
+
+app.post('/api/orders/products', async (req, res) => {
+  const { productIds } = req.body
+
+  const filteredProds = products.filter(prod => productIds.includes(prod.id))
+  res.json({products: filteredProds})
 })
 
 // not used, for dev purposes only

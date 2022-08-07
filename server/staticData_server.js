@@ -327,12 +327,29 @@ const users = [
     emergencyphone: '6912341234',
     orders: [
       {
-        products: ['1','2'],
+        products: [
+          { 
+            id: '1',
+            quantity: 2
+          },
+          { 
+            id: '2',
+            quantity: 1
+          }
+        ],
         date: Date.now(),
         price: '10.15'
       },
       {
-        products: ['2','3'],
+        products: [
+        { 
+          id: '2',
+          quantity: 2
+        },
+        { 
+          id: '3',
+          quantity: 1
+        }],
         date: Date.now(),
         price: '5.15'
       },
