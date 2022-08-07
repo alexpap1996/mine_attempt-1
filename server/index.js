@@ -29,11 +29,24 @@ app.get('/api/user/test', async (req, res) => {
   res.json(users[0])
 })
 
-app.get('/api/orders/:userId'), async (req, res) => {
+// returns an object {orders: [], products: []}
+// order array contains the product IDs only
+// products is the
+app.get('/api/orders/:userId', async (req, res) => {
   const userId = req.params.userId
   const orders = users.find(user => user.id === userId).orders
-  res.json(orders)
-}
+
+  let productIds = new Set()
+  orders.forEach(order => 
+    order.products.forEach(prodId => {
+      productIds.add(prodId)
+    })
+  )
+  const filteredProds = products.filter(prod => productIds.has(prod.id))
+  
+  console.log(filteredProds)
+  res.json({orders, products: filteredProds})
+})
 
 // not used, for dev purposes only
 app.post('/api/user/', async (req, res) => {
