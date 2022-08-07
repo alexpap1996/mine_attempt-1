@@ -335,6 +335,30 @@ const users = [
           { 
             id: '2',
             quantity: 1
+          },
+          { 
+            id: '3',
+            quantity: 2
+          },
+          { 
+            id: '4',
+            quantity: 1
+          },
+          { 
+            id: '5',
+            quantity: 2
+          },
+          { 
+            id: '6',
+            quantity: 1
+          },
+          { 
+            id: '7',
+            quantity: 2
+          },
+          { 
+            id: '8',
+            quantity: 1
           }
         ],
         date: Date.now(),
