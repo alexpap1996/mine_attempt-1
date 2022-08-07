@@ -7,7 +7,7 @@ const CartTipSelector = ({ tip, handleTipChange, hasCartItems = false }) => {
   const opacity = hasCartItems ? 1 : 0.15
   return <Card sx={{ backgroundColor: 'white', mb:4 }}>
     <CardContent sx={{opacity}}>
-      <Typography component="div" variant="body1" sx={{pb: 1}}>
+      <Typography component="div" variant="body1" >
         {t('chooseTip')}
       </Typography>
       <FormControl fullWidth>
