@@ -6,7 +6,8 @@ import { GlobalState } from '../../contexts/Context'
 
 const ProductCard = ({product}) => {
   const { name, price, ratings = [] } = product
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currLang = i18n.language
   const [quantity, setQuantity] = useState(0)
 
   const { dispatch } = GlobalState()
@@ -45,12 +46,12 @@ const ProductCard = ({product}) => {
       />
       <CardContent>
         <Grid container sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Grid item xs={6}>
-            <Typography component="div" variant="h5">
-              {name}
+          <Grid item xs={9}>
+            <Typography component="div" variant="h5" noWrap>
+              {name[currLang]}
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Typography variant="h6" color="text.secondary" component="div" sx={{ textAlign:'right'}}>
               {price}€
             </Typography>
