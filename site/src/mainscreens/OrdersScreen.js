@@ -28,10 +28,10 @@ const OrdersScreen = () => {
 				<CardContent>
 					<Grid container sx={{ justifyContent:'center' }}>
 						<Grid item xs={12}>
-							<Typography component="h4" variant="h4" sx={{textAlign: 'left'}}>
+							<Typography component="h4" variant="h4" sx={{textAlign: 'left', pt:1, pl:1}}>
 								{t('orders')}
 							</Typography>
-							<Typography component="div" variant="body1" sx={{textAlign: 'left'}}>
+							<Typography component="div" variant="body1" sx={{textAlign: 'left', pl:1}}>
 								{t('seeYourOrders')}
 							</Typography>
 						</Grid>
