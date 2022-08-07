@@ -30,5 +30,9 @@
   "welcomeTo":"Welcome To",
   "wrongEmail":"*Wrong Email Or Password",
   "noCartItems":"YOUR CART IS EMPTY!",
-  "productAdded":"Product added to cart!"
+  "productAdded":"Product added to cart!",
+  "cardNumber":"Card Number",
+  "cardName":"Card Name",
+  "cardExpiryDate":"Expiry Date",
+  "orders":"Orders"
 }
