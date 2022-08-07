@@ -27,7 +27,7 @@ const OrdersScreen = () => {
 			<Card spacing={2} style={{ marginTop:'unset' }} >
 				<CardContent>
 					<Grid container sx={{ justifyContent:'center' }}>
-						<Grid item xs={12}>
+						<Grid item xs={12} sx={{pb: 2}}>
 							<Typography component="h4" variant="h4" sx={{textAlign: 'left', pt:1, pl:1}}>
 								{t('orders')}
 							</Typography>

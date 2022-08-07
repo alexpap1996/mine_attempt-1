@@ -5,10 +5,10 @@ import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 import OrderProductsModal from './OrderProductsModal'
 
-const OrderListItem = ({order, products}) => {
+const OrderListItem = ({order}) => {
   const { i18n } = useTranslation()
   const currLang = i18n.language
-  const [modalProducts, setModalProducts] = useState(null)
+  const [modalProducts, setModalProducts] = useState([])
 
   const date = new Date(order.date)
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -22,22 +22,28 @@ const OrderListItem = ({order, products}) => {
       productIds
     })
     if (res.status === 200) {
-      const data = res.data
-      setModalProducts(data)
+      return res.data
     }
   }
 
-  const onClickHandler = (event) => {
+  const onClickHandler = async () => {
     const idsToQuantities = order.products.reduce((acc, product) => {
       acc[product.id] = product.quantity
       return acc
     }, {})
 
-    getOrderProducts(Object.keys(idsToQuantities))
+    const data = await getOrderProducts(Object.keys(idsToQuantities))
+    const dataWithQuantity = data.map(prod => {
+      return {
+        ...prod,
+        quantity: idsToQuantities[prod.id]
+      }
+    })
+    setModalProducts(dataWithQuantity)
   }
 
   const unsetModalProducts = () => {
-    setModalProducts(null)
+    setModalProducts([])
   }
 
   return (<>
@@ -58,7 +64,7 @@ const OrderListItem = ({order, products}) => {
       </ListItemButton>
     </ListItem>
 
-    {/* <OrderProductsModal products={products} unsetModalProducts={unsetModalProducts}/> */}
+    <OrderProductsModal products={modalProducts} unsetModalProducts={unsetModalProducts}/>
   </>)
 }
 
