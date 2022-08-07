@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Card, CardContent, Grid, Typography } from '@mui/material'
-import OrdersList from '../components/Orders/OrdersList'
+import OrderList from '../components/Orders/OrderList'
 import axios from 'axios'
 import { ENDPOINT } from '../constants/routeConstants'
 import { GlobalState } from '../contexts/Context'
@@ -35,7 +35,7 @@ const OrdersScreen = () => {
 								{t('seeYourOrders')}
 							</Typography>
 						</Grid>
-						<OrdersList orders={user.orders} products={orderProds}/>
+						<OrderList orders={user.orders} products={orderProds}/>
 					</Grid>	
 				</CardContent>
 			</Card>
