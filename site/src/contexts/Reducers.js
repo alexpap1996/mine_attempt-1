@@ -27,6 +27,8 @@ const addProduct = (state, product) => {
     cart[index] = product
   }
 
+  localStorage.setItem("cart", JSON.stringify(cart))
+
   return { ...state, cart}
 }
 
@@ -34,12 +36,12 @@ const removeProduct = (state, product) => {
   const cart = [ ...state.cart]
   const index = cart.findIndex(prod => prod.id === product.id)
   cart.splice(index, 1)
+  localStorage.setItem("cart", JSON.stringify(cart))
   return { ...state, cart}
 }
 
 const loginUser = (state, payload) => {
   const { persist, user } = payload
-  //TODO: logic for persist, maybe session instead of localStorage
   if (persist) localStorage.setItem("user", JSON.stringify(payload.user))
   else sessionStorage.setItem("user", JSON.stringify(payload.user))
   return { ...state, user}

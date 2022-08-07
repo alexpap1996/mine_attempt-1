@@ -5,11 +5,12 @@ const State = createContext()
 
 const Context = ({ children }) => {
   
-  const user = localStorage.getItem('user') || sessionStorage.getItem('user') || undefined
+  const user = JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user')) || undefined
   const currentLanguage = localStorage.getItem('language') || 'en'
+  const cart = JSON.parse(localStorage.getItem("cart")) || []
   const [state, dispatch] = useReducer(reducer, {
     products: [],
-    cart: [],
+    cart,
     tip: 0,
     user,
     currentLanguage
