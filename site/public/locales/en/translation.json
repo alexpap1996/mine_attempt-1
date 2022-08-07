@@ -35,5 +35,6 @@
   "cardName":"Card Name",
   "cardExpiryDate":"Expiry Date",
   "orders":"Orders",
-  "seeYourOrders":"Here you can see the previous orders you have made."
+  "seeYourOrders":"Here you can see the previous orders you have made.",
+  "orderProducts":"Order Products"
 }
