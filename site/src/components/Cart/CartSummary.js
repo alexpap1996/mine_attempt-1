@@ -3,20 +3,7 @@ import { useTranslation } from "react-i18next";
 import CartTotals from './CartTotals'
 import { GlobalState } from '../../contexts/Context'
 
-import { Box, Card, Divider, Button, Grid, Typography } from '@mui/material';
-
-const Row = ({text, amount = 0, sx = undefined}) => {
-  return (
-    <>
-      <Grid item xs={10} sx={sx}>
-        <Typography sx={{ fontWeight:'500'}}>{text}</Typography>
-      </Grid>
-      <Grid item xs={2}>
-        <Typography align='right'>{amount.toFixed(2)}€</Typography>
-      </Grid>
-    </>
-  )
-}
+import { Box, Card, Button, Grid, Typography } from '@mui/material';
 
 const CartSummary = ({hasCartItems = false}) => {
   const { t } = useTranslation()
