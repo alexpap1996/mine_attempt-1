@@ -327,6 +327,7 @@ const users = [
     emergencyphone: '6912341234',
     orders: [
       {
+        id: '1',
         products: [
           { 
             id: '1',
@@ -365,6 +366,7 @@ const users = [
         price: '10.15'
       },
       {
+        id:'2',
         products: [
         { 
           id: '2',
