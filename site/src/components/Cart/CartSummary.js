@@ -2,8 +2,7 @@ import React from 'react'
 import { useTranslation } from "react-i18next";
 import CartTotals from './CartTotals'
 import { GlobalState } from '../../contexts/Context'
-
-import { Box, Card, Button, Grid, Typography } from '@mui/material';
+import { Box, Card, Button } from '@mui/material';
 
 const CartSummary = ({hasCartItems = false}) => {
   const { t } = useTranslation()
