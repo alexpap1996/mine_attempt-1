@@ -1,33 +1,27 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import { ENDPOINT } from '../constants/routeConstants'
+import { Container, Card, CardContent, Grid, Typography } from '@mui/material'
 
 const ProfileScreen = () => {
-  const [test, setTest] = useState('')
-  const getUserData = async () => {
-    try {
-      const { data } = await axios(ENDPOINT + '/api/user/test')
-      const result = data
-      setTest(JSON.stringify(result))
-      console.log(result)
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  const clear = () => {
-    setTest('')
-  }
   
 	return <>
-		<Box>
-      ProfileScreen
-      <Button onClick={getUserData}>get data</Button>
-      <Button onClick={clear}>CLEAR</Button>
-      <Box>{test}</Box>
-    </Box>
+  	<Container maxWidth='sm' sx={{pt:2 }}> 
+			<Card spacing={2} style={{ marginTop:'unset' }} >
+      <CardContent>
+					<Grid container sx={{ justifyContent:'center' }}>
+						<Grid item xs={12} sx={{pb: 2}}>
+							<Typography component="h4" variant="h4" sx={{textAlign: 'left', pt:1, pl:1}}>
+								Your Profile
+							</Typography>
+							<Typography component="div" variant="body1" sx={{textAlign: 'left', pl:1}}>
+								Here you can see your saved information
+							</Typography>
+						</Grid>
+					</Grid>	
+				</CardContent>
+      </Card>
+    </Container>
 	</>
 }
 
