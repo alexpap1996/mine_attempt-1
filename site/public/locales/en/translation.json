@@ -36,5 +36,6 @@
   "cardExpiryDate":"Expiry Date",
   "orders":"Orders",
   "seeYourOrders":"Here you can see the previous orders you have made.",
-  "orderProducts":"Order Products"
+  "orderProducts":"Order Products",
+  "minimumAmount":"Minimum Amount"
 }
