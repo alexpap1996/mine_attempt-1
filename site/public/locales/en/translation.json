@@ -38,7 +38,7 @@
   "cardName":"Card Name",
   "cardExpiryDate":"Expiry Date",
   "cash":"Cash",
-  "paymentMethod":"Payment Method",
+  "paymentMethod":"Payment Method:",
   "orders":"Orders",
   "seeYourOrders":"Here you can see the previous orders you have made.",
   "orderProducts":"Order Products",

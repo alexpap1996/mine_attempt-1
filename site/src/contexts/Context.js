@@ -10,6 +10,7 @@ const Context = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem("cart")) || []
 
   if (localStorage.getItem('i18NextLng')?.includes('-')) {
+    console.log(localStorage)
     localStorage.setItem('i18NextLng', localStorage.getItem('i18NextLng').split('-')[0] )
   }
 

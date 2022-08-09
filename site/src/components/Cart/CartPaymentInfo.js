@@ -2,7 +2,29 @@ import { Card, CardContent, TextField, FormControl, Typography, Grid, Box, Butto
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+const buttons = [ 'card', 'cash' ]
+
+const MethodButton = ({name, text, handlePaymentTypeChange, paymentType, disabled}) => {
+
+  return (
+    <Box sx={{ display: 'inline'}}>
+      <Button
+        name={name}
+        onClick={handlePaymentTypeChange}
+        size="medium"
+        color="primary"
+        disabled={disabled}
+        variant={paymentType === name && !disabled ? "contained" : "text"}
+        sx={{padding: '7px 10px', ml:1}}
+      >
+        {text}
+      </Button>
+    </Box>
+  )
+}
+
 const CartPaymentInfo = ({ hasCartItems = false }) => {
+  console.log('cartItems: ' + hasCartItems)
   const { t } = useTranslation()
   const [paymentType, setPaymentType] = useState('cash')
   const [cardNumber, setCardNumber] = useState('')
@@ -55,35 +77,27 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
   return (<>
     <Card sx={{bgcolor: 'white' }}>
       <CardContent>
-        <Typography sx={{display: 'inline'}}>
-          {t('paymentMethod')}
-        </Typography>
-        <Box sx={{ display: 'inline', ml:3 }}>
-          <Box sx={{ display: 'inline', mr: 2}}>
-            <Button
-              name="card"
-              onClick={handlePaymentTypeChange}
-              size="medium"
-              color="primary"
-              variant={paymentType === 'card' ? "contained" : "text"}
-              sx={{padding: '7px 10px'}}
-            >
-              {t('card')}
-            </Button>
-          </Box>
-          <Box sx={{ display: 'inline'}}>
-            <Button
-              name="cash"
-              onClick={handlePaymentTypeChange}
-              size="medium"
-              color="primary"
-              variant={paymentType === 'cash' ? "contained" : "text"}
-              sx={{padding: '7px 10px'}}
-            >
-              {t('cash')}
-            </Button>
+        <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Typography sx={{display: 'inline'}}>
+            {t('paymentMethod')}
+          </Typography>
+          <Box sx={{display:'inline', float:'right'}}>
+          {
+            buttons.map(buttonName => 
+              <MethodButton 
+                key={buttonName}
+                name={buttonName}
+                text={t(buttonName)} 
+                handlePaymentTypeChange={handlePaymentTypeChange} 
+                paymentType={paymentType} 
+                disabled={!hasCartItems}
+              />
+            )
+          }
           </Box>
         </Box>
+        
+    
         <Grid container spacing={2} sx={{opacity, pt:2}} >
           <Grid item xs={12}>
             <FormControl fullWidth>

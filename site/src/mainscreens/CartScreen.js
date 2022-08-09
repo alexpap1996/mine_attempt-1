@@ -18,6 +18,8 @@ const CartScreen = () => {
     })
   }
   
+  console.log('cartscreen')
+  console.log(cartItems)
 	return <>
     <Container > 
       <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
