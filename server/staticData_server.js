@@ -185,7 +185,7 @@ const products = [
       en: 'Apple',
       gr: 'Μήλο'
     },
-    shopId: '31',
+    shopId: '11',
     price: 1.00,
     image: {
       url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/kiwi_e75c3b.jpg',
@@ -315,6 +315,19 @@ const products = [
       filename: 'kiwi'
     }
   },
+  {
+    id:'15',
+    name: {
+      en: 'Vitamin C tablets',
+      gr: 'Ταμπλέτες Βιταμίνη C'
+    },
+    shopId: '31',
+    price: 13.50,
+    image: {
+      url: 'https://res.cloudinary.com/djuuwduyx/image/upload/v1660036588/5df9a1287e60e99cc253bd768e7d2236_VITC1000_r2ilyq.jpg',
+      filename: 'vitaminC'
+    }
+  }
 ]
 
 const users = [
