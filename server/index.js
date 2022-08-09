@@ -6,7 +6,7 @@ import { shops, products, users } from './staticData_server.js'
 
 import { getUser, createUser, authenticateUser } from './controllers/userController.js'
 
-// connect()
+connect()
 const app = express()
 const router = express.Router()
 
