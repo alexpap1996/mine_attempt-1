@@ -1,8 +1,41 @@
 import mongoose from 'mongoose'
+const orderSchema = mongoose.Schema({
+  price: {
+    type: Number,
+    required: true
+  },
+  tip: {
+    type: Number,
+    required: true,
+  },
+  paymentMethod: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+  products: [{
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Product',
+    }
+  }],
+})
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
       type: String,
       required: true,
     },
@@ -15,11 +48,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false,
+    emergencyphone: {
+      type: Number,
+      required: true
     },
+    orders: [orderSchema]
   },
   {
     timestamps: true,
