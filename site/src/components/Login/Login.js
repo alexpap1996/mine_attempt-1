@@ -18,18 +18,22 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const res = await axios.post(ENDPOINT + '/api/user/login', {
-      username: data.get("email"),
-      password: data.get("password")
-    })
-    if (res.status === 200) {
-      dispatch({
-        type: 'login',
-        payload: { user: res.data, persist: !!data.get("rememberMe") }
+    try {
+      const res = await axios.post(ENDPOINT + '/api/user/login', {
+        email: data.get("email"),
+        password: data.get("password")
       })
-      navigate('/')
-    } else {
-      setLoginError(t('wrongEmail'))
+      if (res.status === 200) {
+        dispatch({
+          type: 'login',
+          payload: { user: res.data, persist: !!data.get("rememberMe") }
+        })
+        navigate('/')
+      } else {
+        setLoginError(t('wrongEmail'))
+      }
+    } catch (e) {
+      setLoginError(e)
     }
   }
 
