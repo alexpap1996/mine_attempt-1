@@ -20,7 +20,7 @@ const CartScreen = () => {
   
 	return <>
     <Container > 
-      <Grid container component="section" spacing={2} style={{ marginTop:'unset' }}>
+      <Grid container component="section" spacing={2} sx={{ marginTop:'unset', mb:2 }}>
         <Grid xs={12} sm={12} md={8} item>
           <Grid container spacing={2}>
             <Grid xs={12} sm={12} md={12} item>
