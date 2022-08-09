@@ -8,7 +8,7 @@ const ProductCard = ({product}) => {
   const { name, price, ratings = [] } = product
   const { t, i18n } = useTranslation()
   const currLang = i18n.language
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const { dispatch } = GlobalState()
   const addToCartHandler = (event) => {
@@ -59,7 +59,7 @@ const ProductCard = ({product}) => {
         </Grid>
         <Rating name="read-only" value={rating} readOnly precision={0.5} sx={{pt:1}} />
         <Box sx={{ pt:1, display: 'flex', justifyContent: 'left', gap: '1rem'}}>
-          <QuantitySelector size='medium' quantityChange={quantityChangeHandler}/>
+          <QuantitySelector quantity={1} size='medium' quantityChange={quantityChangeHandler}/>
           <Button variant='contained' onClick={addToCartHandler}>{t('addToCart')}</Button>
         </Box>
       </CardContent>

@@ -24,7 +24,10 @@ const addProduct = (state, product) => {
   if (index === -1) {
     cart.push(product)
   } else {
-    cart[index] = product
+    cart[index] = { 
+      ...product,
+      quantity: product.quantity + cart[index].quantity
+    }
   }
 
   localStorage.setItem("cart", JSON.stringify(cart))
