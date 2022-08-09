@@ -54,9 +54,9 @@ app.post('/api/orders/products', async (req, res) => {
   res.json(filteredProds)
 })
 
-// not used, for dev purposes only
-app.post('/api/user/', async (req, res) => {
-  await createUser(req, res) 
+// use this route to create user
+app.post('/api/user/create/', async (req, res) => {
+  await createUser(req, res)
 })
 
 // TODO: if the structure is changed in the db,
