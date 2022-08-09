@@ -4,7 +4,7 @@ import express from 'express'
 import connect from './config/database.js'
 import { shops, products, users } from './staticData_server.js'
 
-import { getUser, createUser } from './controllers/userController.js'
+import { getUser, createUser, authenticateUser } from './controllers/userController.js'
 
 // connect()
 const app = express()
@@ -13,19 +13,15 @@ const router = express.Router()
 app.use(express.json())
 app.use(cors())
 
-// returning the first user we find no matter what we get as params
-// this needs to be implemented
+// this is called for login
 app.post('/api/user/login/', async (req, res) => {
-  // const name = req.params.name
-  //const user = await getUser(name)
-  console.log('hit /api/user/login')
-  res.json(users[0])
+  await authenticateUser(req, res)
 })
 
 app.get('/api/user/test', async (req, res) => {
   // const name = req.params.name
   //const user = await getUser(name)
-  console.log('hit /api/user/test')
+  console.log('hit /api/user/create')
   res.json(users[0])
 })
 
