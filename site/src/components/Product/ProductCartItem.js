@@ -1,4 +1,4 @@
-import { Box, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, IconButton, Snackbar, Alert } from '@mui/material';
+import { Box, ListItem, ListItemAvatar, Avatar, ListItemText, IconButton } from '@mui/material';
 import QuantitySelector from './QuantitySelector';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { GlobalState } from '../../contexts/Context';
