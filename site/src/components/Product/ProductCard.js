@@ -42,23 +42,23 @@ const ProductCard = ({product}) => {
         component="img"
         image={product.image.url}
         alt="pharmacies"
-        style={{height: '100px'}}
+        style={{height: '140px'}}
       />
       <CardContent>
         <Grid container sx={{ display: 'flex', flexDirection: 'row' }}>
           <Grid item xs={9}>
-            <Typography component="div" variant="h5" noWrap>
+            <Typography component="div" variant="h6" noWrap>
               {name[currLang]}
             </Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography variant="h6" color="text.secondary" component="div" sx={{ textAlign:'right'}}>
+            <Typography variant="h6" color="text.secondary" component="div" sx={{ textAlign:'right', fontWeight:'400'}}>
               {price}€
             </Typography>
           </Grid>
         </Grid>
-        <Rating name="read-only" value={rating} readOnly precision={0.5} />
-        <Box sx={{ pt:3, display: 'flex', justifyContent: 'left', gap: '1rem'}}>
+        <Rating name="read-only" value={rating} readOnly precision={0.5} sx={{pt:1}} />
+        <Box sx={{ pt:1, display: 'flex', justifyContent: 'left', gap: '1rem'}}>
           <QuantitySelector size='medium' quantityChange={quantityChangeHandler}/>
           <Button variant='contained' onClick={addToCartHandler}>{t('addToCart')}</Button>
         </Box>
