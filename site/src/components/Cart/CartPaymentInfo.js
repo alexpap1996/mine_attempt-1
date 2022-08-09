@@ -1,15 +1,21 @@
-import { Card, CardContent, TextField, FormControl, Typography, Grid } from '@mui/material'
+import { Card, CardContent, TextField, FormControl, Typography, Grid, Box, Button } from '@mui/material'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const CartPaymentInfo = ({ hasCartItems = false }) => {
   const { t } = useTranslation()
+  const [paymentType, setPaymentType] = useState('cash')
   const [cardNumber, setCardNumber] = useState('')
   const [cardName, setCardName] = useState('')
   const [cvv, setCvv] = useState({ public:'', private: ''})
   const [expiryDate, setExpiryDate] = useState('')
 
-  const opacity = hasCartItems ? 1 : 0.15
+  const inputsDisabled = !hasCartItems || paymentType !== 'card'
+  const opacity = !inputsDisabled ? 1 : 0.15
+
+  const handlePaymentTypeChange = (event) => {
+    setPaymentType(event.target.name)
+  }
 
   const handleNumberInput = (event) => {
     const val = event.target.value
@@ -48,8 +54,37 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
 
   return (<>
     <Card sx={{bgcolor: 'white' }}>
-      <CardContent sx={{opacity}}>
-        <Grid container spacing={2}>
+      <CardContent>
+        <Typography sx={{display: 'inline'}}>
+          {t('paymentMethod')}
+        </Typography>
+        <Box sx={{ display: 'inline', ml:3 }}>
+          <Box sx={{ display: 'inline', mr: 2}}>
+            <Button
+              name="card"
+              onClick={handlePaymentTypeChange}
+              size="medium"
+              color="primary"
+              variant={paymentType === 'card' ? "contained" : "text"}
+              sx={{padding: '7px 10px'}}
+            >
+              {t('card')}
+            </Button>
+          </Box>
+          <Box sx={{ display: 'inline'}}>
+            <Button
+              name="cash"
+              onClick={handlePaymentTypeChange}
+              size="medium"
+              color="primary"
+              variant={paymentType === 'cash' ? "contained" : "text"}
+              sx={{padding: '7px 10px'}}
+            >
+              {t('cash')}
+            </Button>
+          </Box>
+        </Box>
+        <Grid container spacing={2} sx={{opacity, pt:2}} >
           <Grid item xs={12}>
             <FormControl fullWidth>
               <Typography component="div" variant="body1" >
@@ -60,7 +95,7 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
                 value={cardNumber}
                 onInput={handleNumberInput}
                 sx={{ backgroundColor:'white'}}
-                disabled={!hasCartItems}
+                disabled={inputsDisabled}
               />
             </FormControl>  
           </Grid>
@@ -73,7 +108,7 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
                 value={cardName}
                 onInput={handleNameInput}
                 sx={{ backgroundColor:'white'}}
-                disabled={!hasCartItems}
+                disabled={inputsDisabled}
               />
             </FormControl>
           </Grid>
@@ -87,7 +122,7 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
                 value={expiryDate}
                 onKeyDown={handleDateKeyDown}
                 sx={{ backgroundColor:'white'}}
-                disabled={!hasCartItems}
+                disabled={inputsDisabled}
               />
             </FormControl>
           </Grid>
@@ -101,7 +136,7 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
                 value={cvv.public}
                 onKeyDown={handleCvvKeyDown}
                 sx={{ backgroundColor:'white'}}
-                disabled={!hasCartItems}
+                disabled={inputsDisabled}
               />
             </FormControl>
           </Grid>
