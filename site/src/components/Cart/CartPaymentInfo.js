@@ -24,7 +24,6 @@ const MethodButton = ({name, text, handlePaymentTypeChange, paymentType, disable
 }
 
 const CartPaymentInfo = ({ hasCartItems = false }) => {
-  console.log('cartItems: ' + hasCartItems)
   const { t } = useTranslation()
   const [paymentType, setPaymentType] = useState('cash')
   const [cardNumber, setCardNumber] = useState('')
@@ -56,11 +55,9 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
 
     if (!isNaN(key) && cvvPriv.length < 3) {
       setCvv({public: '*'.repeat(cvvPriv.length + 1), private: (cvvPriv + key)})
-      console.log(cvv)
     } else if ( keyCode === 8) {
       setCvv({public: '*'.repeat(cvvPriv.length - 1), private: (cvvPriv.slice(0,-1))})
     }
-    console.log(cvv)
   }
 
   const handleDateKeyDown = (event) => {

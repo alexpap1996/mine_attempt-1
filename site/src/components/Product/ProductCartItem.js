@@ -5,7 +5,6 @@ import { GlobalState } from '../../contexts/Context';
 import { useTranslation } from 'react-i18next';
 
 const ProductCartItem = ({product}) => {
-  console.log('ProductCartItem render')
   const { name: text, quantity, image: {url: imageUrl} } = product
   const { i18n } = useTranslation()
   const currLang = i18n.language
