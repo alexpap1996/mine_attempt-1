@@ -21,7 +21,7 @@ const ProfileData = ({ user = {} }) => {
       <GridItem label={t('firstname')} value={user.firstname} />
       <GridItem label={t('lastname')} value={user.lastname} />
       <GridItem label={t('emergencyPhone')} value={user.emergencyphone} />
-      <GridItem label={t('emailAddress')} value={user.username} />
+      <GridItem label={t('emailAddress')} value={user.email} />
     </Grid>
   </>)
 }
