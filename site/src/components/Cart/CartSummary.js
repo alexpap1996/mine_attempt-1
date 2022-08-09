@@ -27,8 +27,6 @@ const CartSummary = ({hasCartItems = false}) => {
       />
       <Box sx={{ pt: 1, display: 'flex', justifyContent:'center'}}>
         <Button
-          // component={Link}
-          // to={button.to}
           size="medium"
           color="primary"
           variant="contained"

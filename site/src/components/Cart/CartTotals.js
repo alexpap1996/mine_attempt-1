@@ -28,6 +28,12 @@ const CartTotals = ({hasCartItems = false, minimumAmount = 0, tip = 0, itemTotal
     <Divider sx={{ mt: 1}}/>
     <Grid container spacing={2} columns={12} sx={{px:3, opacity, pt:1}}>
       <Row text={t('minimumAmount')} amount={minimumAmount} fontWeight={400}/>
+      {
+        minimumAmount > itemTotal &&
+          <Typography component="p" variant="body2" sx={{mx:2, mt:1, color:'#ff9966'}}>
+            {t('minimumAmountNotPassed')}
+          </Typography>
+      }
     </Grid>
     <Divider sx={{ mt: 1}}/>
   </>

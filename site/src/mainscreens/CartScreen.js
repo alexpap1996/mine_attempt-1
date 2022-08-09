@@ -27,10 +27,10 @@ const CartScreen = () => {
               <CartProductsList cartItems={cartItems}/>
             </Grid>
             <Grid xs={12} sm={12} md={6} item>
-              <CartPaymentInfo cartItems={cartItems} hasCartItems={cartItems.length}/>
+              <CartTipSelector tip={tip} handleTipChange={handleTipChange} hasCartItems={cartItems.length} />
             </Grid>
             <Grid xs={12} sm={12} md={6} item>
-              <CartTipSelector tip={tip} handleTipChange={handleTipChange} hasCartItems={cartItems.length} />
+              <CartPaymentInfo hasCartItems={cartItems.length}/>
             </Grid>
           </Grid>
         </Grid>

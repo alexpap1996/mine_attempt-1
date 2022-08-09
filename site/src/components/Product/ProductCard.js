@@ -69,7 +69,7 @@ const ProductCard = ({product}) => {
       <Alert onClose={closeHandler} severity="success" sx={{ width: '100%' }}>
         {t('productAdded')}
       </Alert>
-  </Snackbar>
+    </Snackbar>
   </>)
 }
 
