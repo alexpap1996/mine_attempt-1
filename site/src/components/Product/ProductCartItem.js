@@ -20,7 +20,7 @@ const ProductCartItem = ({product}) => {
 
   const quantityChangeHandler = (val) => {
     dispatch({
-      type: 'add',
+      type: 'edit',
       payload: {...product, quantity: val}
     })
   }

@@ -2,7 +2,9 @@ const reducer = (state, action) => {
   const payload = action.payload
   switch (action.type){
     case "add":
-      return addProduct(state, payload)
+      return addProduct(state, payload, false)
+    case "edit":
+      return addProduct(state, payload, true)
     case "remove":
       return removeProduct(state, payload)
     case "tip":
@@ -18,7 +20,7 @@ const reducer = (state, action) => {
   }
 }
 
-const addProduct = (state, product) => {
+const addProduct = (state, product, edit = false) => {
   const cart = [ ...state.cart]
   const index = cart.findIndex(prod => prod.id === product.id)
   if (index === -1) {
@@ -26,7 +28,7 @@ const addProduct = (state, product) => {
   } else {
     cart[index] = { 
       ...product,
-      quantity: product.quantity + cart[index].quantity
+      quantity: product.quantity + (!edit ? cart[index].quantity : 0)
     }
   }
 
