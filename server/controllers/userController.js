@@ -1,21 +1,5 @@
 import User from '../schemas/userSchema.js'
 
-const getUser = async (name) => {
-	const user = await User.findOne({ name })
-
-	if (user) {
-		return {
-      _id: user._id,
-      name: user.username,
-			password: user.password,
-			email: user.email,
-    }
-	} else {
-		// throw new Error('Invalid email or password')
-		console.log('in else')
-	}
-}
-
 const createUser = async (req, res)  => {
 	const { firstname,lastname,emergencyphone, email, password } = req.body
 
@@ -68,7 +52,6 @@ const authenticateUser = async (req, res) => {
 }
 
 export {
-	getUser,
 	createUser,
   authenticateUser
 }
