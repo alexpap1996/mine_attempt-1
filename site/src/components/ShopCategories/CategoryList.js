@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import ClickableCard from '../ClickableCard';
 
 /* icons */
-import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
+import MedicationIcon from '@mui/icons-material/Medication';
 import StoreIcon from '@mui/icons-material/Store';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import KebabDiningIcon from '@mui/icons-material/KebabDining';
@@ -22,7 +22,7 @@ const categories = [
   },
   {
     name: 'pharmacies',
-    icon: LocalPharmacyIcon
+    icon: MedicationIcon
   },
   {
     name: 'bakeries',
