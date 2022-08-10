@@ -5,7 +5,7 @@ import { GlobalState } from '../../contexts/Context';
 import { useTranslation } from 'react-i18next';
 
 const ProductCartItem = ({product}) => {
-  const { name: text, quantity, image: {url: imageUrl} } = product
+  const { name: text, quantity, image } = product
   const { i18n } = useTranslation()
   const currLang = i18n.language
 
@@ -28,7 +28,7 @@ const ProductCartItem = ({product}) => {
   return (<>
     <ListItem >
       <ListItemAvatar sx={{py:1, pr:1}}>
-        <Avatar alt={`${text.en} avatar`} src={imageUrl} sx={{ width: 56, height: 56 }}/>
+        <Avatar alt={`${text.en} avatar`} src={image} sx={{ width: 56, height: 56 }}/>
       </ListItemAvatar>
       <ListItemText primary={text[currLang]} primaryTypographyProps={{component:"h2", variant:"h5"}} sx={{ pl: 2}}/>
       <Box sx={{alignSelf: 'center', paddingX: '0.5rem'}}>
