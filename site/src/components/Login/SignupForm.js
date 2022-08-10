@@ -2,26 +2,22 @@ import React from "react"
 import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
 import Button from "@mui/material/Button"
-import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 
-const SignupForm = ({ handleLogin }) => {
+const SignupForm = ({ handleSignup }) => {
   const { t } = useTranslation()
-  const handleSubmit = () => {}
   return (
-    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+    <Box component="form" onSubmit={handleSignup} sx={{ mt: 3 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
             autoComplete="given-name"
-            name="firstName"
+            name="firstname"
             required
             fullWidth
-            id="firstName"
+            id="firstname"
             label={t('firstname')}
             autoFocus
           />
@@ -30,9 +26,9 @@ const SignupForm = ({ handleLogin }) => {
           <TextField
             required
             fullWidth
-            id="lastName"
+            id="lastname"
             label={t('lastname')}
-            name="lastName"
+            name="lastname"
             autoComplete="family-name"
           />
         </Grid>
@@ -41,6 +37,7 @@ const SignupForm = ({ handleLogin }) => {
             required
             fullWidth
             id="email"
+            type="email"
             label={t('emailAddress')}
             name="email"
             autoComplete="email"
@@ -55,6 +52,16 @@ const SignupForm = ({ handleLogin }) => {
             type="password"
             id="password"
             autoComplete="new-password"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            fullWidth
+            name="emergencyphone"
+            label={t('password')}
+            type="number"
+            id="emergencyphone"
           />
         </Grid>
         
