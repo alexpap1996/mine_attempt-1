@@ -4,7 +4,7 @@ import express from 'express'
 import connect from './config/database.js'
 import { shops, products, users } from './staticData_server.js'
 
-import { getUser, createUser, authenticateUser } from './controllers/userController.js'
+import { createUser, authenticateUser } from './controllers/userController.js'
 
 connect()
 const app = express()
