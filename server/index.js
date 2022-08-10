@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
 import { shops, products, users } from './staticData_server.js'
+import mongoose from 'mongoose'
 
 import { createUser, authenticateUser, createOrder } from './controllers/userController.js'
 import Product from './schemas/productSchema.js'
@@ -71,19 +72,16 @@ app.get('/api/shops/:category', async (req, res) => {
   res.json(categoryShops)
 })
 
-//TODO: products refer to static products, make them refer to mongoose
-app.get('/api/shop/:shopId', (req, res) => {
+// shopId refers to a specific shop
+// returns the products of that shop
+// and the shop itself to use its info in the page
+app.get('/api/shop/:shopId', async (req, res) => {
   const shopId = req.params.shopId
-  const filteredProds = products.filter(prod => prod.shopId === shopId)
-  const shopArray = Object.keys(shops).reduce((acc, cur) => {
-    acc = [ ...acc, ...shops[cur]]
-    return acc
-  }, [])
-  const shop = shopArray.find(shop => shop.id === shopId)
+  const filteredProds = await Product.find({shopId:mongoose.Types.ObjectId(shopId)})
+  const shop = await Shop.findById(shopId)
   const shopAndProducts = {
     shop, products: filteredProds
   }
-  // console.log(req.params)
   res.json(shopAndProducts)
 })
 
