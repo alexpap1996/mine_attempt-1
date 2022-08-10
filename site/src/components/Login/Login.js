@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import LoginForm from "./LoginForm";
-import LoginFormHeader from "./LoginFormHeader";
-import { Box, Paper, Grid } from "@mui/material";
+import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
+import LoginForm from "./LoginForm"
+import LoginFormHeader from "./LoginFormHeader"
+import { Box, Paper, Grid } from "@mui/material"
 import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 import { GlobalState } from '../../contexts/Context'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const { dispatch } = GlobalState()
-  const navigate = useNavigate();
-  const headerText = t("signIn");
+  const navigate = useNavigate()
+  const headerText = t("signIn")
   const [loginError, setLoginError] = useState('')
 
   const handleLogin = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
     try {
       const res = await axios.post(ENDPOINT + '/api/user/login', {
         email: data.get("email"),
@@ -47,6 +47,6 @@ const Login = () => {
       </Grid>
     </>
   )
-};
+}
 
 export default Login
