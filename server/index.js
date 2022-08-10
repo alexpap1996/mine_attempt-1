@@ -4,7 +4,9 @@ import express from 'express'
 import connect from './config/database.js'
 import { shops, products, users } from './staticData_server.js'
 
-import { createUser, authenticateUser } from './controllers/userController.js'
+import { createUser, authenticateUser, createOrder } from './controllers/userController.js'
+import Product from './schemas/productSchema.js'
+import Shop from './schemas/shopSchema.js'
 
 connect()
 const app = express()
@@ -50,6 +52,11 @@ app.post('/api/orders/products', async (req, res) => {
   res.json(filteredProds)
 })
 
+app.post('/api/orders/create', async (req, res) => {
+  console.log('hit order create')
+  await createOrder(req, res)
+})
+
 // use this route to create user
 app.post('/api/user/create/', async (req, res) => {
   await createUser(req, res)
@@ -57,9 +64,11 @@ app.post('/api/user/create/', async (req, res) => {
 
 // TODO: if the structure is changed in the db,
 // adjust this accordingly
-app.get('/api/shops/:category', (req, res) => {
+app.get('/api/shops/:category', async (req, res) => {
   const category = req.params.category
-  res.json(shops[category])
+  console.log(`category: ${category}`)
+  const categoryShops = await Shop.find({category})
+  res.json(categoryShops)
 })
 
 //TODO: products refer to static products, make them refer to mongoose
@@ -78,11 +87,19 @@ app.get('/api/shop/:shopId', (req, res) => {
   res.json(shopAndProducts)
 })
 
-// TODO: create order logic
-// add currentDate, product (maybe Ids?), userId
-// optional: tip, price paid
-app.get('/', (req, res) => {
-  res.send('home page')
+app.post('/api/products/create/', async (req, res) => {
+  const products = req.body.products
+  console.log(products)
+  const result = await Product.insertMany(products)
+  res.json(result)
+})
+
+app.post('/api/shops/create/', async (req, res) => {
+  const shops = req.body.shops
+  console.log(shops)
+  await Shop.deleteMany({})
+  const result = await Shop.insertMany(shops)
+  res.json(result)
 })
 
 
