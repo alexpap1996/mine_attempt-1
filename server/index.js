@@ -16,7 +16,7 @@ const router = express.Router()
 app.use(express.json())
 app.use(cors())
 
-// this is called for login
+// called to login / authenticate user
 app.post('/api/user/login/', async (req, res) => {
   await authenticateUser(req, res)
 })
@@ -53,6 +53,7 @@ app.post('/api/orders/products', async (req, res) => {
   res.json(filteredProds)
 })
 
+// used to create an order
 app.post('/api/orders/create', async (req, res) => {
   console.log('hit order create')
   await createOrder(req, res)
