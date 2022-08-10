@@ -40,8 +40,8 @@ const ProductCard = ({product}) => {
     >
       <CardMedia
         component="img"
-        image={product.image.url}
-        alt="pharmacies"
+        image={product.image}
+        alt={product.name.en}
         style={{height: '140px'}}
       />
       <CardContent>

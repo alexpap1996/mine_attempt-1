@@ -48,7 +48,7 @@ const ShopList = ({category}) => {
       <Grid container direction="row" spacing={4}>
         {
           shopsList && shopsList.map((shop) => (
-            <GridShopCard key={shop.id} title={shop.name[currLang]} goToDir={'../shop/'+shop.id} cardColor={main} image={shop.image?.url}/>
+            <GridShopCard key={shop.id} title={shop.name[currLang]} goToDir={'../shop/'+shop.id} cardColor={main} image={shop.image}/>
           ))
         }
       </Grid>
