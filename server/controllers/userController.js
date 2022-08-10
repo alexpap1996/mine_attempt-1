@@ -2,7 +2,7 @@ import User from '../schemas/userSchema.js'
 
 const createUser = async (req, res)  => {
 	const { firstname,lastname,emergencyphone, email, password } = req.body
-
+  console.log(req.body)
 	const user = await User.create({
     firstname,
     lastname,
@@ -10,9 +10,9 @@ const createUser = async (req, res)  => {
     email,
     password,
   })
-
+  
 	if (user) {
-    res.status(201).json({
+    res.status(200).json({
       _id: user._id,
       firstname: user.firstname,
       lastname: user.lastname,

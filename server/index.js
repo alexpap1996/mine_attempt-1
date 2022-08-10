@@ -58,16 +58,14 @@ app.post('/api/orders/create', async (req, res) => {
   await createOrder(req, res)
 })
 
-// use this route to create user
+// creates a user
 app.post('/api/user/create/', async (req, res) => {
   await createUser(req, res)
 })
 
-// TODO: if the structure is changed in the db,
-// adjust this accordingly
+// returns all shops the belong to the category that is passed
 app.get('/api/shops/:category', async (req, res) => {
   const category = req.params.category
-  console.log(`category: ${category}`)
   const categoryShops = await Shop.find({category})
   res.json(categoryShops)
 })
