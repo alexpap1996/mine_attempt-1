@@ -1,5 +1,5 @@
 import { Card, CardContent, TextField, FormControl, Typography, Grid, Box, Button } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const buttons = [ 'card', 'cash' ]
@@ -23,7 +23,7 @@ const MethodButton = ({name, text, handlePaymentTypeChange, paymentType, disable
   )
 }
 
-const CartPaymentInfo = ({ hasCartItems = false }) => {
+const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, detailsMissing = '' }) => {
   const { t } = useTranslation()
   const [paymentType, setPaymentType] = useState('cash')
   const [cardNumber, setCardNumber] = useState('')
@@ -31,22 +31,63 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
   const [cvv, setCvv] = useState({ public:'', private: ''})
   const [expiryDate, setExpiryDate] = useState('')
 
+  const [paymentDetails, setPaymentDetails] = useState({
+    type: 'cash',
+    details: {
+      cardnumber: '',
+      cardname: '',
+      cvv: '',
+      expirydate: ''
+    }
+  })
+
   const inputsDisabled = !hasCartItems || paymentType !== 'card'
   const opacity = !inputsDisabled ? 1 : 0.15
 
   const handlePaymentTypeChange = (event) => {
-    setPaymentType(event.target.name)
+    const value = event.target.name
+    setPaymentType(value)
+    updatePaymentMethod({
+      type: 'method',
+      value
+    })
   }
 
   const handleNumberInput = (event) => {
     const val = event.target.value
     if (!isNaN(val) && val.length <= 16) {
       setCardNumber(val)
+      updatePaymentMethod({
+        type: 'value',
+        name: 'cardnumber',
+        value: val
+      })
     }
   }
 
   const handleNameInput = (event) => {
-    setCardName(event.target.value)
+    const { value } = event.target
+    setCardName(value)
+    updatePaymentMethod({
+      type: 'value',
+      name: 'cardname',
+      value
+    })
+
+
+  }
+
+  const updatePaymentMethod = (newData) => {
+    if (newData.type === 'method') {
+      setPaymentDetails({
+        ...paymentDetails,
+        type: newData.value
+      })
+    } else {
+      const temp = { ...paymentDetails }
+      temp.details[newData.name] = newData.value
+      setPaymentDetails(temp)
+    }
   }
 
   const handleCvvKeyDown = (event) => {
@@ -55,8 +96,18 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
 
     if (!isNaN(key) && cvvPriv.length < 3) {
       setCvv({public: '*'.repeat(cvvPriv.length + 1), private: (cvvPriv + key)})
+      updatePaymentMethod({
+        type: 'value',
+        name: 'cvv',
+        value: (cvvPriv + key)
+      })
     } else if ( keyCode === 8) {
       setCvv({public: '*'.repeat(cvvPriv.length - 1), private: (cvvPriv.slice(0,-1))})
+      updatePaymentMethod({
+        type: 'value',
+        name: 'cvv',
+        value: (cvvPriv.slice(0,-1))
+      })
     }
   }
 
@@ -65,11 +116,29 @@ const CartPaymentInfo = ({ hasCartItems = false }) => {
     if (!isNaN(key) && expiryDate.length < 5) {
       const date = expiryDate.length === 2 ? expiryDate + '/' +  key : expiryDate + key
       setExpiryDate(date)
+      updatePaymentMethod({
+        type: 'value',
+        name: 'expirydate',
+        value: date
+      })
     } else if (keyCode === 8) {
       const deletedChars = expiryDate.charAt(expiryDate.length - 2) === '/' ? -2 : -1
-      setExpiryDate(expiryDate.slice(0, deletedChars))
+      const date = expiryDate.slice(0, deletedChars)
+      setExpiryDate(date)
+      updatePaymentMethod({
+        type: 'value',
+        name: 'expirydate',
+        value: date
+      })
     }
   }
+
+  // setPaymentDetails (from useState) is asynchronous
+  // so we call handlePaymentMethodChange with useEffect
+  // to be sure it sends up the values after setPaymentDetails is finished
+  useEffect(() => {
+    handlePaymentMethodChange(paymentDetails)
+  }, [handlePaymentMethodChange, paymentDetails])
 
   return (<>
     <Card sx={{bgcolor: 'white' }}>
