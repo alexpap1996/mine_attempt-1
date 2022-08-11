@@ -17,6 +17,8 @@ const reducer = (state, action) => {
       return changeLanguage(state, payload)
     case "update_user":
       return updateUser(state, payload)
+    case "order_rated":
+      return orderRated(state, payload)
     default: 
       return state
   }
@@ -71,8 +73,18 @@ const changeLanguage = (state, payload) => {
 
 const updateUser = (state, payload) => {
   const user = payload.user
-  user.orders.sort((a, b) => a.creationDate - b.creationDate)
   localStorage.setItem('user', JSON.stringify(user))
+  return { ...state, user}
+}
+
+const orderRated = (state, payload) => {
+  const orderId = payload.orderId
+  const user = state.user
+  const orderIndex = user.orders.findIndex(order => order._id === orderId)
+  user.orders[orderIndex] = {
+    ...user.orders[orderIndex],
+    status: 'rated'
+  }
   return { ...state, user}
 }
 
