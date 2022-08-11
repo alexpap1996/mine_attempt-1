@@ -44,7 +44,6 @@ const LoginForm = ({ handleLogin, loginError }) => {
         {t("signIn")}
       </Button>
       <Grid container>
-        <LoginFormLink text={t("forgotPassword")} xs={true} />
         <LoginFormLink text={`${t("dontHaveAnAccount")} ${t("signUp")}`} to='/login/signup'/>
       </Grid>
     </Box>
