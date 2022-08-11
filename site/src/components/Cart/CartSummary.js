@@ -13,11 +13,6 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
   const navigate = useNavigate()
   const { state, dispatch } = GlobalState()
   const [loading, setLoading] = useState(false)
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const closeHandler = () => {
-    setModalOpen(false)
-  }
 
   const minimumAmount = 10
 
@@ -61,7 +56,6 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
         payload: null
       })
       navigate('/account/orders?order_created=true')
-      setModalOpen(true)
     } else {
       
     }
@@ -93,11 +87,6 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
       </Card>
     : <Loading />
     }
-    <Snackbar open={modalOpen} autoHideDuration={6000} onClose={closeHandler} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
-      <Alert onClose={closeHandler} severity="success" sx={{ width: '100%' }}>
-        Order Created!
-      </Alert>
-    </Snackbar>
   </>
 }
 
