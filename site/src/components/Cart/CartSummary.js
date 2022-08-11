@@ -50,7 +50,7 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
         payload: {
           user: {
             ...user,
-            orders: [res.orders]
+            orders: res.data.orders
           }
         }
       })

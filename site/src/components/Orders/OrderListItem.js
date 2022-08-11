@@ -10,8 +10,7 @@ const OrderListItem = ({order}) => {
   const currLang = i18n.language
   const [modalProducts, setModalProducts] = useState([])
 
-  // const date = new Date(order.date)
-  const date = new Date()
+  const date = new Date(order.creationDate)
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
   const locale = currLang === 'gr' ? 'el-GR' : 'en-US'
 
