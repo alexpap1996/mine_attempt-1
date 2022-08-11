@@ -7,8 +7,8 @@ const OrderList = ({orders = []}) => {
     <List spacing={2} sx={{ width: '100%', padding:'0'}}>  
       {
         orders.map(order => <>
-          <Divider />
-          <OrderListItem order={order}/>
+          <Divider key={order._id + '_'}/>
+          <OrderListItem key={order._id} order={order}/>
         </>)
       }
     </List>
