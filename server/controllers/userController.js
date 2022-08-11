@@ -30,7 +30,7 @@ const authenticateUser = async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
-  console.log(user, 'user')
+
   if (user) {
     const result = await user.testLogin(password)
     if (result) {
@@ -83,7 +83,6 @@ const getUserOrders = async (req, res) => {
   const userId = req.params.userId
   console.log(userId)
   const user = await User.findById(userId)
-
   if (!user) return
   console.log(user)
   const orders = user.orders
