@@ -10,7 +10,8 @@ const OrderListItem = ({order}) => {
   const currLang = i18n.language
   const [modalProducts, setModalProducts] = useState([])
 
-  const date = new Date(order.date)
+  // const date = new Date(order.date)
+  const date = new Date()
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
   const locale = currLang === 'gr' ? 'el-GR' : 'en-US'
 
@@ -28,7 +29,7 @@ const OrderListItem = ({order}) => {
 
   const onClickHandler = async () => {
     const idsToQuantities = order.products.reduce((acc, product) => {
-      acc[product.id] = product.quantity
+      acc[product.productId] = product.quantity
       return acc
     }, {})
 
@@ -36,7 +37,7 @@ const OrderListItem = ({order}) => {
     const dataWithQuantity = data.map(prod => {
       return {
         ...prod,
-        quantity: idsToQuantities[prod.id]
+        quantity: idsToQuantities[prod._id]
       }
     })
     setModalProducts(dataWithQuantity)
