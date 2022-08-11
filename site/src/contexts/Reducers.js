@@ -15,6 +15,8 @@ const reducer = (state, action) => {
       return logoutUser(state, payload)
     case "change_language":
       return changeLanguage(state, payload)
+    case "update_user":
+      return updateUser(state, payload)
     default: 
       return state
   }
@@ -22,7 +24,7 @@ const reducer = (state, action) => {
 
 const addProduct = (state, product, edit = false) => {
   const cart = [ ...state.cart]
-  const index = cart.findIndex(prod => prod.id === product.id)
+  const index = cart.findIndex(prod => prod._id === product._id)
   if (index === -1) {
     cart.push(product)
   } else {
@@ -32,16 +34,20 @@ const addProduct = (state, product, edit = false) => {
     }
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart))
+  sessionStorage.setItem("cart", JSON.stringify(cart))
 
   return { ...state, cart}
 }
 
 const removeProduct = (state, product) => {
-  const cart = [ ...state.cart]
-  const index = cart.findIndex(prod => prod.id === product.id)
-  cart.splice(index, 1)
-  localStorage.setItem("cart", JSON.stringify(cart))
+  let cart = [ ...state.cart]
+  if (product === null) {
+    cart = []
+  } else {
+    const index = cart.findIndex(prod => prod._id === product._id)
+    cart.splice(index, 1)
+  }
+  sessionStorage.setItem("cart", JSON.stringify(cart))
   return { ...state, cart}
 }
 
@@ -62,6 +68,13 @@ const changeLanguage = (state, payload) => {
   localStorage.setItem('language', payload.language)
   return { ...state, currentLanguage: payload.language}
 }
+
+const updateUser = (state, payload) => {
+  const user = payload.user
+  localStorage.setItem('user', JSON.stringify(user))
+  return { ...state, user}
+}
+
 
 export {
   reducer
