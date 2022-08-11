@@ -20,7 +20,7 @@ const OrdersScreen = () => {
   // }, [user])
 	
 	return <>
-		<Container maxWidth='sm' sx={{pt:2 }}> 
+		<Container maxWidth='md' sx={{pt:2 }}> 
 			<Card spacing={2} style={{ marginTop:'unset' }} >
 				<CardContent>
 					<Grid container sx={{ justifyContent:'center' }}>
