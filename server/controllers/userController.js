@@ -30,9 +30,9 @@ const authenticateUser = async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
+  console.log(user, 'user')
   if (user) {
     const result = await user.testLogin(password)
-
     if (result) {
       res.status(200)
       res.json({
@@ -40,7 +40,8 @@ const authenticateUser = async (req, res) => {
         firstname: user.firstname,
         lastname: user.lastname,
         email: user.email,
-        emergencyphone: user.emergencyphone
+        emergencyphone: user.emergencyphone,
+        orders: user.orders
         // token: generateToken(user._id),
       })
     } else {
@@ -76,11 +77,24 @@ const createOrder = async (req, res) => {
       message: e.message
     })
   }
-  
+}
+
+const getUserOrders = async (req, res) => {
+  const userId = req.params.userId
+  console.log(userId)
+  const user = await User.findById(userId)
+
+  if (!user) return
+  console.log(user)
+  const orders = user.orders
+
+  res.status(200)
+  res.json(orders)
 }
 
 export {
 	createUser,
   authenticateUser,
-  createOrder
+  createOrder,
+  getUserOrders
 }

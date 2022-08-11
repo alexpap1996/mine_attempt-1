@@ -2,10 +2,10 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
-import { shops, products, users } from './staticData_server.js'
+import { users } from './staticData_server.js'
 import mongoose from 'mongoose'
 
-import { createUser, authenticateUser, createOrder } from './controllers/userController.js'
+import { createUser, authenticateUser, createOrder, getUserOrders } from './controllers/userController.js'
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
 
@@ -32,24 +32,21 @@ app.get('/api/user/test', async (req, res) => {
 // order array contains the product IDs only
 // products is the
 app.get('/api/orders/:userId', async (req, res) => {
-  const userId = req.params.userId
-  const orders = users.find(user => user.id === userId).orders
-
-  let productIds = new Set()
-  orders.forEach(order => 
-    order.products.forEach(prodId => {
-      productIds.add(prodId)
-    })
-  )
-  const filteredProds = products.filter(prod => productIds.has(prod.id))
-  
-  res.json({orders, products: filteredProds})
+  // await test(req, res)
+  await getUserOrders(req, res)
 })
 
 app.post('/api/orders/products', async (req, res) => {
   const { productIds } = req.body
 
-  const filteredProds = products.filter(prod => productIds.includes(prod.id))
+  const objectIds = productIds.map(pId => 
+    mongoose.Types.ObjectId(pId)
+  )
+
+  const filteredProds = await Product.find({
+    '_id': { $in: objectIds}
+  })
+
   res.json(filteredProds)
 })
 
