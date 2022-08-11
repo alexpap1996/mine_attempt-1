@@ -5,7 +5,7 @@ import { GlobalState } from '../contexts/Context';
 
 const HomeScreen = () => {
   const { state: { user } } = GlobalState()
-  const hasUnreviewedOrder = user.orders?.some(order => {
+  const hasUnreviewedOrder = user?.orders?.some(order => {
     return order.status === 'delivered'
   })
 
