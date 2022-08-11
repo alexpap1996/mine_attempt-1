@@ -59,7 +59,7 @@ const SignupForm = ({ handleSignup }) => {
             required
             fullWidth
             name="emergencyphone"
-            label={t('password')}
+            label={t('emergencynumber')}
             type="number"
             id="emergencyphone"
           />
