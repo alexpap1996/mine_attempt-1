@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './OrderProductsModal.css'
-import { List, Typography, Modal, Box, Card, CardContent, CardHeader, IconButton } from '@mui/material'
+import { List, Typography, Modal, Box, Card, CardContent, CardHeader, IconButton, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import OrderProductsModalItem from './OrderProductsModalItem'
+import OrderProductsRateItem from './OrderProductsRateItem'
 import CloseIcon  from '@mui/icons-material/Close';
+import AlertModal from '../../utils/AlertModal'
+import { ENDPOINT } from '../../constants/routeConstants'
+import axios from 'axios'
+import { GlobalState } from '../../contexts/Context'
 
 const style = {
   position: 'absolute',
@@ -15,22 +20,55 @@ const style = {
   maxHeight: '70vh'
 }
 
-const OrderProductsModal = ({products = [], unsetModalProducts}) => {
+const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, orderId}) => {
   const { t } = useTranslation()
+  const { state: {user}, dispatch } = GlobalState()
   const handleClose = () => {
     unsetModalProducts()
   }
+
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [ratings, setRatings] = useState({})
 
   const open = !!products.length
 
   const price = products.reduce((acc, curr) => acc + (curr.quantity * curr.price), 0)
 
-  return (
+  const saveRating = ({productId, rating}) => {
+    setRatings({
+      ...ratings,
+      [productId]: rating
+    })
+  }
+
+  const onClickSaveRating = () => {
+    setAlertOpen(true)
+  }
+
+  const handleAlertClose = async (event) => {
+    if (event.target.name === 'yes') {
+      const res = await axios.post(ENDPOINT + '/api/products/rate/', {
+        orderId: orderId,
+        userId: user._id,
+        ratings: ratings
+      })
+      if (res.status === 200) {
+        dispatch({
+          type: 'order_rated',
+          payload: {
+            orderId
+          }
+        })
+      }
+      unsetModalProducts()
+    }
+    setAlertOpen(false)
+  }
+
+  return (<>
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
     >
       <Card sx={style} className="modal">
         <CardHeader
@@ -45,17 +83,24 @@ const OrderProductsModal = ({products = [], unsetModalProducts}) => {
         <CardContent sx={{paddingRight: 'unset'}}>
           <List className="modal-list" sx={{paddingRight:1}}>
             {
-              products.map(prod => <OrderProductsModalItem product={prod}/>)
+              products.map(prod => modalMode === 'normal'
+                ? <OrderProductsModalItem product={prod}/>
+                : <OrderProductsRateItem saveRating={saveRating} product={prod} />)
             }
           </List>
-          <Box sx={{paddingRight:2, pt:1}}>
-            <Typography variant="h6" component="h2" sx={{ textAlign: 'right'}}>
-              {`${price.toFixed(2)}€`}
-            </Typography>
-          </Box>
+            <Box sx={{paddingRight:2, pt:1, display:'flex', justifyContent:'flex-end'}}>
+              {modalMode ==='normal' ?
+                <Typography variant="h6" component="h2" sx={{ textAlign: 'right'}}>
+                  {`${price.toFixed(2)}€`}
+                </Typography>
+                : <Button onClick={onClickSaveRating}>Save</Button>
+              }
+            </Box>
         </CardContent>
       </Card>
     </Modal>
+    <AlertModal open={alertOpen} handleClose={handleAlertClose}/>
+    </>
   )
 }
 
