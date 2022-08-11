@@ -43,5 +43,6 @@
   "seeYourOrders":"Εδω μπορείτε να δείτε τις προηγούμενες σας παραγγελίες",
   "orderProducts":"Προιοντα της παραγγελίας",
   "minimumAmount":"Ελάχιστο ποσό",
-  "minimumAmountNotPassed":"Η παραγγελία σας δεν περνάει το ελάχιστο ποσό"
+  "minimumAmountNotPassed":"Η παραγγελία σας δεν περνάει το ελάχιστο ποσό",
+  "emergencynumber":"Αριθμός Επειγόντων"
 }

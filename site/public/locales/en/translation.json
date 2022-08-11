@@ -43,5 +43,6 @@
   "seeYourOrders":"Here you can see the previous orders you have made.",
   "orderProducts":"Order Products",
   "minimumAmount":"Minimum Amount",
-  "minimumAmountNotPassed":"Your order is not above the minimum amount"
+  "minimumAmountNotPassed":"Your order is not above the minimum amount",
+  "emergencynumber":"Emergency Number"
 }
