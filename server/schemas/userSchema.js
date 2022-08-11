@@ -29,9 +29,13 @@ const orderSchema = mongoose.Schema({
       ref: 'Product',
     }
   }],
+  creationDate: {
+    type: Date,
+    default: Date.now()
+  }
 },
 {
-  timestamp: { type: Date, default: Date.now},
+  timestamp: true,
 })
 
 const userSchema = mongoose.Schema(
