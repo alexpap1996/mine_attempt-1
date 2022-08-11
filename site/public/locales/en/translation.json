@@ -46,5 +46,10 @@
   "orderProducts":"Order Products",
   "minimumAmount":"Minimum Amount",
   "minimumAmountNotPassed":"Your order is not above the minimum amount",
-  "emergencynumber":"Emergency Number"
+  "orderCreated":"Order Created!",
+  "emergencynumber":"Emergency Number",
+  "rated":"Rated",
+  "rateProducts":"Rate Products",
+  "areYouSure":"Are you sure you want to save? You cannot edit this later",
+  "warning":"Warning"
 }
