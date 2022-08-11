@@ -38,7 +38,7 @@ const CartProductsList = ({ cartItems }) => {
           {
             cartItems.map((product, index, arr) => 
               <ProductWithDivider 
-                key={product.id}
+                key={product._id}
                 product={product} 
                 isLastItem={index+1=== arr.length}
               />
