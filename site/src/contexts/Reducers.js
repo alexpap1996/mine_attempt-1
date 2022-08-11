@@ -71,6 +71,7 @@ const changeLanguage = (state, payload) => {
 
 const updateUser = (state, payload) => {
   const user = payload.user
+  user.orders.sort((a, b) => a.creationDate - b.creationDate)
   localStorage.setItem('user', JSON.stringify(user))
   return { ...state, user}
 }
