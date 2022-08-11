@@ -29,7 +29,7 @@ const ProductCard = ({product}) => {
     setOpen(false)
   }
 
-  const rating = ratings.reduce((acc, rating) => acc + rating.value, 0) / ratings.length
+  const rating = ratings.reduce((acc, rObj) => acc + rObj.rating, 0) / ratings.length
   return (<>
     <Card 
       sx={{ 
