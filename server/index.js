@@ -88,6 +88,28 @@ app.post('/api/products/create/', async (req, res) => {
   res.json(result)
 })
 
+app.post('/api/products/rate/', async (req, res) => {
+  const { orderId, userId, ratings } = req.body
+
+  const productIds = Object.keys(ratings).map(pId => mongoose.Types.ObjectId(pId))
+  const products = await Product.find({
+    '_id': { $in: productIds}
+  })
+  products.forEach(prod => {
+    prod.ratings.push({
+      rating: ratings[prod._id],
+      user: userId
+    })
+  })
+  const result = await Product.bulkSave(products)
+
+  const user = await User.findById(userId)
+  user.orders.find(order => order._id.toString() === orderId).status = 'rated'
+
+  await user.save()
+  res.json(user.orders)
+})
+
 app.post('/api/shops/create/', async (req, res) => {
   const shops = req.body.shops
   console.log(shops)
