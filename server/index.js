@@ -8,6 +8,7 @@ import mongoose from 'mongoose'
 import { createUser, authenticateUser, createOrder, getUserOrders } from './controllers/userController.js'
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
+import User from './schemas/userSchema.js'
 
 connect()
 const app = express()
