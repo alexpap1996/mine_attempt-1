@@ -6,9 +6,11 @@ import { Box, Card, Button, Snackbar, Alert } from '@mui/material'
 import { ENDPOINT } from '../../constants/routeConstants'
 import Loading from '../../utils/Loading'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { state, dispatch } = GlobalState()
   const [loading, setLoading] = useState(false)
   const [modalOpen, setModalOpen] = useState(false);
@@ -58,6 +60,7 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
         type: "remove",
         payload: null
       })
+      navigate('/account/orders?order_created=true')
       setModalOpen(true)
     } else {
       
