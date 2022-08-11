@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Container, Card, CardContent, Grid, Typography } from '@mui/material'
 import OrderList from '../components/Orders/OrderList'
-import axios from 'axios'
-import { ENDPOINT } from '../constants/routeConstants'
 import { GlobalState } from '../contexts/Context'
 import { useTranslation } from 'react-i18next'
 
 const OrdersScreen = () => {
   const { state: { user } } = GlobalState()
 	const { t } = useTranslation()
-	const [orderProds, setOrderProds] = useState([])
-	useEffect(() => {
-    const getOrders = async () => {
-      try {
-        const { data } = await axios(ENDPOINT + '/api/orders/'+user.id)
-        setOrderProds(data.products)
-      } catch (e) {
-        console.log(e.message)
-      }
-    }
-    getOrders()
-  }, [user])
+	// useEffect(() => {
+  //   const getOrders = async () => {
+  //     try {
+  //       const { data } = await axios(ENDPOINT + '/api/orders/'+user._id)
+	// 			const
+  //     } catch (e) {
+  //       console.log(e.message)
+  //     }
+  //   }
+  //   getOrders()
+  // }, [user])
 	
 	return <>
 		<Container maxWidth='sm' sx={{pt:2 }}> 
@@ -35,7 +32,7 @@ const OrdersScreen = () => {
 								{t('seeYourOrders')}
 							</Typography>
 						</Grid>
-						<OrderList orders={user.orders} products={orderProds}/>
+						<OrderList orders={user.orders}/>
 					</Grid>	
 				</CardContent>
 			</Card>

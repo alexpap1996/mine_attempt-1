@@ -53,7 +53,7 @@ const ProductListScreen = () => {
         
         <Grid container spacing={2} style={{ marginTop: 'unset' }}>
           {
-            products.map(prod => <GridProductItem key={prod.id} product={prod} />)
+            products.map(prod => <GridProductItem key={prod._id} product={prod} />)
           }
         </Grid>
       </Container>
