@@ -4,7 +4,7 @@ import express from 'express'
 import connect from './config/database.js'
 import mongoose from 'mongoose'
 
-import { createUser, authenticateUser, createOrder, getUserOrders } from './controllers.js'
+import { createUser, authenticateUser, createOrder, getUserOrders, rateProducts } from './controllers.js'
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
 import User from './schemas/userSchema.js'

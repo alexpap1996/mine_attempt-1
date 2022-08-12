@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import User from './schemas/userSchema.js'
 import Product from './schemas/productSchema.js'
 
