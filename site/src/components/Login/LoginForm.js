@@ -38,8 +38,8 @@ const LoginForm = ({ handleLogin, loginError }) => {
         name="rememberMe"
       />
       
-      <Typography component="div" variant="body1" sx={{color: 'red', mt:1}}>{loginError}</Typography>
-
+      <Typography component="div" variant="body1" sx={{color: 'red', mt:1}}>{t(loginError)}</Typography>
+      
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 2, mb: 2 }} >
         {t("signIn")}
       </Button>

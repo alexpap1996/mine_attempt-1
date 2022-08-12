@@ -1,12 +1,9 @@
 import React from "react"
 import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
+import { Typography, Box, Grid, TextField, Button } from "@mui/material"
 
-const SignupForm = ({ handleSignup }) => {
+const SignupForm = ({ handleSignup, signUpError }) => {
   const { t } = useTranslation()
   return (
     <Box component="form" onSubmit={handleSignup} sx={{ mt: 3 }}>
@@ -66,6 +63,8 @@ const SignupForm = ({ handleSignup }) => {
         </Grid>
         
       </Grid>
+      <Typography component="div" variant="body1" sx={{color: 'red', mt:1}}>{t(signUpError)}</Typography>
+   
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         {t('signUp')}
       </Button>

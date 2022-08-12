@@ -33,7 +33,7 @@ const Login = () => {
         setLoginError(t('wrongEmail'))
       }
     } catch (e) {
-      setLoginError(e.message)
+      setLoginError(e.response?.data?.message || t('error'))
     }
   }
 
