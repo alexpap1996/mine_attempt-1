@@ -38,7 +38,7 @@ const NavMainButtons = () => {
           sx={{padding: '7px 10px'}}
           endIcon={<button.icon />}
         >
-          {t(button.label) + (button.label === 'cart' && ` (${cartLength})`)}
+          {t(button.label) + (button.label === 'cart' ? ` (${cartLength})` : '')}
         </Button>
       </Box>
     )}
