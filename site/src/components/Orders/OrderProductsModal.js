@@ -77,7 +77,7 @@ const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, order
               <CloseIcon  />
             </IconButton>
           }
-          title={t('orderProducts')}
+          title={modalMode === 'normal' ? t('orderProducts') : t('rateProducts')}
           sx={{pb:0}}
         />
         <CardContent sx={{paddingRight: 'unset'}}>
