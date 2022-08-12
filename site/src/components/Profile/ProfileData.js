@@ -1,16 +1,19 @@
-import { Grid, TextField } from "@mui/material"
+import { Grid, TextField, FormControl } from "@mui/material"
 import { useTranslation } from 'react-i18next'
 
 const GridItem = ({value, label}) => {
   return <Grid item xs={12} md={6}>
-    <TextField
-      label={label}
-      defaultValue={value}
-      InputProps={{
-        readOnly: true,
-      }}
-      variant="standard"
-    />    
+    <FormControl fullWidth>
+      <TextField
+        label={label}
+        defaultValue={value}
+        InputProps={{
+          readOnly: true,
+        }}
+        variant="standard"
+        sx={{px:3, label:{px:4}, input: {textAlign: "right", pr:1}}}
+      />
+    </FormControl>
   </Grid>
 }
 
