@@ -3,6 +3,17 @@ import User from '../schemas/userSchema.js'
 const createUser = async (req, res)  => {
 	const { firstname,lastname,emergencyphone, email, password } = req.body
   console.log(req.body)
+  const userExists = await User.find({
+    email: email
+  })
+  if (userExists) {
+    res.status(400)
+    res.json({
+      message: 'userExists'
+    })
+    return 
+  }
+
 	const user = await User.create({
     firstname,
     lastname,
@@ -46,11 +57,14 @@ const authenticateUser = async (req, res) => {
       })
     } else {
       res.status(403)
+      res.json({
+        message: 'wrongPassword'
+      })
     }
   } else {
     res.status(400)
     res.json({
-      message: 'user not found'
+      message: 'userNotFound'
     })
   }
 }
