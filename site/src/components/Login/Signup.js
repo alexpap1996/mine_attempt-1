@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import LoginFormHeader from "./LoginFormHeader"
+import Loading from '../../utils/Loading'
 import SignupForm from "./SignupForm"
 import axios from 'axios'
 import { Grid, Paper, Box } from "@mui/material"
@@ -12,6 +13,8 @@ const Signup = () => {
   const { t } = useTranslation()
   const { dispatch } = GlobalState()
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
+  const [signUpError, setSignupError] = useState('')
   
   const headerText = t("signUp")
 
@@ -21,42 +24,53 @@ const Signup = () => {
   // else there was an error
   const handleSignup = async (event) => {
     event.preventDefault()
+    setLoading(true)
     const data = new FormData(event.currentTarget)
 
-    const res = await axios.post(ENDPOINT + '/api/user/create', {
-      firstname: data.get("firstname"),
-      lastname: data.get("lastname"),
-      email: data.get("email"),
-      password: data.get("password"),
-      emergencyphone: data.get("emergencyphone")
-    })
-    if (res.status === 200) {
-      dispatch({
-        type: 'login',
-        payload: { user: res.data, persist: false }
+    try {
+      const res = await axios.post(ENDPOINT + '/api/user/create', {
+        firstname: data.get("firstname"),
+        lastname: data.get("lastname"),
+        email: data.get("email"),
+        password: data.get("password"),
+        emergencyphone: data.get("emergencyphone")
       })
-      navigate('/')
-    } else {
-      console.log(res)
+      if (res.status === 200) {
+        dispatch({
+          type: 'login',
+          payload: { user: res.data, persist: false }
+        })
+        navigate('/')
+      } else {
+        setSignupError('error')
+      }
+    } catch (e) {
+      setSignupError(e.response?.data?.message || 'error')
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Box
-          sx={{
-            my: 8,
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <LoginFormHeader headerText={headerText} />
-          <SignupForm handleSignup={handleSignup}/>
-        </Box>
-      </Grid>
+      {!loading
+        ? <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            <Box
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <LoginFormHeader headerText={headerText} />
+              <SignupForm handleSignup={handleSignup} signUpError={signUpError}/>
+            </Box>
+          </Grid>
+        :<Loading />
+      }
+
     </>
   )
 }
