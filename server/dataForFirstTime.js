@@ -78,10 +78,12 @@ const createProducts = async (shopIds) => {
   const gyroplace = shopIds[3]
   const crepeplace = shopIds[4]
 
-  const orange = createProd(new Name('Orange', 'Πορτοκάλι'), GrandMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
+  const orange = createProd(new Name('Orange', 'Πορτοκάλι'), MiniMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
+  const orange2 = createProd(new Name('Orange', 'Πορτοκάλι'), GrandMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
+  const kiwi = createProd(new Name('Kiwi', 'Ακτινίδιο'), GrandMarketId, 1.2, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/kiwi_e75c3b.jpg')
   const vitaminC = createProd(new Name('Vitamin C - 1000mg', 'Βιταμινη C - 1000μγ'), pharmacyId, 8.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1660036588/5df9a1287e60e99cc253bd768e7d2236_VITC1000_r2ilyq.jpg')
   
-  const products = [orange, vitaminC]
+  const products = [orange, orange2, kiwi, vitaminC]
   const res = await Product.bulkSave(products)
 }
 
