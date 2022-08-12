@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from "react-i18next";
 import CartTotals from './CartTotals'
 import { GlobalState } from '../../contexts/Context'
-import { Box, Card, Button, Snackbar, Alert } from '@mui/material'
+import { Box, Card, Button } from '@mui/material'
 import { ENDPOINT } from '../../constants/routeConstants'
 import Loading from '../../utils/Loading'
 import axios from 'axios'
