@@ -2,10 +2,9 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
-import { users } from './staticData_server.js'
 import mongoose from 'mongoose'
 
-import { createUser, authenticateUser, createOrder, getUserOrders } from './controllers/userController.js'
+import { createUser, authenticateUser, createOrder, getUserOrders } from './controllers.js'
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
 import User from './schemas/userSchema.js'
@@ -84,25 +83,7 @@ app.post('/api/products/create/', async (req, res) => {
 })
 
 app.post('/api/products/rate/', async (req, res) => {
-  const { orderId, userId, ratings } = req.body
-
-  const productIds = Object.keys(ratings).map(pId => mongoose.Types.ObjectId(pId))
-  const products = await Product.find({
-    '_id': { $in: productIds}
-  })
-  products.forEach(prod => {
-    prod.ratings.push({
-      rating: ratings[prod._id],
-      user: userId
-    })
-  })
-  const result = await Product.bulkSave(products)
-
-  const user = await User.findById(userId)
-  user.orders.find(order => order._id.toString() === orderId).status = 'rated'
-
-  await user.save()
-  res.json(user.orders)
+  await rateProducts(req, res)
 })
 
 app.post('/api/shops/create/', async (req, res) => {

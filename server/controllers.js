@@ -1,4 +1,5 @@
-import User from '../schemas/userSchema.js'
+import User from './schemas/userSchema.js'
+import Product from './schemas/productSchema.js'
 
 const createUser = async (req, res)  => {
 	const { firstname,lastname,emergencyphone, email, password } = req.body
@@ -105,9 +106,32 @@ const getUserOrders = async (req, res) => {
   res.json(orders)
 }
 
+const rateProducts = async (req, res) => {
+  const { orderId, userId, ratings } = req.body
+
+  const productIds = Object.keys(ratings).map(pId => mongoose.Types.ObjectId(pId))
+  const products = await Product.find({
+    '_id': { $in: productIds}
+  })
+  products.forEach(prod => {
+    prod.ratings.push({
+      rating: ratings[prod._id],
+      user: userId
+    })
+  })
+  await Product.bulkSave(products)
+
+  const user = await User.findById(userId)
+  user.orders.find(order => order._id.toString() === orderId).status = 'rated'
+
+  await user.save()
+  res.json(user.orders)
+}
+
 export {
 	createUser,
   authenticateUser,
   createOrder,
-  getUserOrders
+  getUserOrders,
+  rateProducts
 }
