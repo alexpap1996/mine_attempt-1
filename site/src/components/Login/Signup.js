@@ -68,7 +68,7 @@ const Signup = () => {
               <SignupForm handleSignup={handleSignup} signUpError={signUpError}/>
             </Box>
           </Grid>
-        :<Loading />
+        : <Loading />
       }
 
     </>

@@ -7,6 +7,7 @@ import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 import { GlobalState } from '../../contexts/Context'
 import { useNavigate } from "react-router-dom"
+import Loading from "../../utils/Loading"
 
 const Login = () => {
   const { t } = useTranslation()
@@ -14,9 +15,11 @@ const Login = () => {
   const navigate = useNavigate()
   const headerText = t("signIn")
   const [loginError, setLoginError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (event) => {
     event.preventDefault()
+    setLoading(true)
     const data = new FormData(event.currentTarget)
     try {
       const res = await axios.post(ENDPOINT + '/api/user/login', {
@@ -34,17 +37,22 @@ const Login = () => {
       }
     } catch (e) {
       setLoginError(e.response?.data?.message || t('error'))
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Box sx={{ my: 8, mx: 4, display: "flex", flexDirection: "column", alignItems: "center", }} >
-          <LoginFormHeader headerText={headerText} />
-          <LoginForm handleLogin={handleLogin} loginError={loginError} />
-        </Box>
-      </Grid>
+      {!loading ?
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box sx={{ my: 8, mx: 4, display: "flex", flexDirection: "column", alignItems: "center", }} >
+            <LoginFormHeader headerText={headerText} />
+            <LoginForm handleLogin={handleLogin} loginError={loginError} />
+          </Box>
+        </Grid>
+        : <Loading />
+      }
     </>
   )
 }
