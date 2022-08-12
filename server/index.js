@@ -19,14 +19,8 @@ app.use(cors())
 
 // called to login / authenticate user
 app.post('/api/user/login/', async (req, res) => {
+  console.log('hit login')
   await authenticateUser(req, res)
-})
-
-app.get('/api/user/test', async (req, res) => {
-  // const name = req.params.name
-  //const user = await getUser(name)
-  console.log('hit /api/user/create')
-  res.json(users[0])
 })
 
 // returns an object {orders: [], products: []}
@@ -75,6 +69,7 @@ app.get('/api/shops/:category', async (req, res) => {
 app.get('/api/shop/:shopId', async (req, res) => {
   const shopId = req.params.shopId
   const filteredProds = await Product.find({shopId:mongoose.Types.ObjectId(shopId)})
+
   const shop = await Shop.findById(shopId)
   const shopAndProducts = {
     shop, products: filteredProds
@@ -84,7 +79,6 @@ app.get('/api/shop/:shopId', async (req, res) => {
 
 app.post('/api/products/create/', async (req, res) => {
   const products = req.body.products
-  console.log(products)
   const result = await Product.insertMany(products)
   res.json(result)
 })
@@ -113,7 +107,6 @@ app.post('/api/products/rate/', async (req, res) => {
 
 app.post('/api/shops/create/', async (req, res) => {
   const shops = req.body.shops
-  console.log(shops)
   await Shop.deleteMany({})
   const result = await Shop.insertMany(shops)
   res.json(result)
