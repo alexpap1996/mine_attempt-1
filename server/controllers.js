@@ -7,10 +7,10 @@ const createUser = async (req, res)  => {
   const userExists = await User.find({
     email: email
   })
-  if (userExists) {
+  if (userExists.length) {
     res.status(400)
     res.json({
-      message: userExists.toString()
+      message: 'userExists'
     })
     return 
   }
