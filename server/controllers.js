@@ -10,7 +10,7 @@ const createUser = async (req, res)  => {
   if (userExists) {
     res.status(400)
     res.json({
-      message: 'userExists'
+      message: userExists.toString()
     })
     return 
   }
