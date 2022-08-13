@@ -38,6 +38,14 @@ const createUser = async (req, res)  => {
   }
 }
 
+const editUser = async (req, res) => {
+  const { _id, firstname, lastname, emergencyphone } = req.body
+  const user = await User.findByIdAndUpdate(_id, {
+    firstname, lastname, emergencyphone
+  }, {new: true})
+  res.status(200)
+  res.json({user})
+}
 
 const authenticateUser = async (req, res) => {
   const { email, password } = req.body
@@ -131,6 +139,7 @@ const rateProducts = async (req, res) => {
 
 export {
 	createUser,
+  editUser,
   authenticateUser,
   createOrder,
   getUserOrders,

@@ -4,7 +4,7 @@ import express from 'express'
 import connect from './config/database.js'
 import mongoose from 'mongoose'
 
-import { createUser, authenticateUser, createOrder, getUserOrders, rateProducts } from './controllers.js'
+import { createUser, authenticateUser, createOrder, getUserOrders, rateProducts, editUser } from './controllers.js'
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
 import User from './schemas/userSchema.js'
@@ -53,6 +53,11 @@ app.post('/api/orders/create', async (req, res) => {
 // creates a user
 app.post('/api/user/create/', async (req, res) => {
   await createUser(req, res)
+})
+
+// edits a user
+app.post('/api/user/edit/', async (req, res) => {
+  await editUser(req, res)
 })
 
 // returns all shops the belong to the category that is passed
