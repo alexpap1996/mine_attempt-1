@@ -73,7 +73,8 @@ const changeLanguage = (state, payload) => {
 
 const updateUser = (state, payload) => {
   const user = payload.user
-  localStorage.setItem('user', JSON.stringify(user))
+  if (localStorage.getItem('user')) localStorage.setItem('user', JSON.stringify(user))
+  else sessionStorage.setItem('user', JSON.stringify(user))
   return { ...state, user}
 }
 
@@ -85,6 +86,7 @@ const orderRated = (state, payload) => {
     ...user.orders[orderIndex],
     status: 'rated'
   }
+  updateUser(state, { user })
   return { ...state, user}
 }
 
