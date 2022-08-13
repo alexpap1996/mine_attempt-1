@@ -52,5 +52,6 @@
   "warning":"Warning",
   "userNotFound":"User Not Found",
   "userExists":"User already exists",
-  "wrongPassword":"Wrong Password, try again"
+  "wrongPassword":"Wrong Password, try again",
+  "fieldsMustBePopulated":"All fields must be populated!"
 }
