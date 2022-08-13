@@ -19,11 +19,11 @@ const QuantitySelector = ({quantity = 0, size, quantityChange }) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems:'center'}}>
-      <IconButton color='secondary'  sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={decrementHandler}>
+      <IconButton sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={decrementHandler}>
         <Remove fontSize='small'/>
       </IconButton>
         <Typography variant='body1' sx={{ padding: '0 0.3rem', fontSize}}>{currQuantity}</Typography>
-      <IconButton color='secondary' sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={incrementHandler}>
+      <IconButton sx={{backgroundColor: 'darkgrey', height: fontSize, width: fontSize }} onClick={incrementHandler}>
         <Add  fontSize='small'/>
       </IconButton>
     </Box>
