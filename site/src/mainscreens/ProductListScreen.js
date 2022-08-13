@@ -56,7 +56,7 @@ const ProductListScreen = () => {
               <Typography component="h5" variant="h3" sx={{ fontWeight: 300}} >{shop.name[currLang]}</Typography>
             </Divider>
             
-            <Typography component="div" variant="h6" sx={{color:'secondary'}} >{t(shop.category)}</Typography>
+            <Typography component="div" variant="h6" >{t(shop.category)}</Typography>
           </CardContent>
         </Card>
         
