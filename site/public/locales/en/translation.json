@@ -53,5 +53,7 @@
   "userNotFound":"User Not Found",
   "userExists":"User already exists",
   "wrongPassword":"Wrong Password, try again",
-  "fieldsMustBePopulated":"All fields must be populated!"
+  "fieldsMustBePopulated":"All fields must be populated!",
+  "edit":"Edit",
+  "save":"Save"
 }
