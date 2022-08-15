@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent, Typography, FormControl, TextField, MenuItem } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
+// this allows the user to select a tip from a list of preselected values
 const CartTipSelector = ({ tip, handleTipChange, hasCartItems = false }) => {
   const { t } = useTranslation()
   const opacity = hasCartItems ? 1 : 0.15

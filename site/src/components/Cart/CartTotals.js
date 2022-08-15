@@ -15,6 +15,7 @@ const Row = ({text, amount = 0, sx = undefined, fontWeight = 500}) => {
   )
 }
 
+// the totals information of the cart
 const CartTotals = ({hasCartItems = false, minimumAmount = 0, tip = 0, itemTotal = 0, amount = 0, grandTotal = 0}) => {
   const opacity = hasCartItems ? 1 : 0.15
   const { t } = useTranslation()

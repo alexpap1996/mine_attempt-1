@@ -16,7 +16,6 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
 
   const minimumAmount = 10
 
-
   const user = state.user
   const itemTotal = state.cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
   const tip = state.tip

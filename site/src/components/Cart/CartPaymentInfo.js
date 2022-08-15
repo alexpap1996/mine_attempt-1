@@ -23,6 +23,7 @@ const MethodButton = ({name, text, handlePaymentTypeChange, paymentType, disable
   )
 }
 
+// has all the payment information and handles any changes
 const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, detailsMissing = '' }) => {
   const { t } = useTranslation()
   const [paymentType, setPaymentType] = useState('cash')
@@ -31,6 +32,7 @@ const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, deta
   const [cvv, setCvv] = useState({ public:'', private: ''})
   const [expiryDate, setExpiryDate] = useState('')
 
+  // payment details start as cash which has no details necessary
   const [paymentDetails, setPaymentDetails] = useState({
     type: 'cash',
     details: {
@@ -41,6 +43,8 @@ const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, deta
     }
   })
 
+  // if cart is empty or payment type is not cart
+  // we shouldn't need to edit any fields
   const inputsDisabled = !hasCartItems || paymentType !== 'card'
   const opacity = !inputsDisabled ? 1 : 0.15
 
@@ -90,6 +94,8 @@ const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, deta
     }
   }
 
+  // cvv should display as ***
+  // but we should also save the actual numbers
   const handleCvvKeyDown = (event) => {
     const { key, keyCode } = event
     const cvvPriv = cvv.private
@@ -111,6 +117,7 @@ const CartPaymentInfo = ({ hasCartItems = false, handlePaymentMethodChange, deta
     }
   }
 
+  // here we toggles the / between MM/YY automatically and also save the current value
   const handleDateKeyDown = (event) => {
     const { key, keyCode } = event
     if (!isNaN(key) && expiryDate.length < 5) {

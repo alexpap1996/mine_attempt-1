@@ -29,6 +29,8 @@ const EmptyCart = ({text}) => {
   )
 }
 
+// the list of products in the cart
+// if list is empty we render the component EmptyCart
 const CartProductsList = ({ cartItems }) => {
   const { t } = useTranslation()
   return <>
