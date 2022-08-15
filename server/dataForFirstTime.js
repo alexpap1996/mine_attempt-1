@@ -40,6 +40,7 @@ const createUser = (firstname, lastname, email, password, emergencyphone) => {
 }
 
 // delete all existing records from database
+// so whatever we add after is going to be the entire database
 const deleteExistingData = async () => {
   await Product.deleteMany({})
   // await User.deleteMany({})
@@ -81,9 +82,10 @@ const createProducts = async (shopIds) => {
   const orange = createProd(new Name('Orange', 'Πορτοκάλι'), MiniMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
   const orange2 = createProd(new Name('Orange', 'Πορτοκάλι'), GrandMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
   const kiwi = createProd(new Name('Kiwi', 'Ακτινίδιο'), GrandMarketId, 1.2, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/kiwi_e75c3b.jpg')
+  const salt = createProd(new Name('Salt - 500gr', 'Αλάτι - 500γρ'), GrandMarketId, 2.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_300,w_400/v1660566716/alati-sakoula-300-208x300_bgn6dq.png')
   const vitaminC = createProd(new Name('Vitamin C - 1000mg', 'Βιταμινη C - 1000μγ'), pharmacyId, 8.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1660036588/5df9a1287e60e99cc253bd768e7d2236_VITC1000_r2ilyq.jpg')
   
-  const products = [orange, orange2, kiwi, vitaminC]
+  const products = [orange, orange2, kiwi, salt, vitaminC]
   const res = await Product.bulkSave(products)
 }
 

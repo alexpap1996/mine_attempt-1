@@ -53,7 +53,7 @@ const ProductCard = ({product}) => {
           </Grid>
           <Grid item xs={3}>
             <Typography variant="h6" component="div" sx={{ textAlign:'right', fontWeight:'400'}}>
-              {price}€
+              {price.toFixed(2)}€
             </Typography>
           </Grid>
         </Grid>
