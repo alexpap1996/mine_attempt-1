@@ -1,6 +1,8 @@
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material"
 import { useTranslation } from "react-i18next"
 
+// a simple confirmation modal
+// whatever the option we return handleClose so whoever calls it must handle the selected option
 const AlertModal = ({open = false, handleClose}) => {
   const { t } = useTranslation()
   return (

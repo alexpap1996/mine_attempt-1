@@ -7,6 +7,8 @@ const isUserLoggedIn = () => {
   return user
 };
 
+// if the user is logged in we allow them to continue with their selected path (Outlet component handles this)
+// if they are not logged in we redirect them to login path
 const ProtectedRoutes = () => {
   const location = useLocation();
   const loggedIn = isUserLoggedIn();

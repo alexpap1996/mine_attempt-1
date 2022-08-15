@@ -15,6 +15,8 @@ const GridShopCard = ({title, goToDir, cardColor, image}) => {
   )
 }
 
+// list of shops
+// rendered as ClickableCard so the user is redirected to specific shop when clicking on a card
 const ShopList = ({category}) => {
   const { i18n, t } = useTranslation()
   const currLang = i18n.language
@@ -22,8 +24,8 @@ const ShopList = ({category}) => {
   const { main } = theme.palette.secondary
   const [shopsList, setShopsList] = useState([])
   
-
   useEffect(() => {
+    // doing the callout to get all shops of selected category
     const getCategoryShops = async () => {
       try {
         const { data } = await axios(ENDPOINT + '/api/shops/' +category)

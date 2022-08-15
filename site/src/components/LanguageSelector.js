@@ -15,7 +15,7 @@ const languages = [
 	}
 ]
 
-// used to change the current language
+// used to change the current language from a list of available languages
 const LanguageSelector = () => {
   const { i18n } = useTranslation()
   const { state: { currentLanguage }, dispatch } = GlobalState()
