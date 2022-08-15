@@ -32,7 +32,7 @@ const Login = () => {
       })
       // if all is ok save the logged in user on global state
       // and renavigates to home directory
-      // if the is an error it displays the error
+      // if there is an error it displays the error
       if (res.status === 200) {
         dispatch({
           type: 'login',
