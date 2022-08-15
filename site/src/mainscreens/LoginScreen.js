@@ -4,7 +4,10 @@ import Login from '../components/Login/Login'
 import Signup from '../components/Login/Signup'
 import Grid from '@mui/material/Grid';
 
-const WelcomeScreen = () => {
+// used for login and signup
+// if path startsWith /login/signup we render the Signup component
+// else we render the Login component
+const LoginScreen = () => {
   const location = useLocation()
   const isLogin = !location.pathname.startsWith('/login/signup')
 
@@ -23,4 +26,4 @@ const WelcomeScreen = () => {
 	</>
 }
 
-export default WelcomeScreen
+export default LoginScreen
