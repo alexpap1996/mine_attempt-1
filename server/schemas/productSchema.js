@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+// object that has a string for each language
 const bilingualSchema = mongoose.Schema({
   en: {
     type: String,
@@ -11,6 +12,7 @@ const bilingualSchema = mongoose.Schema({
   },
 })
 
+// we save the rating of the product and the id of the user that made the rating
 const ratingSchema = mongoose.Schema({
   rating: { 
     type: Number, 

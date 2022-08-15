@@ -6,6 +6,8 @@ import Loading from './utils/Loading'
 import './utils/i18n';
 import Context from './contexts/Context'
 
+// we create a theme to have a consistent color scheme across the website
+// without rewriting the values each time
 const themeOptions = {
   palette: {
     primary: {
@@ -19,7 +21,6 @@ const themeOptions = {
     backgroundColor: '#F6FBF4',
   },
 }
-
 const theme = createTheme(themeOptions);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

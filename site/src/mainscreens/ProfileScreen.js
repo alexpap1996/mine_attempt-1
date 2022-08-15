@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'
 import axios from 'axios'
 import { ENDPOINT } from '../constants/routeConstants'
 
+// the profile of the user
+// here we can view and edit the data of the current user
 const ProfileScreen = () => {
   const { t } = useTranslation()
   const { state: { user }, dispatch} = GlobalState()

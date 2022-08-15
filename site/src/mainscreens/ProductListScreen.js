@@ -18,6 +18,7 @@ const GridProductItem = ({product}) => {
   )
 }
 
+// list of products of the selected store
 const ProductListScreen = () => {
   const { i18n, t } = useTranslation()
   const currLang = i18n.language
@@ -29,7 +30,10 @@ const ProductListScreen = () => {
   const [shop, setShop] = useState({})
   const shopCategory = shop.category
   
+  // using useEffect so this runs on first render and if the shopId happens to change
   useEffect(() => {
+    // calling out using the current shop id
+    // which will return us all the products of that shop and also some details of the shop to display
     const getProducts = async () => {
       try {
         const { data } = await axios(ENDPOINT + '/api/shop/'+shopId)
@@ -41,6 +45,8 @@ const ProductListScreen = () => {
     }
     getProducts()
   }, [shopId])
+
+  
   return (<>
     {shopCategory && <Box sx={{ margin: '16px', position: 'absolute' }}>
       <Button variant="text" startIcon={<ArrowBackIcon />} component={RouterLink} to={`/shops/${shopCategory}`}>

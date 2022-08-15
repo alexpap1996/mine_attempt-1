@@ -5,12 +5,18 @@ import { GlobalState } from '../contexts/Context'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from "react-router-dom";
 
+// page to view the created orders of the user
+// we take this value from global state from user.orders
 const OrdersScreen = () => {
   const { state: { user } } = GlobalState()
 	const { t } = useTranslation()
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [openMessage, setOpenMessage] = useState(false)
 
+  // if the url contains 'order_created' 
+  //  it means we are redirected from order creation
+  //  so we display the snackbar that contains the 'order created' message
+  // using useEffect with empty array as dependency so it only runs once
 	useEffect(() => {
 		if (searchParams.get("order_created")) {
 			setOpenMessage(true)

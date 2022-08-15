@@ -1,18 +1,20 @@
-import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import connect from './config/database.js'
 import mongoose from 'mongoose'
 
+// user methods are more complicated so they are put into separate file
 import { createUser, authenticateUser, createOrder, getUserOrders, rateProducts, editUser } from './controllers.js'
+
+// import the schemas
 import Product from './schemas/productSchema.js'
 import Shop from './schemas/shopSchema.js'
-import User from './schemas/userSchema.js'
 
+// connect to the db
 connect()
 const app = express()
-const router = express.Router()
 
+// init middleware
 app.use(express.json())
 app.use(cors())
 
@@ -30,6 +32,7 @@ app.get('/api/orders/:userId', async (req, res) => {
   await getUserOrders(req, res)
 })
 
+// get full products to display when clicking on an order
 app.post('/api/orders/products', async (req, res) => {
   const { productIds } = req.body
 
@@ -81,16 +84,19 @@ app.get('/api/shop/:shopId', async (req, res) => {
   res.json(shopAndProducts)
 })
 
+// insert an order
 app.post('/api/products/create/', async (req, res) => {
   const products = req.body.products
   const result = await Product.insertMany(products)
   res.json(result)
 })
 
+// rate products of an order
 app.post('/api/products/rate/', async (req, res) => {
   await rateProducts(req, res)
 })
 
+// used only by other files to insert shops into the db
 app.post('/api/shops/create/', async (req, res) => {
   const shops = req.body.shops
   await Shop.deleteMany({})
@@ -104,6 +110,6 @@ const PORT = process.env.PORT || 9000
 app.listen(
   PORT,
   console.log(
-    `Server running in development mode on port ${PORT}`
+    `Server running on port ${PORT}`
   )
 )

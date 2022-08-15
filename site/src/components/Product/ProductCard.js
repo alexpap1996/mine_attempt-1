@@ -4,6 +4,7 @@ import QuantitySelector from './QuantitySelector'
 import { useTranslation } from 'react-i18next'
 import { GlobalState } from '../../contexts/Context'
 
+// the card of the product that contains some info and has the option to add specific quantities to cart
 const ProductCard = ({product}) => {
   const { name, price, ratings = [] } = product
   const { t, i18n } = useTranslation()
@@ -11,7 +12,11 @@ const ProductCard = ({product}) => {
   const [quantity, setQuantity] = useState(1)
 
   const { dispatch } = GlobalState()
-  const addToCartHandler = (event) => {
+
+  // when clicking on the card
+  // we take the product of the component and the current quantity and add it to the global state
+  // after we also display the success snackbar
+  const addToCartHandler = () => {
     dispatch({
       type: 'add',
       payload: { ...product, quantity}
@@ -23,12 +28,14 @@ const ProductCard = ({product}) => {
     setQuantity(val)
   }
 
+  // initializing the state of the alert
   const [open, setOpen] = useState(false);
 
   const closeHandler = () => {
     setOpen(false)
   }
 
+  // take all ratings of the product and find the mean
   const rating = ratings.reduce((acc, rObj) => acc + rObj.rating, 0) / ratings.length
   return (<>
     <Card 

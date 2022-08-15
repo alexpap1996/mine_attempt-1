@@ -12,6 +12,8 @@ import LoginScreen from './mainscreens/LoginScreen'
 import ProductListScreen from './mainscreens/ProductListScreen'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 
+// rendering screens according to the path using Route
+// Nav is rendered on all routes
 const App = () => {
   const theme = useTheme()
 

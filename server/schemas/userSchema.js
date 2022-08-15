@@ -68,9 +68,14 @@ const userSchema = mongoose.Schema(
   }
 )
 
+// to check the password provided
+// returns true if the password is correct, false if it's not
 userSchema.methods.testLogin = async function (pswrd) {
   return await bcrypt.compare(pswrd, this.password)
 }
+
+// before saving the user
+// we encrypt the password
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next()

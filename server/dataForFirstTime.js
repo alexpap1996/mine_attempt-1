@@ -4,7 +4,7 @@ import User from './schemas/userSchema.js'
 
 import connect from './config/database.js'
 
-// creating classes for objects for consistent data creation
+// creating classes and methods for objects for consistent data creation
 // and readability
 class Name {
   constructor(en, gr) {
@@ -40,7 +40,7 @@ const createUser = (firstname, lastname, email, password, emergencyphone) => {
 }
 
 // delete all existing records from database
-// so whatever we add after is going to be the entire database
+// so whatever we insert after is going to be the entire database
 const deleteExistingData = async () => {
   await Product.deleteMany({})
   // await User.deleteMany({})

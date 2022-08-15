@@ -15,12 +15,19 @@ const paymentMethodInit = {
     expirydate: ''
   }
 }
+
+// on cart we have ability to change quantity of products, remove them
+// choose the tip amount
+// choose the payment method and details
+// and lastly create the order
 const CartScreen = () => {
   const { dispatch, state: { cart, tip } } = GlobalState()
   const [paymentMethod, setPaymentMethod] = useState(paymentMethodInit)
   const [paymentDetailsMissing, setPaymentDetailsMissing] = useState('')
 
 	const cartItems = cart
+
+  // adds the selected tip to the global state
   const handleTipChange = (event) => {
     dispatch({
       type: 'tip',
@@ -28,6 +35,9 @@ const CartScreen = () => {
     })
   }
 
+  // make sure we have all the necessary info on the payment method
+  // cash method doesn't need extra info so returns true
+  // card method needs all the fields to be populated
   const validatePaymentMethod = (payMethod) => {
     if (payMethod.type === 'cash') return true
     else {
@@ -41,6 +51,8 @@ const CartScreen = () => {
     }
   }
 
+  // when the payment method is changed we pass the values
+  // and validate if necessary info is missing
   const handlePaymentMethodChange = (payMethod) => {
     setPaymentMethod(payMethod)
     if (validatePaymentMethod(paymentMethod)) {

@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 import User from './schemas/userSchema.js'
 import Product from './schemas/productSchema.js'
 
+// get user params from body
+// check if user already exists
+// if not create with params
+// if they exist return error
 const createUser = async (req, res)  => {
 	const { firstname,lastname,emergencyphone, email, password } = req.body
   console.log(req.body)
@@ -38,6 +42,8 @@ const createUser = async (req, res)  => {
   }
 }
 
+// update user with incoming params from body
+// return the updated user
 const editUser = async (req, res) => {
   const { _id, firstname, lastname, emergencyphone } = req.body
   const user = await User.findByIdAndUpdate(_id, {
@@ -47,12 +53,17 @@ const editUser = async (req, res) => {
   res.json({user})
 }
 
+// used for login
+// returns true if email and password are both correct
+// returns appropriate error if one of them is wrong
 const authenticateUser = async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
 
+  // user will be null if the email is not found in the db
   if (user) {
+    // check for password against the user
     const result = await user.testLogin(password)
     if (result) {
       res.status(200)
@@ -63,7 +74,6 @@ const authenticateUser = async (req, res) => {
         email: user.email,
         emergencyphone: user.emergencyphone,
         orders: user.orders
-        // token: generateToken(user._id),
       })
     } else {
       res.status(403)
