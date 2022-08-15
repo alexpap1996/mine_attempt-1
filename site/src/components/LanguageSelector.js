@@ -15,10 +15,14 @@ const languages = [
 	}
 ]
 
+// used to change the current language
 const LanguageSelector = () => {
   const { i18n } = useTranslation()
   const { state: { currentLanguage }, dispatch } = GlobalState()
 
+  // if l is different than the saved language in the global state
+  //  change the language and save it to global state
+  // if not, do nothing
   const changeLocale = (event) => {
     const l = event.target.value
     if (currentLanguage !== l) {

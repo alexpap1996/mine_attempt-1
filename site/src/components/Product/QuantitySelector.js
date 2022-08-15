@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, IconButton, Typography } from "@mui/material"
 import { Add, Remove } from '@mui/icons-material';
 
+// used to change the quantity of the product
 const QuantitySelector = ({quantity = 0, size, quantityChange }) => {
   const fontSize = size === 'medium' ? '1.5rem' : '1.3rem'
 

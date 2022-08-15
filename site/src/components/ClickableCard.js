@@ -3,18 +3,20 @@ import { Box, Card, Typography, CardMedia, CardContent, useTheme } from '@mui/ma
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 
+// card that redirects to appropriate page when clicked
+// used for choosing category or shop
 const ClickableCard = ({ goToDir, image, alt, title, cardColor, textColor, icon }) => {
   const IconComp = icon
-  const { t } = useTranslation()
-  const [elevation, setElevation] = useState(2) //maybe remove setElevation
+  const [elevation, setElevation] = useState(2)
   const [brightness, setBrightness] = useState('100%')
-  const theme = useTheme()
 
+  // if mouse is hovering on the card lower the brightness and add elevation
   const handleMouseEnter = () => {
     setElevation(3)
     setBrightness('87%')
   }
 
+  // reset to default values when mouse is not hovering
   const handleMouseLeave = () => {
     setElevation(2)
     setBrightness('100%')
