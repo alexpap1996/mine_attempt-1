@@ -11,6 +11,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import KebabDiningIcon from '@mui/icons-material/KebabDining';
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
 
+// categories along with their icons
 const categories = [
   {
     name: 'food',

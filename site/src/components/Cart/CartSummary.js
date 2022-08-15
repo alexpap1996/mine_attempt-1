@@ -8,19 +8,25 @@ import Loading from '../../utils/Loading'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
+// holds the totals of the cart and has button to create order
 const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { state, dispatch } = GlobalState()
   const [loading, setLoading] = useState(false)
 
+  // randomly assigned as minimum value to send order, can be changed
   const minimumAmount = 10
 
   const user = state.user
+
+  // the values of the cart totals
   const itemTotal = state.cart.reduce((acc, product) => acc + (product.price * product.quantity), 0)
   const tip = state.tip
   const grandTotal = itemTotal + tip
 
+  // create button is disabled if the order amount isn't above the minimum amount
+  // or payment method details are missing
   const buttonDisabled = minimumAmount > itemTotal || !!detailsMissing
 
   const handleCreateOrder = async () => {
@@ -32,6 +38,7 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
       }
     })
 
+    // send callout to create order in db
     const res = await axios.post(ENDPOINT + '/api/orders/create', {
       email: state.user.email,
       paymentMethod,
@@ -41,6 +48,8 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
       products: products
     })
     if (res.status===200) {
+      // if order was created on db
+      // update user with new order on the global state
       dispatch({
         type: "update_user",
         payload: {
@@ -50,13 +59,15 @@ const CartSummary = ({ detailsMissing = '', paymentMethod}) => {
           }
         }
       })
+      // empty the cart
       dispatch({
         type: "remove",
         payload: null
       })
+      // go to orders page
       navigate('/account/orders?order_created=true')
     } else {
-      
+      console.log(res)
     }
     setLoading(false)
     console.log(res)

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 const buttons = [ 'card', 'cash' ]
 
+// button that toggles between 'card' / 'cash' payment methods
 const MethodButton = ({name, text, handlePaymentTypeChange, paymentType, disabled}) => {
 
   return (

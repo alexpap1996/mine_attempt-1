@@ -3,6 +3,14 @@ import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
 import { Typography, Box, Grid, TextField, Button } from "@mui/material"
 
+// inputs for signup
+// all are required
+// 1. firstname / lastname
+// 2. email
+// 3. password
+// 4. emergencyphone
+// 5. button that submits the form inputs and calls the handleSignup method passed from the parent
+// 6. LoginFormLink component -> redirects to Login page
 const SignupForm = ({ handleSignup, signUpError }) => {
   const { t } = useTranslation()
   return (

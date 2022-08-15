@@ -24,6 +24,8 @@ const themeOptions = {
 const theme = createTheme(themeOptions);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Context and ThemeProvider are wrapping the entire app so they are available on any component
 root.render(
   <React.StrictMode>
     <Context>

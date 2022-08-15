@@ -3,6 +3,8 @@ import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 
+// a generic header
+// an avatar with a text that comes from the parent
 const LoginFormHeader = ({ headerText }) => {
   return (
     <>

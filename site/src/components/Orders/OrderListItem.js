@@ -5,6 +5,10 @@ import axios from 'axios'
 import { ENDPOINT } from '../../constants/routeConstants'
 import OrderProductsModal from './OrderProductsModal'
 
+// list of orders
+// allows to view order items or rate products of orders
+// the modal in 'normal' mode shows the products along with quantities and price
+// and in 'rate' mode displays the products along with the option of rating them and saving the ratings on db
 const OrderListItem = ({order}) => {
   const { i18n, t } = useTranslation()
   const currLang = i18n.language
@@ -24,6 +28,7 @@ const OrderListItem = ({order}) => {
   const rated = status === 'rated'
 
   const getOrderProducts = async (productIds) => {
+    // get products details from order
     const res = await axios.post(ENDPOINT + '/api/orders/products/', {
       productIds
     })
@@ -47,6 +52,7 @@ const OrderListItem = ({order}) => {
   }
 
   const getProducts = async () => {
+    // gather ids and quantities from order
     const idsToQuantities = order.products.reduce((acc, product) => {
       acc[product.productId] = product.quantity
       return acc

@@ -3,6 +3,12 @@ import LoginFormLink from "./LoginFormLink"
 import { useTranslation } from 'react-i18next'
 import { Grid, Checkbox, Typography, FormControlLabel, TextField, Button, Box } from "@mui/material";
 
+// login inputs
+// 1. email -> email of the user
+// 2. password -> password of the user
+// 3. rememberMe -> if checked saves the user so they don't have to login again after closing the page
+// 4. button to submit the above inputs
+// 5. LoginFormLink component -> redirects to Signup page
 const LoginForm = ({ handleLogin, loginError }) => {
   const { t } = useTranslation()
   return (

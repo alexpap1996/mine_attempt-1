@@ -9,6 +9,8 @@ import { ENDPOINT } from '../../constants/routeConstants'
 import { GlobalState } from '../../contexts/Context'
 import { useNavigate } from "react-router-dom";
 
+// Signup used on the Signup page
+// handles all the inputs coming from SignupForm which are used to create a user
 const Signup = () => {
   const { t } = useTranslation()
   const { dispatch } = GlobalState()
@@ -35,6 +37,8 @@ const Signup = () => {
         password: data.get("password"),
         emergencyphone: data.get("emergencyphone")
       })
+      // if all is ok, also logs in the created user and renavigates to home directory
+      // else if shows an appropriate error
       if (res.status === 200) {
         dispatch({
           type: 'login',

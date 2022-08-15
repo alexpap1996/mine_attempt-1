@@ -20,6 +20,9 @@ const style = {
   maxHeight: '70vh'
 }
 
+// modal with two modes
+// 'normal' mode shows the products with quantity and price, along with total order price
+// 'rate' mode shows the products with the Rating component so the user can rate each one and save the rating on db
 const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, orderId}) => {
   const { t } = useTranslation()
   const { state: {user}, dispatch } = GlobalState()
@@ -34,6 +37,7 @@ const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, order
 
   const price = products.reduce((acc, curr) => acc + (curr.quantity * curr.price), 0)
 
+  // saves the rating on the component state
   const saveRating = ({productId, rating}) => {
     setRatings({
       ...ratings,
@@ -41,10 +45,15 @@ const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, order
     })
   }
 
+  // upon clicking save we open a confirmation alert
   const onClickSaveRating = () => {
     setAlertOpen(true)
   }
 
+  // after clicking on an option we handle the value clicked
+  // if the value is yes we save the rating on the db
+  // if the value is no we do nothing
+  // after either case we close the alert and the product modal
   const handleAlertClose = async (event) => {
     if (event.target.name === 'yes') {
       const res = await axios.post(ENDPOINT + '/api/products/rate/', {
@@ -53,6 +62,7 @@ const OrderProductsModal = ({products = [], unsetModalProducts, modalMode, order
         ratings: ratings
       })
       if (res.status === 200) {
+        // save the rated status on the global state
         dispatch({
           type: 'order_rated',
           payload: {

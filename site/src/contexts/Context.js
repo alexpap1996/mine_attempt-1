@@ -3,6 +3,11 @@ import { reducer } from './Reducers'
 
 const State = createContext()
 
+// Context aka Global State of the entire site
+// any information held here can be accessed by any component
+// and through the reducer method 'dispatch' any component can modify the Context
+// 
+// holds info: cart (products), cart tip, user (loggedIn), currentLanguage
 const Context = ({ children }) => {
   
   const user = JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user')) || undefined
@@ -14,7 +19,6 @@ const Context = ({ children }) => {
   }
 
   const [state, dispatch] = useReducer(reducer, {
-    products: [],
     cart,
     tip: 0,
     user,

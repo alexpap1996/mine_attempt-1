@@ -2,12 +2,15 @@ import React from 'react'
 import { ListItem, ListItemAvatar, Avatar, ListItemText, Rating } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
+// items of product modal on 'rate' mode
+// shows the product image, name and has a Rating input
 const OrderProductsModalItem = ({ product, saveRating }) => {
   const { name: text, image } = product
   const { i18n } = useTranslation()
   const currLang = i18n.language
 
   const onChangeRating = (event) => {
+    // call the parent saveRating method and pass necessary information
     saveRating({ productId: product._id, rating: event.target.value})
   }
 

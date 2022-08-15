@@ -1,3 +1,6 @@
+// holds the methods that are called when a component calls dispatch
+// according to the action type the appropriate method is called
+// after modifying the global state accordingly, it returns it
 const reducer = (state, action) => {
   const payload = action.payload
   switch (action.type){
@@ -24,6 +27,7 @@ const reducer = (state, action) => {
   }
 }
 
+// add a product to the global state cart
 const addProduct = (state, product, edit = false) => {
   const cart = [ ...state.cart]
   const index = cart.findIndex(prod => prod._id === product._id)
@@ -41,6 +45,9 @@ const addProduct = (state, product, edit = false) => {
   return { ...state, cart}
 }
 
+// remove a product from cart
+// if no product is passed just empties the cart
+// also saves the current cart to sessionStorage so it's saved
 const removeProduct = (state, product) => {
   let cart = [ ...state.cart]
   if (product === null) {
@@ -53,6 +60,7 @@ const removeProduct = (state, product) => {
   return { ...state, cart}
 }
 
+// saves user in the state and local or session storage according to the persist boolean
 const loginUser = (state, payload) => {
   const { persist, user } = payload
   if (persist) localStorage.setItem("user", JSON.stringify(payload.user))
@@ -60,17 +68,22 @@ const loginUser = (state, payload) => {
   return { ...state, user}
 }
 
+// logs out user by clearing the entirety of the local and session storages
 const logoutUser = (state, user) => {
   localStorage.clear()
   sessionStorage.clear()
   return { ...state, user: undefined}
 }
 
+// changes and holds the current language in the state
 const changeLanguage = (state, payload) => {
   localStorage.setItem('language', payload.language)
   return { ...state, currentLanguage: payload.language}
 }
 
+// updates the user in the state with any new incoming information
+// if the user is saved in the localStorage it also updates that
+// same in sessionStorage
 const updateUser = (state, payload) => {
   const user = payload.user
   if (localStorage.getItem('user')) localStorage.setItem('user', JSON.stringify(user))
@@ -78,6 +91,7 @@ const updateUser = (state, payload) => {
   return { ...state, user}
 }
 
+// save the incoming order status as 'rated'
 const orderRated = (state, payload) => {
   const orderId = payload.orderId
   const user = state.user

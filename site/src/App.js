@@ -14,6 +14,7 @@ import ProtectedRoutes from './utils/ProtectedRoutes'
 
 // rendering screens according to the path using Route
 // Nav is rendered on all routes
+// any component that are wrapped inside ProtectedRoutes require the user to be logged in
 const App = () => {
   const theme = useTheme()
 

@@ -2,6 +2,8 @@ import React from 'react'
 import { Box, ListItem, ListItemAvatar, Avatar, ListItemText, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
+// items of product modal on 'normal' mode
+// shows the product image, name, quantity and price
 const OrderProductsModalItem = ({ product }) => {
   const { name: text, quantity, image, price } = product
   const { i18n } = useTranslation()
