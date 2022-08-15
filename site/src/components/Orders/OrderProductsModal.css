@@ -1,4 +1,4 @@
-
+/* this changes the scrollbar appearance inside the modal */
 .modal-list::-webkit-scrollbar {
   width: 12px;
 }
@@ -9,6 +9,7 @@
   border: 3px solid white;
 }
 
+/* make only the list scrollable */
 .modal-list {
   max-height: 45vh; 
   overflow-y: scroll

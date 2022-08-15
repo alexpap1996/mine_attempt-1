@@ -20,6 +20,9 @@ const buttons = [
   },
 ]
 
+// the main navigation buttons
+// 1. shops
+// 2. cart
 const NavMainButtons = () => {
   const { state: { cart }} = GlobalState()
   const cartLength = cart.length || 0

@@ -7,20 +7,28 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useTranslation } from 'react-i18next'
 import { GlobalState } from '../../contexts/Context';
 
+// icon that when clicked renders a list of options
+// 1. my profile
+// 2. my order
+// 3. logout
 const NavUserIcon = () => {
   const { t } = useTranslation()
   const { dispatch } = GlobalState()
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
+  // handles the opening of the menu
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   }
 
+  // handles the closing of the menu
   const handleClose = () => {
     setAnchorEl(null);
   }
 
+  // logs out the user by erasing them from the state and the session
+  // and also redirects them to login screen
   const handleLogout = () => {
     console.log('handle logout')
     dispatch({

@@ -42,6 +42,8 @@ const GridCategoryCard = ({title, goToDir, cardColor, textColor, icon}) => {
   )
 }
 
+// list of shop categories
+// rendering list of ClickableCard so the user is redirected after clicking on one
 const CategoryList = () => {
   const { t } = useTranslation()
   const theme = useTheme()

@@ -12,6 +12,11 @@ const limitInPaths = [
   'login'
 ]
 
+// the navbar of the site
+// contains buttons for navigation
+// the profile icon for user specific navigation
+// and the language selector
+// has a different appearance in the paths that are in limitInPaths array
 const Nav = () => {
   const location = useLocation()
   const baseDir = location.pathname.split('/')[1]

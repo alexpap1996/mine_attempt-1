@@ -2,6 +2,7 @@ import { List, Divider } from '@mui/material'
 import React from 'react'
 import OrderListItem from './OrderListItem'
 
+// list of orders of the user
 const OrderList = ({orders = []}) => {
   return (<>
     <List spacing={2} sx={{ width: '100%', padding:'0'}}>  

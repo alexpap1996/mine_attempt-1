@@ -4,6 +4,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { GlobalState } from '../../contexts/Context';
 import { useTranslation } from 'react-i18next';
 
+// a product that is inside the cart
+// rendered as a ListItem so it displays as a row with the necessary information
+// can be removed or have its quantity changed
 const ProductCartItem = ({product}) => {
   const { name: text, quantity, image } = product
   const { i18n } = useTranslation()
@@ -11,6 +14,7 @@ const ProductCartItem = ({product}) => {
 
   const { dispatch } = GlobalState()
 
+  // if deleted remove the product from the cart that is inside the global state
   const handleDelete = () => {
     dispatch({
       type: 'remove',
@@ -18,6 +22,8 @@ const ProductCartItem = ({product}) => {
     })
   }
 
+
+  // if quantity is changed update the cart inside the global state
   const quantityChangeHandler = (val) => {
     dispatch({
       type: 'edit',

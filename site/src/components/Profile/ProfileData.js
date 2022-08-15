@@ -20,6 +20,8 @@ const GridItem = ({value, label, name, editState, changeValue, type}) => {
   </Grid>
 }
 
+// fields displaying user information
+// when editState === true the fields are editable
 const ProfileData = ({ user = {}, editState, changeValue }) => {
   const { t } = useTranslation()
   return (<>
