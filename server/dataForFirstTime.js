@@ -84,8 +84,11 @@ const createProducts = async (shopIds) => {
   const kiwi = createProd(new Name('Kiwi', 'Ακτινίδιο'), GrandMarketId, 1.2, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/kiwi_e75c3b.jpg')
   const salt = createProd(new Name('Salt - 500gr', 'Αλάτι - 500γρ'), GrandMarketId, 2.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_300,w_400/v1660566716/alati-sakoula-300-208x300_bgn6dq.png')
   const vitaminC = createProd(new Name('Vitamin C - 1000mg', 'Βιταμινη C - 1000μγ'), pharmacyId, 8.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1660036588/5df9a1287e60e99cc253bd768e7d2236_VITC1000_r2ilyq.jpg')
-  
-  const products = [orange, orange2, kiwi, salt, vitaminC]
+  const spaghetti = createProd(new Name('Spaghetti No.6', 'Σπαγγέτι Νο.6'), GrandMarketId, 1.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_lpad,h_500,w_1010/v1660671950/MISKO-BASE_LINE-SPAGHETT-No6-1021314_dggdki.webp')
+  const rice1a = createProd(new Name('Basmati Rice 1kg', 'Ρύζι Μπασμάτι 1Κγ'), GrandMarketId, 3.5, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_1000,w_2000/v1660672800/139965_5_nozf4s.jpg')
+  const rice1b = createProd(new Name('Basmati Rice 1kg', 'Ρύζι Μπασμάτι 1Κγ'), MiniMarketId, 4.5, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_1000,w_2000/v1660672800/139965_5_nozf4s.jpg')
+ 
+  const products = [orange, orange2, kiwi, salt, vitaminC, spaghetti, rice1a, rice1b]
   const res = await Product.bulkSave(products)
 }
 
