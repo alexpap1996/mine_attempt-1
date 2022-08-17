@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 const connect = async () => {
   try {
     //const uri = 
-    const uri = `mongodb+srv://alexpap:paok_gasp1234@cluster0.61xvxwf.mongodb.net/ecommerce?retryWrites=true&w=majority`
+    const uri = `mongodb://0.0.0.0:27017/myShopDB` //`mongodb://localhost:27017` `mongodb+srv://alexpap:paok_gasp1234@cluster0.61xvxwf.mongodb.net/ecommerce?retryWrites=true&w=majority`
     const conn = await mongoose.connect(uri, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
