@@ -91,8 +91,10 @@ const createProducts = async (shopIds) => {
 
   const orange = createProd(new Name('Orange', 'Πορτοκάλι'), miniMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
   const orange2 = createProd(new Name('Orange', 'Πορτοκάλι'), grandMarketId, 0.7, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
+  const orange3 = createProd(new Name('Orange', 'Πορτοκάλι'), superMarketId, 0.5, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/orange_d4p0kz.jpg')
   const kiwi = createProd(new Name('Kiwi', 'Ακτινίδιο'), grandMarketId, 1.2, 'https://res.cloudinary.com/djuuwduyx/image/upload/v1658245479/kiwi_e75c3b.jpg')
   const salt = createProd(new Name('Salt - 500gr', 'Αλάτι - 500γρ'), grandMarketId, 2.0, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_300,w_400/v1660566716/alati-sakoula-300-208x300_bgn6dq.png')
+  const salt2 = createProd(new Name('Salt - 500gr', 'Αλάτι - 500γρ'), superMarketId, 1.8, 'https://res.cloudinary.com/djuuwduyx/image/upload/c_mpad,h_300,w_400/v1660566716/alati-sakoula-300-208x300_bgn6dq.png')
   const milk = createProd(new Name('Milk', 'Γάλα'), superMarketId, 2.7, 'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?quality=90&resize=960,872')
   const beer = createProd(new Name('Beer', 'Μπίρα'), superMarketId, 8.7, 'https://vinepair.com/wp-content/uploads/2016/05/no-label-beer.jpg')
   const toiletPaper = createProd(new Name('Toilet paper', 'Χαρτί υγείας'), superMarketId, 5.2, 'https://static.praxisdienst.com/out/pictures/generated/product/1/800_800_90/140434_green_hygiene_rolf_toilettenpapier_2_web_eco.jpg')
@@ -101,16 +103,47 @@ const createProducts = async (shopIds) => {
   const painkillers = createProd(new Name('Paracetamol - 500mg', 'Paracetamol - 500γρ'), pharmacyId, 8.0, 'https://norway.postsen.com/content/uploads/2022/08/01/29efa4eb4a.jpg')
   const gyros = createProd(new Name('Gyros', 'Γύρος'), gyroplaceId, 8.7, 'https://1900livadia.gr/polymesa/2021/02/pita-gyros-kotopoulo.jpg')
   const souvlaki = createProd(new Name('Souvlaki', 'Σουβλάκι'), gyroplaceId, 9.7, 'https://1900livadia.gr/polymesa/2021/02/pita-souvlaki-xeiropoiito.jpg')
+  const friedPotatoes = createProd(new Name('Fried Potatoes', 'Πατατες Τηγανιτές'), gyroplaceId, 3.5, 'https://www.argiro.gr/wp-content/uploads/2018/07/patates-tiganites.jpg')
+  const potatoPita = createProd(new Name('Potato-Pita', 'Πατατόπιτα'), gyroplaceId,5.5,'https://delivery.gyrovolia.gr/wp-content/uploads/2019/10/patatopita.jpg')
   const crepe1 = createProd(new Name('Chocolate crepe', 'Κρέπα σοκολάτας'), crepeplaceId, 5.7, 'https://thumbs.dreamstime.com/z/crepe-chocolate-13293909.jpg')
   const crepe2 = createProd(new Name('Chocolate crepe with banana and biscuits', 'Κρέπα σοκολάτας με μπανάνα και μπισκότο'), crepeplaceId, 9.7, 'https://everydaydishes.com/wp-content/uploads/2014/11/strawberry-crepes-everydaydishes_com-H-700x460.jpg')
   const steakBeef = createProd(new Name('Flat Iron steak beef', 'Μοσχαρίσια μπριζόλα'), butcherShop1Id, 7.0, 'https://www.siakos.gr/3180-thickbox_default/flat-iron-steak-beef-siakos.jpg')
   const steakBeef2 = createProd(new Name('Flat Iron steak beef', 'Μοσχαρίσια μπριζόλα'), butcherShop2Id, 7.0, 'https://www.siakos.gr/3180-thickbox_default/flat-iron-steak-beef-siakos.jpg')
   const ribEye = createProd(new Name('Rib eye steak', 'Rib eye μπριζόλα'), butcherShop2Id, 10.0, 'https://cdn.wikifarmer.com/market/el/images/thumbnails/380/330/detailed/74/rib-eye-steak-price-per-kilo.jpg.jpg?t=1654678686')
+  const mince1 = createProd(new Name('Mince 1kg', 'Κιμάς 1κγ'),butcherShop1Id, 5.0, 'https://kcalkitchen.co.uk/wp-content/uploads/2019/12/HT00076.jpg')
+  const mince2 = createProd(new Name('Mince 1kg', 'Κιμάς 1κγ'),butcherShop2Id, 5.0, 'https://kcalkitchen.co.uk/wp-content/uploads/2019/12/HT00076.jpg')
   const bread1 = createProd(new Name('Cereal loaf bread', 'Ψωμί απο δημητριακά'), bakery1Id, 10.0, 'https://frenchbakery.cafe/wp-content/uploads/2020/06/Cereal-Loaf-Bread-1.jpg')
   const bread2 = createProd(new Name('Country bread', 'Χωριάτικο ψωμί'), bakery2Id, 10.0, 'https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2020-05/french-style-country-loaf.jpg?itok=LVIWYfCO')
   const bread3 = createProd(new Name('Chocolate croissant', 'Κρουασάν σοκολάτας'), bakery2Id, 6.0, 'https://www.bakingbusiness.com/ext/resources/2020/4/Croissant.jpg?t=1588345875&width=1080')
   
-  const products = [orange, orange2, kiwi, salt, milk, beer, toiletPaper, toothbrush, vitaminC, painkillers, gyros, souvlaki, crepe1, crepe2, steakBeef, steakBeef2, ribEye, bread1, bread2, bread3]
+  const products = [
+    orange, 
+    orange2, 
+    orange3, 
+    kiwi, 
+    salt, 
+    salt2, 
+    milk, 
+    beer, 
+    toiletPaper,
+    toothbrush, 
+    vitaminC, 
+    painkillers, 
+    gyros, 
+    souvlaki,
+    friedPotatoes,
+    potatoPita,
+    crepe1, 
+    crepe2, 
+    steakBeef, 
+    steakBeef2, 
+    mince1,
+    mince2,
+    ribEye, 
+    bread1, 
+    bread2, 
+    bread3
+  ]
   const res = await Product.bulkSave(products)
 }
 
