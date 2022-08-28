@@ -37,20 +37,23 @@ const createUser = (firstname, lastname, email, password, emergencyphone) => {
   user.email = email
   user.password = password
   user.emergencyphone = emergencyphone
+  return user
 }
 
 // delete all existing records from database
 // so whatever we insert after is going to be the entire database
 const deleteExistingData = async () => {
   await Product.deleteMany({})
-  // await User.deleteMany({})
+  await User.deleteMany({})
   await Shop.deleteMany({})
 }
 
 const createUsers = async () => {
-  const user1 = createUser('firstname', 'lastname', 'test@test.com', 'password', '6912345678')
-  const users = [user1]
+  const user1 = createUser('firstname', 'lastname', 'test@test.com', 'password', 6912345678)
+  const user2 = createUser('firstname', 'lastname', 'test2@test.com', 'password', 6912345678)
+  const users = [user1, user2]
   const res = await User.bulkSave(users)
+  
   return res
 }
 
@@ -154,7 +157,7 @@ const runApp = async () => {
   await deleteExistingData()
   
   // create the records
-  // await createUsers()
+  await createUsers()
   const shopIds = await createShops()
   createProducts(shopIds)
 }
